@@ -35,7 +35,7 @@ INSTALLED_THIRD_PARTY_APPS = [
     # "rest_framework",
 ]
 INSTALLED_PROJECT_APPS = [
-    # "apps.authentication",
+    "apps.authentication",
     "apps.accounts",
     "apps.issues",
 ]
