@@ -1,0 +1,147 @@
+{% extends "base/main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-grid">
+
+    <div class="account-hub-content">
+      <!-- SECTION HEADER -->
+      <div class="section-header">
+      <!-- SECTION HEADER INFO -->
+          <div class="section-header-info">
+              <!-- SECTION PRETITLE -->
+              <p class="section-pretitle">Issues</p>
+              <!-- /SECTION PRETITLE -->
+
+              <!-- SECTION TITLE -->
+              <h2 class="section-title">Create Issue</h2>
+              <!-- /SECTION TITLE -->
+          </div>
+          <!-- /SECTION HEADER INFO -->
+      </div>
+      <!-- /SECTION HEADER -->
+    </div>
+
+    <div class="popup-box-content limited" data-simplebar>
+        <!-- WIDGET BOX -->
+        <div class="widget-box">
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title">Issue Form</p>
+          <!-- /WIDGET BOX TITLE -->
+
+          <!-- WIDGET BOX CONTENT -->
+          <div class="widget-box-content">
+            <!-- FORM -->
+            <form class="form">
+              <!-- FORM ROW -->
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small active">
+                    <label for="issue-title">Title</label>
+                    <input type="text" id="issue-title" name="issue_title" value="">
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <!-- FORM ROW -->
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM SELECT -->
+                  <div class="form-select">
+                    <label for="issue-caetgory">Category</label>
+                    <select id="issue-caetgory" name="issue_caetgory">
+                      <option value="frontend">Frontend</option>
+                      <option value="backend">Backend</option>
+                      <option value="devops">Devops</option>
+                      <option value="ui_ux">UI/UX</option>
+                    </select>
+                    <!-- FORM SELECT ICON -->
+                    <svg class="form-select-icon icon-small-arrow">
+                      <use xlink:href="#svg-small-arrow"></use>
+                    </svg>
+                    <!-- /FORM SELECT ICON -->
+                  </div>
+                  <!-- /FORM SELECT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <!-- FORM ROW -->
+              <div class="form-row split">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM SELECT -->
+                  <div class="form-select">
+                    <label for="issue-priority">Priority</label>
+                    <select id="issue-priority" name="issue_priority">
+                      <option value="urgent">Urgent</option>
+                      <option value="high">High</option>
+                      <option value="medium">Medium</option>
+                      <option value="low">Low</option>
+                    </select>
+                    <!-- FORM SELECT ICON -->
+                    <svg class="form-select-icon icon-small-arrow">
+                      <use xlink:href="#svg-small-arrow"></use>
+                    </svg>
+                    <!-- /FORM SELECT ICON -->
+                  </div>
+                  <!-- /FORM SELECT -->
+                </div>
+                <!-- /FORM ITEM -->
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM SELECT -->
+                  <div class="form-select">
+                    <label for="issue-status">Status</label>
+                    <select id="issue-status" name="issue_status">
+                      <option value="todo">Todo</option>
+                      <option value="in_reject">In Reject</option>
+                      <option value="in_progress">In Progress</option>
+                      <option value="in_review">In Review</option>
+                      <option value="done">Done</option>
+                    </select>
+                    <!-- FORM SELECT ICON -->
+                    <svg class="form-select-icon icon-small-arrow">
+                      <use xlink:href="#svg-small-arrow"></use>
+                    </svg>
+                    <!-- /FORM SELECT ICON -->
+                  </div>
+                  <!-- /FORM SELECT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <!-- FORM ROW -->
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small mid-textarea">
+                    <textarea id="item-files" name="item_files" placeholder="Description"></textarea>
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <button type="submit" class="button primary full popup-manage-item-trigger mt-5">Create New Item!</button>
+            </form>
+            <!-- /FORM -->
+          </div>
+          <!-- WIDGET BOX CONTENT -->
+        </div>
+        <!-- /WIDGET BOX -->
+      </div>
+      <!-- /POPUP BOX CONTENT -->
+
+</div>
+{% endblock content %}

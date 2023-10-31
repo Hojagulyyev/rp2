@@ -4,21 +4,485 @@
 {% block content %}
 <div class="content-grid">
 
-    <!-- SECTION HEADER -->
-    <div class="section-header">
-      <!-- SECTION HEADER INFO -->
-      <div class="section-header-info">
-        <!-- SECTION PRETITLE -->
-        <p class="section-pretitle">Issues</p>
-        <!-- /SECTION PRETITLE -->
+    <div class="account-hub-content">
 
-        <!-- SECTION TITLE -->
-        <h2 class="section-title">My Issues</h2>
-        <!-- /SECTION TITLE -->
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+        <!-- SECTION HEADER INFO -->
+            <div class="section-header-info">
+                <!-- SECTION PRETITLE -->
+                <p class="section-pretitle">Issues</p>
+                <!-- /SECTION PRETITLE -->
+
+                <!-- SECTION TITLE -->
+                <h2 class="section-title">My Issues</h2>
+                <!-- /SECTION TITLE -->
+            </div>
+            <!-- /SECTION HEADER INFO -->
+        </div>
+        <!-- /SECTION HEADER -->
+
+        <!-- SECTION FILTERS BAR -->
+        <div class="section-filters-bar v6 v6-2">
+          <!-- SECTION FILTERS BAR ACTIONS -->
+          <div class="section-filters-bar-actions">
+            <!-- FORM -->
+            <form class="form">
+              <!-- FORM ITEM -->
+              <div class="form-item split">
+
+                <!-- FORM INPUT DECORATED -->
+                <div class="form-input-decorated">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small active">
+                    <label>Title</label>
+                    <input type="text" name="issue_title" value="">
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM INPUT DECORATED -->
+
+                <!-- BUTTON -->
+                <button class="button primary">
+                  <!-- ICON MAGNIFYING GLASS -->
+                  <svg class="icon-magnifying-glass">
+                    <use xlink:href="#svg-magnifying-glass"></use>
+                  </svg>
+                  <!-- /ICON MAGNIFYING GLASS -->
+                </button>
+                <!-- /BUTTON -->
+              </div>
+              <!-- /FORM ITEM -->
+            </form>
+            <!-- /FORM -->
+          </div>
+          <!-- /SECTION FILTERS BAR ACTIONS -->
+
+          <!-- SECTION FILTERS BAR ACTIONS -->
+          <div class="section-filters-bar-actions">
+            <!-- BUTTON -->
+            <a href="{% url 'issues:create_view' %}" class="button secondary popup-manage-item-trigger">New Issue</a>
+            <!-- /BUTTON -->
+          </div>
+          <!-- /SECTION FILTERS BAR ACTIONS -->
+        </div>
+        <!-- /SECTION FILTERS BAR -->
+
+        <!-- TABLE WRAP -->
+        <div class="table-wrap" data-simplebar>
+          <!-- TABLE -->
+          <div class="table table-sales">
+            <!-- TABLE HEADER -->
+            <div class="table-header">
+              <!-- TABLE HEADER COLUMN -->
+              <div class="table-header-column">
+                <!-- TABLE HEADER TITLE -->
+                <p class="table-header-title">Assignee</p>
+                <!-- /TABLE HEADER TITLE -->
+              </div>
+              <!-- /TABLE HEADER COLUMN -->
+
+              <!-- TABLE HEADER COLUMN -->
+              <div class="table-header-column padded-left">
+                <!-- TABLE HEADER TITLE -->
+                <p class="table-header-title">Title</p>
+                <!-- /TABLE HEADER TITLE -->
+              </div>
+              <!-- /TABLE HEADER COLUMN -->
+
+              <!-- TABLE HEADER COLUMN -->
+              <div class="table-header-column centered padded">
+                <!-- TABLE HEADER TITLE -->
+                <p class="table-header-title">Type</p>
+                <!-- /TABLE HEADER TITLE -->
+              </div>
+              <!-- /TABLE HEADER COLUMN -->
+
+              <!-- TABLE HEADER COLUMN -->
+              <div class="table-header-column centered padded">
+                <!-- TABLE HEADER TITLE -->
+                <p class="table-header-title">Date</p>
+                <!-- /TABLE HEADER TITLE -->
+              </div>
+              <!-- /TABLE HEADER COLUMN -->
+
+              <!-- TABLE HEADER COLUMN -->
+              <div class="table-header-column centered padded">
+                <!-- TABLE HEADER TITLE -->
+                <p class="table-header-title">Priority</p>
+                <!-- /TABLE HEADER TITLE -->
+              </div>
+              <!-- /TABLE HEADER COLUMN -->
+
+              <!-- TABLE HEADER COLUMN -->
+              <div class="table-header-column centered padded">
+                <!-- TABLE HEADER TITLE -->
+                <p class="table-header-title">Status</p>
+                <!-- /TABLE HEADER TITLE -->
+              </div>
+              <!-- /TABLE HEADER COLUMN -->
+
+              <!-- TABLE HEADER COLUMN -->
+              <div class="table-header-column padded-left"></div>
+              <!-- /TABLE HEADER COLUMN -->
+            </div>
+            <!-- /TABLE HEADER -->
+
+            <!-- TABLE BODY -->
+            <div class="table-body same-color-rows">
+
+              <!-- TABLE ROW -->
+              <div class="table-row micro">
+                <!-- TABLE COLUMN -->
+                <div class="table-column">
+                  <!-- TABLE TEXT -->
+                  <p class="table-text"><span class="light">Vepa Sabyrov</span></p>
+                  <!-- /TABLE TEXT -->
+                </div>
+                <!-- /TABLE COLUMN -->
+
+                <!-- TABLE COLUMN -->
+                <div class="table-column padded-left">
+                  <!-- TABLE LINK -->
+                  <a class="table-link" href="#">
+                      <span class="highlighted">change set-accounts-accessible-stores API's logic like update-permissions API</span>
+                  </a>
+                  <!-- /TABLE LINK -->
+                </div>
+                <!-- /TABLE COLUMN -->
+
+                <!-- TABLE COLUMN -->
+                <div class="table-column centered padded">
+                  <!-- TABLE TITLE -->
+                  <p class="table-title">Frontend</p>
+                  <!-- /TABLE TITLE -->
+                </div>
+                <!-- /TABLE COLUMN -->
+
+                <!-- TABLE COLUMN -->
+                <div class="table-column centered padded">
+                  <!-- TABLE TEXT -->
+                  <p class="table-text"><span class="light">31.10.2023</span></p>
+                  <!-- /TABLE TEXT -->
+                </div>
+                <!-- /TABLE COLUMN -->
+
+                <!-- TABLE COLUMN -->
+                <div class="table-column centered padded">
+                  <!-- TABLE TITLE -->
+                  <p class="table-title">Medium</p>
+                  <!-- /TABLE TITLE -->
+                </div>
+                <!-- /TABLE COLUMN -->
+
+                <!-- TABLE COLUMN -->
+                <div class="table-column centered padded">
+                  <!-- TABLE TEXT -->
+                  <p class="table-text"><span class="light">Todo</span></p>
+                  <!-- /TABLE TEXT -->
+                </div>
+                <!-- /TABLE COLUMN -->
+
+                <!-- TABLE COLUMN -->
+                <div class="table-column padded-left">
+                  <!-- PERCENTAGE DIFF ICON WRAP -->
+                  <div class="percentage-diff-icon-wrap negative">
+                    <!-- PERCENTAGE DIFF ICON -->
+                    <svg class="percentage-diff-icon icon-plus-small">
+                      <use xlink:href="#svg-minus-small"></use>
+                    </svg>
+                    <!-- /PERCENTAGE DIFF ICON -->
+                  </div>
+                  <!-- /PERCENTAGE DIFF ICON WRAP -->
+                </div>
+                <!-- /TABLE COLUMN -->
+
+              </div>
+              <!-- /TABLE ROW -->
+
+            </div>
+            <!-- /TABLE BODY -->
+          </div>
+          <!-- /TABLE -->
+        </div>
+        <!-- /TABLE WRAP -->
+
+        <!-- SECTION PAGER BAR WRAP -->
+<!--        <div class="section-pager-bar-wrap align-right">-->
+<!--          &lt;!&ndash; SECTION PAGER BAR &ndash;&gt;-->
+<!--          <div class="section-pager-bar">-->
+<!--            &lt;!&ndash; SECTION PAGER &ndash;&gt;-->
+<!--            <div class="section-pager">-->
+<!--              &lt;!&ndash; SECTION PAGER ITEM &ndash;&gt;-->
+<!--              <div class="section-pager-item active">-->
+<!--                &lt;!&ndash; SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--                <p class="section-pager-item-text">01</p>-->
+<!--                &lt;!&ndash; /SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /SECTION PAGER ITEM &ndash;&gt;-->
+
+<!--              &lt;!&ndash; SECTION PAGER ITEM &ndash;&gt;-->
+<!--              <div class="section-pager-item">-->
+<!--                &lt;!&ndash; SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--                <p class="section-pager-item-text">02</p>-->
+<!--                &lt;!&ndash; /SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /SECTION PAGER ITEM &ndash;&gt;-->
+
+<!--              &lt;!&ndash; SECTION PAGER ITEM &ndash;&gt;-->
+<!--              <div class="section-pager-item">-->
+<!--                &lt;!&ndash; SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--                <p class="section-pager-item-text">03</p>-->
+<!--                &lt;!&ndash; /SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /SECTION PAGER ITEM &ndash;&gt;-->
+
+<!--              &lt;!&ndash; SECTION PAGER ITEM &ndash;&gt;-->
+<!--              <div class="section-pager-item">-->
+<!--                &lt;!&ndash; SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--                <p class="section-pager-item-text">04</p>-->
+<!--                &lt;!&ndash; /SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /SECTION PAGER ITEM &ndash;&gt;-->
+
+<!--              &lt;!&ndash; SECTION PAGER ITEM &ndash;&gt;-->
+<!--              <div class="section-pager-item">-->
+<!--                &lt;!&ndash; SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--                <p class="section-pager-item-text">05</p>-->
+<!--                &lt;!&ndash; /SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /SECTION PAGER ITEM &ndash;&gt;-->
+
+<!--              &lt;!&ndash; SECTION PAGER ITEM &ndash;&gt;-->
+<!--              <div class="section-pager-item">-->
+<!--                &lt;!&ndash; SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--                <p class="section-pager-item-text">06</p>-->
+<!--                &lt;!&ndash; /SECTION PAGER ITEM TEXT &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /SECTION PAGER ITEM &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; /SECTION PAGER &ndash;&gt;-->
+
+<!--            &lt;!&ndash; SECTION PAGER CONTROLS &ndash;&gt;-->
+<!--            <div class="section-pager-controls">-->
+<!--              &lt;!&ndash; SLIDER CONTROL &ndash;&gt;-->
+<!--              <div class="slider-control left disabled">-->
+<!--                &lt;!&ndash; SLIDER CONTROL ICON &ndash;&gt;-->
+<!--                <svg class="slider-control-icon icon-small-arrow">-->
+<!--                  <use xlink:href="#svg-small-arrow"></use>-->
+<!--                </svg>-->
+<!--                &lt;!&ndash; /SLIDER CONTROL ICON &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /SLIDER CONTROL &ndash;&gt;-->
+
+<!--              &lt;!&ndash; SLIDER CONTROL &ndash;&gt;-->
+<!--              <div class="slider-control right">-->
+<!--                &lt;!&ndash; SLIDER CONTROL ICON &ndash;&gt;-->
+<!--                <svg class="slider-control-icon icon-small-arrow">-->
+<!--                  <use xlink:href="#svg-small-arrow"></use>-->
+<!--                </svg>-->
+<!--                &lt;!&ndash; /SLIDER CONTROL ICON &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /SLIDER CONTROL &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; /SECTION PAGER CONTROLS &ndash;&gt;-->
+<!--          </div>-->
+<!--          &lt;!&ndash; /SECTION PAGER BAR &ndash;&gt;-->
+<!--        </div>-->
+        <!-- /SECTION PAGER BAR WRAP -->
+
       </div>
-      <!-- /SECTION HEADER INFO -->
-    </div>
-    <!-- /SECTION HEADER -->
+
+    <br>
+    <br>
+    <br>
+
+    <div class="popup-box-content limited" data-simplebar>
+        <!-- WIDGET BOX -->
+        <div class="widget-box">
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title">Main Details</p>
+          <!-- /WIDGET BOX TITLE -->
+
+          <!-- WIDGET BOX CONTENT -->
+          <div class="widget-box-content">
+            <!-- FORM -->
+            <form class="form">
+              <!-- FORM ROW -->
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small active">
+                    <label for="item-name">Item Name</label>
+                    <input type="text" id="item-name" name="item_name" value="Pixel Diamond Gaming Magazine">
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <!-- FORM ROW -->
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM SELECT -->
+                  <div class="form-select">
+                    <label for="item-category">Category</label>
+                    <select id="item-category" name="item_category">
+                      <option value="1">Digital - HTML Templates</option>
+                      <option value="1">Digital - Logos &amp; Badges</option>
+                      <option value="2">Physical - Art Prints</option>
+                    </select>
+                    <!-- FORM SELECT ICON -->
+                    <svg class="form-select-icon icon-small-arrow">
+                      <use xlink:href="#svg-small-arrow"></use>
+                    </svg>
+                    <!-- /FORM SELECT ICON -->
+                  </div>
+                  <!-- /FORM SELECT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <!-- FORM ROW -->
+              <div class="form-row split">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM COUNTER WRAP -->
+                  <div class="form-counter-wrap">
+                    <label>Regular License Price</label>
+                    <!-- FORM COUNTER -->
+                    <div class="form-counter full with-currency">
+                      <!-- FORM COUNTER VALUE -->
+                      <p class="form-counter-value">26</p>
+                      <!-- /FORM COUNTER VALUE -->
+
+                      <!-- FORM COUNTER CONTROLS -->
+                      <div class="form-counter-controls">
+                        <!-- FORM COUNTER CONTROL -->
+                        <div class="form-counter-control form-counter-control-increase">
+                          <!-- FORM COUNTER ICON -->
+                          <svg class="form-counter-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                          </svg>
+                          <!-- /FORM COUNTER ICON -->
+                        </div>
+                        <!-- /FORM COUNTER CONTROL -->
+
+                        <!-- FORM COUNTER CONTROL -->
+                        <div class="form-counter-control form-counter-control-decrease">
+                          <!-- FORM COUNTER ICON -->
+                          <svg class="form-counter-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                          </svg>
+                          <!-- /FORM COUNTER ICON -->
+                        </div>
+                        <!-- /FORM COUNTER CONTROL -->
+                      </div>
+                      <!-- /FORM COUNTER CONTROLS -->
+                    </div>
+                    <!-- /FORM COUNTER -->
+                  </div>
+                  <!-- /FORM COUNTER WRAP -->
+                </div>
+                <!-- /FORM ITEM -->
+
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM COUNTER WRAP -->
+                  <div class="form-counter-wrap">
+                    <label>Extended License Price</label>
+                    <!-- FORM COUNTER -->
+                    <div class="form-counter full with-currency">
+                      <!-- FORM COUNTER VALUE -->
+                      <p class="form-counter-value">900</p>
+                      <!-- /FORM COUNTER VALUE -->
+
+                      <!-- FORM COUNTER CONTROLS -->
+                      <div class="form-counter-controls">
+                        <!-- FORM COUNTER CONTROL -->
+                        <div class="form-counter-control form-counter-control-increase">
+                          <!-- FORM COUNTER ICON -->
+                          <svg class="form-counter-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                          </svg>
+                          <!-- /FORM COUNTER ICON -->
+                        </div>
+                        <!-- /FORM COUNTER CONTROL -->
+
+                        <!-- FORM COUNTER CONTROL -->
+                        <div class="form-counter-control form-counter-control-decrease">
+                          <!-- FORM COUNTER ICON -->
+                          <svg class="form-counter-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                          </svg>
+                          <!-- /FORM COUNTER ICON -->
+                        </div>
+                        <!-- /FORM COUNTER CONTROL -->
+                      </div>
+                      <!-- /FORM COUNTER CONTROLS -->
+                    </div>
+                    <!-- /FORM COUNTER -->
+                  </div>
+                  <!-- /FORM COUNTER WRAP -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <!-- FORM ROW -->
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small active">
+                    <label for="item-url">Item URL</label>
+                    <input type="text" id="item-url" name="item_url" value="http://odindesign-themes.com/pixel-diamond/">
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <!-- FORM ROW -->
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small mid-textarea">
+                    <textarea id="item-tags" name="item_tags" placeholder="Write the items tags here separated by commas (max 15)..."></textarea>
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+
+              <!-- FORM ROW -->
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small mid-textarea">
+                    <textarea id="item-files" name="item_files" placeholder="Write the files included here separated by commas..."></textarea>
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+            </form>
+            <!-- /FORM -->
+          </div>
+          <!-- WIDGET BOX CONTENT -->
+        </div>
+        <!-- /WIDGET BOX -->
+      </div>
+      <!-- /POPUP BOX CONTENT -->
 
 </div>
 {% endblock content %}
