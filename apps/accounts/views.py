@@ -3,4 +3,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("RP2")
+    return render(request, "dashboard/issues.html")
+
