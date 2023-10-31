@@ -10,6 +10,7 @@ app_name = "issues"
 # Views
 
 urlpatterns = [
+    path("issues-view", views.issues, name="issues_view"),
     path("create-view", views.create, name="create_view")
 ]
 

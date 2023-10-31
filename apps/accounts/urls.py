@@ -10,9 +10,9 @@ app_name = "accounts"
 # Views
 
 urlpatterns = [
-    path("", views.index, name="index")
 ]
 
 # Interactors
 
-urlpatterns += []
+urlpatterns += [
+]
