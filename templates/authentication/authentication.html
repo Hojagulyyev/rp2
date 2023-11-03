@@ -69,17 +69,30 @@
         <!-- FORM BOX TITLE -->
         <h2 class="form-box-title">Account Login</h2>
         <!-- /FORM BOX TITLE -->
-    
+
+        {% for message in messages %}
+          <p class="badge-item-stat-text pt-3 text-center text-danger">{{ message }}</p>
+        {% endfor %}
+
         <!-- FORM -->
-        <form class="form">
+        <form class="form" action="{% url 'authentication:signin' %}" method="POST">
+          {% csrf_token %}
           <!-- FORM ROW -->
           <div class="form-row">
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- FORM INPUT -->
               <div class="form-input">
-                <label for="login-username">Username</label>
-                <input type="text" id="login-username" name="login_username">
+                <label for="signin_username">
+                  {% if not request.GET.username %} Username {% endif %}
+                </label>
+                <input
+                    required
+                    type="text"
+                    id="signin_username"
+                    name="signin_username"
+                    value="{{ request.GET.username }}"
+                >
               </div>
               <!-- /FORM INPUT -->
             </div>
@@ -93,8 +106,8 @@
             <div class="form-item">
               <!-- FORM INPUT -->
               <div class="form-input">
-                <label for="login-password">Password</label>
-                <input type="password" id="login-password" name="login_password">
+                <label for="signin_password">Password</label>
+                <input type="password" id="signin_password" name="signin_password" required>
               </div>
               <!-- /FORM INPUT -->
             </div>
@@ -107,7 +120,7 @@
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- BUTTON -->
-              <button class="button medium secondary">Login to your Account!</button>
+              <button type="submit" class="button medium secondary">Signin to your Account!</button>
               <!-- /BUTTON -->
             </div>
             <!-- /FORM ITEM -->
@@ -132,46 +145,85 @@
         <!-- /FORM BOX TITLE -->
     
         <!-- FORM -->
-        <form class="form">
-    
+        <form class="form" action="{% url 'authentication:signup' %}" method="POST">
+          {% csrf_token %}
+
           <!-- FORM ROW -->
           <div class="form-row">
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- FORM INPUT -->
               <div class="form-input">
-                <label for="register-username">Username</label>
-                <input type="text" id="register-username" name="register_username">
+                <label for="signup_username">
+                  {% if not request.GET.username %} Username {% endif %}
+                </label>
+                <input
+                    required
+                    type="text"
+                    id="signup_username"
+                    name="signup_username"
+                    value="{{ request.GET.username }}"
+                >
               </div>
               <!-- /FORM INPUT -->
             </div>
             <!-- /FORM ITEM -->
           </div>
           <!-- /FORM ROW -->
-    
+
           <!-- FORM ROW -->
           <div class="form-row">
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- FORM INPUT -->
               <div class="form-input">
-                <label for="register-password">Password</label>
-                <input type="password" id="register-password" name="register_password">
+                <label for="signup_password">Password</label>
+                <input type="text" id="signup_password" name="signup_password" required>
               </div>
               <!-- /FORM INPUT -->
             </div>
             <!-- /FORM ITEM -->
           </div>
           <!-- /FORM ROW -->
-    
+
           <!-- FORM ROW -->
           <div class="form-row">
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- FORM INPUT -->
               <div class="form-input">
-                <label for="register-password-repeat">Repeat Password</label>
-                <input type="password" id="register-password-repeat" name="register_password_repeat">
+                <label for="signup_repeat_password">Repeat Password</label>
+                <input type="text" id="signup_repeat_password" name="signup_repeat_password" required>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="signup_first_name">First Name</label>
+                <input type="text" id="signup_first_name" name="signup_first_name">
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="signup_last_name">Last Name</label>
+                <input type="text" id="signup_last_name" name="signup_last_name">
               </div>
               <!-- /FORM INPUT -->
             </div>
@@ -184,7 +236,7 @@
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- BUTTON -->
-              <button class="button medium primary">Register Now!</button>
+              <button type="submit" class="button medium primary">Signup Now!</button>
               <!-- /BUTTON -->
             </div>
             <!-- /FORM ITEM -->
