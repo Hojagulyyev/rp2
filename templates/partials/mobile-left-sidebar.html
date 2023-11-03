@@ -70,7 +70,9 @@
       <!-- /NAVIGATION WIDGET INFO -->
 
       <!-- NAVIGATION WIDGET BUTTON -->
-      <p class="navigation-widget-info-button button small secondary">Logout</p>
+      <a href="{% url 'authentication:signout' %}">
+        <p class="navigation-widget-info-button button small secondary">Logout</p>
+      </a>
       <!-- /NAVIGATION WIDGET BUTTON -->
     </div>
     <!-- /NAVIGATION WIDGET INFO WRAP -->
