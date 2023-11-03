@@ -77,7 +77,7 @@
               <!-- TABLE HEADER COLUMN -->
               <div class="table-header-column">
                 <!-- TABLE HEADER TITLE -->
-                <p class="table-header-title">Assignee</p>
+                <p class="table-header-title">Author</p>
                 <!-- /TABLE HEADER TITLE -->
               </div>
               <!-- /TABLE HEADER COLUMN -->
@@ -101,7 +101,7 @@
               <!-- TABLE HEADER COLUMN -->
               <div class="table-header-column centered padded">
                 <!-- TABLE HEADER TITLE -->
-                <p class="table-header-title">Date</p>
+                <p class="table-header-title">Created Date</p>
                 <!-- /TABLE HEADER TITLE -->
               </div>
               <!-- /TABLE HEADER COLUMN -->
@@ -131,12 +131,13 @@
             <!-- TABLE BODY -->
             <div class="table-body same-color-rows">
 
+              {% for issue in issues %}
               <!-- TABLE ROW -->
               <div class="table-row micro">
                 <!-- TABLE COLUMN -->
                 <div class="table-column">
                   <!-- TABLE TEXT -->
-                  <p class="table-text"><span class="light">Vepa Sabyrov</span></p>
+                  <p class="table-text"><span class="light">{{ issue.author }}</span></p>
                   <!-- /TABLE TEXT -->
                 </div>
                 <!-- /TABLE COLUMN -->
@@ -145,7 +146,7 @@
                 <div class="table-column padded-left">
                   <!-- TABLE LINK -->
                   <a class="table-link" href="#">
-                      <span class="highlighted">change set-accounts-accessible-stores API's logic like update-permissions API</span>
+                      <span class="highlighted">{{ issue.title|truncatechars:70 }}</span>
                   </a>
                   <!-- /TABLE LINK -->
                 </div>
@@ -154,7 +155,7 @@
                 <!-- TABLE COLUMN -->
                 <div class="table-column centered padded">
                   <!-- TABLE TITLE -->
-                  <p class="table-title">Frontend</p>
+                  <p class="table-title">{{ issue.category }}</p>
                   <!-- /TABLE TITLE -->
                 </div>
                 <!-- /TABLE COLUMN -->
@@ -162,7 +163,7 @@
                 <!-- TABLE COLUMN -->
                 <div class="table-column centered padded">
                   <!-- TABLE TEXT -->
-                  <p class="table-text"><span class="light">31.10.2023</span></p>
+                  <p class="table-text"><span class="light">{{ issue.created_date|date:"d.m.Y" }}</span></p>
                   <!-- /TABLE TEXT -->
                 </div>
                 <!-- /TABLE COLUMN -->
@@ -170,7 +171,7 @@
                 <!-- TABLE COLUMN -->
                 <div class="table-column centered padded">
                   <!-- TABLE TITLE -->
-                  <p class="table-title">Medium</p>
+                  <p class="table-title">{{ issue.priority }}</p>
                   <!-- /TABLE TITLE -->
                 </div>
                 <!-- /TABLE COLUMN -->
@@ -178,23 +179,33 @@
                 <!-- TABLE COLUMN -->
                 <div class="table-column centered padded">
                   <!-- TABLE TEXT -->
-                  <p class="table-text"><span class="light">Todo</span></p>
+                  <p class="table-text"><span class="light">{{ issue.status }}</span></p>
                   <!-- /TABLE TEXT -->
                 </div>
                 <!-- /TABLE COLUMN -->
 
                 <!-- TABLE COLUMN -->
                 <div class="table-column padded-left">
+                  {% if issue.is_closed %}
                   <!-- PERCENTAGE DIFF ICON WRAP -->
-                  <div class="percentage-diff-icon-wrap negative">
+                  <div class="percentage-diff-icon-wrap positive">
                     <!-- PERCENTAGE DIFF ICON -->
+                    <svg class="percentage-diff-icon icon-plus-small">
+                      <use xlink:href="#svg-check"></use>
+                    </svg>
+                  </div>
+                  {% else %}
+                  <div class="percentage-diff-icon-wrap negative">
                     <svg class="percentage-diff-icon icon-plus-small">
                       <use xlink:href="#svg-minus-small"></use>
                     </svg>
+                  </div>
+                  {% endif %}
                     <!-- /PERCENTAGE DIFF ICON -->
                   </div>
                   <!-- /PERCENTAGE DIFF ICON WRAP -->
                 </div>
+              {% endfor %}
                 <!-- /TABLE COLUMN -->
 
               </div>

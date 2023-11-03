@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 
-from apps.accounts.models import Account
-from apps.issues.models import Issue
+from ..accounts.models import Account
+from ..issues.models import Issue
 
 
 @login_required
