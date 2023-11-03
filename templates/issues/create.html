@@ -32,15 +32,16 @@
           <!-- WIDGET BOX CONTENT -->
           <div class="widget-box-content">
             <!-- FORM -->
-            <form class="form">
+            <form class="form" action="{% url 'issues:create' %}" method="POST">
+              {% csrf_token %}
               <!-- FORM ROW -->
               <div class="form-row">
                 <!-- FORM ITEM -->
                 <div class="form-item">
                   <!-- FORM INPUT -->
                   <div class="form-input small active">
-                    <label for="issue-title">Title</label>
-                    <input type="text" id="issue-title" name="issue_title" value="">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" value="" required>
                   </div>
                   <!-- /FORM INPUT -->
                 </div>
@@ -54,8 +55,8 @@
                 <div class="form-item">
                   <!-- FORM SELECT -->
                   <div class="form-select">
-                    <label for="issue-caetgory">Category</label>
-                    <select id="issue-caetgory" name="issue_caetgory">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
                       <option value="frontend">Frontend</option>
                       <option value="backend">Backend</option>
                       <option value="devops">Devops</option>
@@ -79,8 +80,8 @@
                 <div class="form-item">
                   <!-- FORM SELECT -->
                   <div class="form-select">
-                    <label for="issue-priority">Priority</label>
-                    <select id="issue-priority" name="issue_priority">
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority">
                       <option value="urgent">Urgent</option>
                       <option value="high">High</option>
                       <option value="medium">Medium</option>
@@ -99,8 +100,8 @@
                 <div class="form-item">
                   <!-- FORM SELECT -->
                   <div class="form-select">
-                    <label for="issue-status">Status</label>
-                    <select id="issue-status" name="issue_status">
+                    <label for="status">Status</label>
+                    <select id="status" name="status">
                       <option value="todo">Todo</option>
                       <option value="in_reject">In Reject</option>
                       <option value="in_progress">In Progress</option>
@@ -125,7 +126,7 @@
                 <div class="form-item">
                   <!-- FORM INPUT -->
                   <div class="form-input small mid-textarea">
-                    <textarea id="item-files" name="item_files" placeholder="Description"></textarea>
+                    <textarea id="item-files" name="description" placeholder="Description"></textarea>
                   </div>
                   <!-- /FORM INPUT -->
                 </div>
@@ -133,7 +134,7 @@
               </div>
               <!-- /FORM ROW -->
 
-              <button type="submit" class="button primary full popup-manage-item-trigger mt-5">Create New Item!</button>
+              <button type="submit" class="button primary full popup-manage-item-trigger mt-5">Create New Issue!</button>
             </form>
             <!-- /FORM -->
           </div>

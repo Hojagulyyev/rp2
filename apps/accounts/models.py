@@ -6,8 +6,8 @@ from apps.clans.models import Clan
 
 class Account(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user: User = models.OneToOneField(User, on_delete=models.CASCADE)
     clan = models.ForeignKey(Clan, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return self.user
+        return self.user.username

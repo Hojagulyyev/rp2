@@ -17,6 +17,6 @@ urlpatterns = [
 # Interactors
 
 urlpatterns += [
-    # path('create/', interactors.create, name="create"),
+    path('create/', interactors.create, name="create"),
     # path('<int:id>/update/', interactors.update, name="update"),
 ]
