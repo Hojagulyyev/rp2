@@ -78,17 +78,17 @@ target/
 
 ### Django ###
 *.log
-*.pot
 *.pyc
-__pycache__/
 local_settings.py
+db.sqlite3
 
+# Environments
 .venv
 .env
 venv/
-db.sqlite3
 
-# Visual Studio Code
+
+### Visual Studio Code ###
 .vscode
 .vscode/*
 !.vscode/settings.json
