@@ -11,6 +11,8 @@ RP2 is a rapidly-growing open-source next generation project and task management
 
 Template from [Vikinger](https://themeforest.net/item/vikinger-social-community-and-marketplace-html-template/25715500) used.
 
+![RP2 Dashboard - Modern Vikinger UI for managing your project](https://img.themesinfo.com/i/2/1645/template-wordpress-vikinger-buddypress-social-community-pqqwe-o.jpg)
+
 ## Installation
 
 Note:
