@@ -101,7 +101,7 @@
               <!-- TABLE HEADER COLUMN -->
               <div class="table-header-column centered padded">
                 <!-- TABLE HEADER TITLE -->
-                <p class="table-header-title">Created Date</p>
+                <p class="table-header-title">Status</p>
                 <!-- /TABLE HEADER TITLE -->
               </div>
               <!-- /TABLE HEADER COLUMN -->
@@ -117,7 +117,7 @@
               <!-- TABLE HEADER COLUMN -->
               <div class="table-header-column centered padded">
                 <!-- TABLE HEADER TITLE -->
-                <p class="table-header-title">Status</p>
+                <p class="table-header-title">Created Date</p>
                 <!-- /TABLE HEADER TITLE -->
               </div>
               <!-- /TABLE HEADER COLUMN -->
@@ -146,7 +146,7 @@
                 <div class="table-column padded-left">
                   <!-- TABLE LINK -->
                   <a class="table-link" href="#">
-                      <span class="highlighted">{{ issue.title|truncatechars:70 }}</span>
+                      <span class="light">{{ issue.title|truncatechars:70 }}</span>
                   </a>
                   <!-- /TABLE LINK -->
                 </div>
@@ -155,7 +155,7 @@
                 <!-- TABLE COLUMN -->
                 <div class="table-column centered padded">
                   <!-- TABLE TITLE -->
-                  <p class="table-title">{{ issue.category }}</p>
+                  <p class="table-text">{{ issue.category }}</p>
                   <!-- /TABLE TITLE -->
                 </div>
                 <!-- /TABLE COLUMN -->
@@ -163,7 +163,9 @@
                 <!-- TABLE COLUMN -->
                 <div class="table-column centered padded">
                   <!-- TABLE TEXT -->
-                  <p class="table-text"><span class="light">{{ issue.created_date|date:"d.m.Y" }}</span></p>
+                  <p class="table-title">
+                    <span class="light">{{ issue.status }}</span>
+                  </p>
                   <!-- /TABLE TEXT -->
                 </div>
                 <!-- /TABLE COLUMN -->
@@ -171,7 +173,7 @@
                 <!-- TABLE COLUMN -->
                 <div class="table-column centered padded">
                   <!-- TABLE TITLE -->
-                  <p class="table-title">{{ issue.priority }}</p>
+                  <p class="table-text">{{ issue.priority }}</p>
                   <!-- /TABLE TITLE -->
                 </div>
                 <!-- /TABLE COLUMN -->
@@ -179,7 +181,9 @@
                 <!-- TABLE COLUMN -->
                 <div class="table-column centered padded">
                   <!-- TABLE TEXT -->
-                  <p class="table-text"><span class="light">{{ issue.status }}</span></p>
+                  <p class="table-title">
+                    <span class="light">{{ issue.created_date|date:"d.m.Y" }}</span>
+                  </p>
                   <!-- /TABLE TEXT -->
                 </div>
                 <!-- /TABLE COLUMN -->
