@@ -10,6 +10,7 @@ Icon
 # Thumbnails
 ._*
 
+
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
@@ -64,9 +65,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 
-# Translations
-*.mo
-*.pot
 
 # Sphinx documentation
 docs/_build/
