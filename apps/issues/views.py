@@ -7,20 +7,25 @@ from ..issues.models import Issue
 
 def issues(request):
 
-    account = request.user.account
-
-    # ===== Input DTO
+    # ===== DTO
 
     page = request.GET.get("page", 1)
     title = request.GET.get("title", "")
 
-    # ===== Output DTO
+    # ===== PROCESS
 
-    issue_queryset = Issue.objects.filter(
-        clan=account.clan,
-        title__icontains=title,
+    account = request.user.account
+    issue_queryset = (
+        Issue.objects
+        .filter(
+            clan=account.clan,
+            title__icontains=title,
+        )
+        .order_by("-id")
     )
     paginated_issue_queryset = paginate(issue_queryset, page)
+
+    # ===== CONTEXT
 
     context = {
         "issues": paginated_issue_queryset,
