@@ -12,13 +12,15 @@ def issues(request):
     # ===== Input DTO
 
     page = request.GET.get("page", 1)
+    title = request.GET.get("title", "")
 
     # ===== Output DTO
 
     issue_queryset = Issue.objects.filter(
         clan=account.clan,
+        title__icontains=title,
     )
-    paginated_issue_queryset = paginate(issue_queryset, page, 2)
+    paginated_issue_queryset = paginate(issue_queryset, page)
 
     context = {
         "issues": paginated_issue_queryset,

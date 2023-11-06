@@ -36,7 +36,7 @@
                             <!-- FORM INPUT -->
                             <div class="form-input small active">
                                 <label>Title</label>
-                                <input type="text" name="issue_title" value="">
+                                <input type="text" name="title" value="{{ request.GET.title }}">
                             </div>
                             <!-- /FORM INPUT -->
                         </div>
@@ -292,8 +292,6 @@
     </div>
     {% endif %}
     <!-- /SECTION PAGER BAR WRAP -->
-
-</div>
 
 </div>
 {% endblock content %}
