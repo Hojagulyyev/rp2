@@ -165,7 +165,27 @@
                         <div class="table-column centered padded">
                             <!-- TABLE TEXT -->
                             <p class="table-title">
-                                <span class="light">{{ issue.status }}</span>
+                                {% if issue.status == 'todo' %}
+                                    <span class="btn btn-primary btn-sm">
+                                        Todo
+                                    </span>
+                                {% elif issue.status == 'in_progress' %}
+                                    <span class="btn btn-warning btn-sm">
+                                        In Progress
+                                    </span>
+                                {% elif issue.status == 'in_reject' %}
+                                    <span class="btn btn-danger btn-sm">
+                                        In Reject
+                                    </span>
+                                {% elif issue.status == 'in_review' %}
+                                    <span class="btn btn-secondary btn-sm">
+                                        In Review
+                                    </span>
+                                {% elif issue.status == 'done' %}
+                                    <span class="btn btn-success btn-sm">
+                                        Done
+                                    </span>
+                                {% endif %}
                             </p>
                             <!-- /TABLE TEXT -->
                         </div>
@@ -174,7 +194,11 @@
                         <!-- TABLE COLUMN -->
                         <div class="table-column centered padded">
                             <!-- TABLE TITLE -->
-                            <p class="table-text">{{ issue.priority }}</p>
+                            <p class="table-text">
+                                <span>
+                                    {{ issue.priority }}
+                                </span>
+                            </p>
                             <!-- /TABLE TITLE -->
                         </div>
                         <!-- /TABLE COLUMN -->
