@@ -15,7 +15,7 @@
                 <!-- /SECTION PRETITLE -->
 
                 <!-- SECTION TITLE -->
-                <h2 class="section-title">My Diaries</h2>
+                <h2 class="section-title">Diaries</h2>
                 <!-- /SECTION TITLE -->
             </div>
             <!-- /SECTION HEADER INFO -->
@@ -30,17 +30,17 @@
                 <div class="form-item split medium">
                     <!-- FORM SELECT -->
                     <div class="form-select">
-                        <label for="diaries-filter-category">Filter By</label>
-                        <select id="diaries-filter-category" name="diaries_filter_category">
+                        <label for="filter-by">Filter By</label>
+                        <select id="filter-by" name="filter_by">
                             <option
-                                    value="all_diaries"
-                                    {% if request.GET.diaries_filter_category == "all_diaries" %}
+                                    value="all"
+                                    {% if request.GET.filter_by == "all" %}
                                         selected
                                     {% endif %}
                             >All Diaries</option>
                             <option
-                                    value="my_diaries"
-                                    {% if request.GET.diaries_filter_category == "my_diaries" %}
+                                    value="my"
+                                    {% if request.GET.filter_by == "my" %}
                                         selected
                                     {% endif %}
                             >My Diaries</option>
