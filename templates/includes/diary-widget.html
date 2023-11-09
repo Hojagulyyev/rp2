@@ -81,58 +81,7 @@
                     <!-- META LINE -->
                     <div class="meta-line">
                         <!-- RATING LIST -->
-                        <div class="rating-list">
-
-                            <!-- RATING -->
-                            <div class="rating dark filled">
-                                <!-- RATING ICON -->
-                                <svg class="rating-icon icon-star">
-                                    <use xlink:href="#svg-star"></use>
-                                </svg>
-                                <!-- /RATING ICON -->
-                            </div>
-                            <!-- /RATING -->
-
-                            <!-- RATING -->
-                            <div class="rating dark filled">
-                                <!-- RATING ICON -->
-                                <svg class="rating-icon icon-star">
-                                    <use xlink:href="#svg-star"></use>
-                                </svg>
-                                <!-- /RATING ICON -->
-                            </div>
-                            <!-- /RATING -->
-
-                            <!-- RATING -->
-                            <div class="rating dark filled">
-                                <!-- RATING ICON -->
-                                <svg class="rating-icon icon-star">
-                                    <use xlink:href="#svg-star"></use>
-                                </svg>
-                                <!-- /RATING ICON -->
-                            </div>
-                            <!-- /RATING -->
-
-                            <!-- RATING -->
-                            <div class="rating dark filled">
-                                <!-- RATING ICON -->
-                                <svg class="rating-icon icon-star">
-                                    <use xlink:href="#svg-star"></use>
-                                </svg>
-                                <!-- /RATING ICON -->
-                            </div>
-                            <!-- /RATING -->
-
-                            <!-- RATING -->
-                            <div class="rating dark filled">
-                                <!-- RATING ICON -->
-                                <svg class="rating-icon icon-star">
-                                    <use xlink:href="#svg-star"></use>
-                                </svg>
-                                <!-- /RATING ICON -->
-                            </div>
-                            <!-- /RATING -->
-                        </div>
+                        {% include "includes/rating-list.html" with stars=diary.commits.count %}
                         <!-- /RATING LIST -->
                     </div>
                     <!-- /META LINE -->
