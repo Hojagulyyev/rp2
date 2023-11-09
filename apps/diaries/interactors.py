@@ -33,4 +33,6 @@ def commit(request, diary_id: int):
     diary_commit.message = message
     diary_commit.save()
 
+    diary_commit_created.send(sender=DiaryCommit, instance=diary_commit)
+
     return redirect('issues:issues_view')
