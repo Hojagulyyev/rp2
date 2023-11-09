@@ -1,0 +1,321 @@
+{% extends "base/main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-grid">
+
+    <div class="account-hub-content">
+
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <!-- SECTION HEADER INFO -->
+            <div class="section-header-info">
+                <!-- SECTION PRETITLE -->
+                <p class="section-pretitle">Issues</p>
+                <!-- /SECTION PRETITLE -->
+
+                <!-- SECTION TITLE -->
+                <h2 class="section-title">My Issues</h2>
+                <!-- /SECTION TITLE -->
+            </div>
+            <!-- /SECTION HEADER INFO -->
+        </div>
+        <!-- /SECTION HEADER -->
+
+        <!-- SECTION FILTERS BAR -->
+        <div class="section-filters-bar v6 v6-2">
+            <!-- SECTION FILTERS BAR ACTIONS -->
+            <div class="section-filters-bar-actions">
+                <!-- FORM -->
+                <form class="form">
+                    <!-- FORM ITEM -->
+                    <div class="form-item split">
+
+                        <!-- FORM INPUT DECORATED -->
+                        <div class="form-input-decorated">
+                            <!-- FORM INPUT -->
+                            <div class="form-input small active">
+                                <label>Title</label>
+                                <input type="text" name="title" value="{{ request.GET.title }}">
+                            </div>
+                            <!-- /FORM INPUT -->
+                        </div>
+                        <!-- /FORM INPUT DECORATED -->
+
+                        <!-- BUTTON -->
+                        <button class="button primary">
+                            <!-- ICON MAGNIFYING GLASS -->
+                            <svg class="icon-magnifying-glass">
+                                <use xlink:href="#svg-magnifying-glass"></use>
+                            </svg>
+                            <!-- /ICON MAGNIFYING GLASS -->
+                        </button>
+                        <!-- /BUTTON -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </form>
+                <!-- /FORM -->
+            </div>
+            <!-- /SECTION FILTERS BAR ACTIONS -->
+
+            <!-- SECTION FILTERS BAR ACTIONS -->
+            <div class="section-filters-bar-actions">
+                <!-- BUTTON -->
+                <a href="{% url 'issues:create_view' %}" class="button secondary popup-manage-item-trigger">New
+                    Issue</a>
+                <!-- /BUTTON -->
+            </div>
+            <!-- /SECTION FILTERS BAR ACTIONS -->
+        </div>
+        <!-- /SECTION FILTERS BAR -->
+
+        <!-- TABLE WRAP -->
+        <div class="table-wrap" data-simplebar>
+            <!-- TABLE -->
+            <div class="table table-sales">
+                <!-- TABLE HEADER -->
+                <div class="table-header">
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Author</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column padded-left">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Title</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Type</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Status</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Priority</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Created Date</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column padded-left"></div>
+                    <!-- /TABLE HEADER COLUMN -->
+                </div>
+                <!-- /TABLE HEADER -->
+
+                <!-- TABLE BODY -->
+                <div class="table-body same-color-rows">
+
+                    {% for issue in issues %}
+                    <!-- TABLE ROW -->
+                    <div class="table-row micro">
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column">
+                            <!-- TABLE TEXT -->
+                            <p class="table-text"><span class="light">{{ issue.author }}</span></p>
+                            <!-- /TABLE TEXT -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column padded-left">
+                            <!-- TABLE LINK -->
+                            <a class="table-link" href="#">
+                                <span class="light">{{ issue.title|truncatechars:70 }}</span>
+                            </a>
+                            <!-- /TABLE LINK -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TITLE -->
+                            <p class="table-text">{{ issue.category }}</p>
+                            <!-- /TABLE TITLE -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TEXT -->
+                            <p class="table-title">
+                                {% if issue.status == 'todo' %}
+                                    <span class="btn btn-primary btn-sm">
+                                        Todo
+                                    </span>
+                                {% elif issue.status == 'in_progress' %}
+                                    <span class="btn btn-warning btn-sm">
+                                        In Progress
+                                    </span>
+                                {% elif issue.status == 'in_reject' %}
+                                    <span class="btn btn-danger btn-sm">
+                                        In Reject
+                                    </span>
+                                {% elif issue.status == 'in_review' %}
+                                    <span class="btn btn-secondary btn-sm">
+                                        In Review
+                                    </span>
+                                {% elif issue.status == 'done' %}
+                                    <span class="btn btn-success btn-sm">
+                                        Done
+                                    </span>
+                                {% endif %}
+                            </p>
+                            <!-- /TABLE TEXT -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TITLE -->
+                            <p class="table-text">
+                                <span>
+                                    {{ issue.priority }}
+                                </span>
+                            </p>
+                            <!-- /TABLE TITLE -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TEXT -->
+                            <p class="table-title">
+                                <span class="light">{{ issue.created_date|date:"d.m.Y" }}</span>
+                            </p>
+                            <!-- /TABLE TEXT -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column padded-left">
+                            {% if issue.is_closed %}
+                            <!-- PERCENTAGE DIFF ICON WRAP -->
+                            <div class="percentage-diff-icon-wrap positive">
+                                <!-- PERCENTAGE DIFF ICON -->
+                                <svg class="percentage-diff-icon icon-plus-small">
+                                    <use xlink:href="#svg-check"></use>
+                                </svg>
+                            </div>
+                            {% else %}
+                            <div class="percentage-diff-icon-wrap negative">
+                                <svg class="percentage-diff-icon icon-plus-small">
+                                    <use xlink:href="#svg-minus-small"></use>
+                                </svg>
+                            </div>
+                            {% endif %}
+                            <!-- /PERCENTAGE DIFF ICON -->
+                        </div>
+                        <!-- /PERCENTAGE DIFF ICON WRAP -->
+                    </div>
+                    {% endfor %}
+                    <!-- /TABLE COLUMN -->
+
+                </div>
+                <!-- /TABLE ROW -->
+
+            </div>
+            <!-- /TABLE BODY -->
+        </div>
+        <!-- /TABLE -->
+    </div>
+    <!-- /TABLE WRAP -->
+
+    <!-- SECTION PAGER BAR WRAP -->
+    {% if issues.has_other_pages %}
+    <div class="section-pager-bar-wrap align-right">
+        <!-- SECTION PAGER BAR -->
+        <div class="section-pager-bar" style="min-width: 355px; max-width: 406px">
+
+            <!-- SECTION PAGER -->
+            <div class="section-pager">
+                <!-- SECTION PAGER ITEM -->
+                {% for page in issues.paginator.page_range %}
+                    {% if page == issues.number %}
+                        <a href="#">
+                            <div class="section-pager-item active">
+                                <!-- SECTION PAGER ITEM TEXT -->
+                                <p class="section-pager-item-text">{{ page }}</p>
+                                <!-- /SECTION PAGER ITEM TEXT -->
+                            </div>
+                        </a>
+                    {% elif page > issues.number|add:'-3' and page < issues.number|add:'3' %}
+                        <a href="?page={{ page }}">
+                            <div class="section-pager-item">
+                                <!-- SECTION PAGER ITEM TEXT -->
+                                <p class="section-pager-item-text">{{ page }}</p>
+                                <!-- /SECTION PAGER ITEM TEXT -->
+                            </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                <!-- /SECTION PAGER ITEM -->
+            </div>
+            <!-- /SECTION PAGER -->
+
+            <!-- SECTION PAGER CONTROLS -->
+            <div class="section-pager-controls">
+                {% if issues.has_previous %}
+                <!-- SLIDER CONTROL -->
+                <a href="?page=1">
+                    <div class="slider-control left">
+                        <!-- SLIDER CONTROL ICON -->
+                        <svg class="slider-control-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /SLIDER CONTROL ICON -->
+                    </div>
+                </a>
+                <!-- /SLIDER CONTROL -->
+                {% endif %}
+
+                {% if issues.has_next %}
+                <!-- SLIDER CONTROL -->
+                <a href="?page={{ issues.paginator.num_pages }}">
+                    <div class="slider-control right">
+                        <!-- SLIDER CONTROL ICON -->
+                        <svg class="slider-control-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /SLIDER CONTROL ICON -->
+                    </div>
+                </a>
+                <!-- /SLIDER CONTROL -->
+                {% endif %}
+
+            </div>
+            <!-- /SECTION PAGER CONTROLS -->
+        </div>
+        <!-- /SECTION PAGER BAR -->
+    </div>
+    {% endif %}
+    <!-- /SECTION PAGER BAR WRAP -->
+
+</div>
+{% endblock content %}

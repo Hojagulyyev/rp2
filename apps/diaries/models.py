@@ -18,8 +18,9 @@ class Diary(models.Model):
 
 class DiaryCommit(models.Model):
 
-    diary = models.ForeignKey(Diary, on_delete=models.CASCADE)
+    diary = models.ForeignKey(Diary, on_delete=models.CASCADE, related_name="commits")
     message = models.TextField()
+    created_datetime = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name_plural = "Diary Commits"
@@ -33,6 +34,7 @@ class DiaryComment(models.Model):
     diary = models.ForeignKey(Diary, on_delete=models.CASCADE)
     author = models.ForeignKey(Account, on_delete=models.CASCADE)
     body = models.TextField()
+    created_datetime = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name_plural = "Diary Comments"

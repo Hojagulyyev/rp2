@@ -16,6 +16,9 @@ class Account(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_full_name(self):
+        return f"{self.user.first_name} {self.user.last_name}"
+
     def get_required_xp_for_next_level(self):
         return self.level * ADDITIONAL_GROWING_XP_PER_LEVEL
 
