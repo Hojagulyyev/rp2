@@ -39,6 +39,7 @@ INSTALLED_PROJECT_APPS = [
     "apps.accounts",
     "apps.issues",
     "apps.clans",
+    "apps.diaries",
 ]
 INSTALLED_APPS = INSTALLED_DJANGO_APPS + INSTALLED_THIRD_PARTY_APPS + INSTALLED_PROJECT_APPS
 

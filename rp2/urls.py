@@ -10,4 +10,5 @@ urlpatterns = [
     path("accounts/", include("apps.accounts.urls", namespace="accounts")),
     path("issues/", include("apps.issues.urls", namespace="issues")),
     path("clans/", include("apps.clans.urls", namespace="clans")),
+    path("diaries/", include("apps.diaries.urls", namespace="diaries")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
