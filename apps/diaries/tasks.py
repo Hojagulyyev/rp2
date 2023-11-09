@@ -9,4 +9,5 @@ from .models import Diary
 def create_daily_diary_for_every_account():
     for account in Account.objects.all():
         diary = Diary()
-        ...
+        diary.account = account
+        diary.save()
