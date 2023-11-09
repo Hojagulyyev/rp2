@@ -1,0 +1,53 @@
+{% load static %}
+
+<!-- USER AVATAR -->
+<a class="user-avatar small no-outline" href="#">
+    <!-- USER AVATAR CONTENT -->
+    <div class="user-avatar-content">
+        <!-- HEXAGON -->
+        <div class="hexagon-image-30-32" data-src="{% static 'img/avatar/17.jpg' %}"></div>
+        <!-- /HEXAGON -->
+    </div>
+    <!-- /USER AVATAR CONTENT -->
+
+    <!-- USER AVATAR PROGRESS -->
+    <!--                    <div class="user-avatar-progress">-->
+    <!--                      &lt;!&ndash; HEXAGON &ndash;&gt;-->
+    <!--                      <div class="hexagon-progress-40-44"></div>-->
+    <!--                      &lt;!&ndash; /HEXAGON &ndash;&gt;-->
+    <!--                    </div>-->
+    <!-- /USER AVATAR PROGRESS -->
+
+    <!-- USER AVATAR PROGRESS BORDER -->
+    <div class="user-avatar-progress-border">
+        <!-- HEXAGON -->
+        <div class="hexagon-border-40-44"></div>
+        <!-- /HEXAGON -->
+    </div>
+    <!-- /USER AVATAR PROGRESS BORDER -->
+
+    <!-- USER AVATAR BADGE -->
+    <div class="user-avatar-badge">
+        <!-- USER AVATAR BADGE BORDER -->
+        <div class="user-avatar-badge-border">
+            <!-- HEXAGON -->
+            <div class="hexagon-22-24"></div>
+            <!-- /HEXAGON -->
+        </div>
+        <!-- /USER AVATAR BADGE BORDER -->
+
+        <!-- USER AVATAR BADGE CONTENT -->
+        <div class="user-avatar-badge-content">
+            <!-- HEXAGON -->
+            <div class="hexagon-dark-16-18"></div>
+            <!-- /HEXAGON -->
+        </div>
+        <!-- /USER AVATAR BADGE CONTENT -->
+
+        <!-- USER AVATAR BADGE TEXT -->
+        <p class="user-avatar-badge-text">{{ account.level }}</p>
+        <!-- /USER AVATAR BADGE TEXT -->
+    </div>
+    <!-- /USER AVATAR BADGE -->
+</a>
+<!-- /USER AVATAR -->
