@@ -22,10 +22,49 @@
         </div>
         <!-- /SECTION HEADER -->
 
-        <!-- SECTION FILTERS BAR --><!-- /SECTION FILTERS BAR -->
+        <!-- SECTION FILTERS BAR -->
+        <div class="section-filters-bar v2">
+            <!-- FORM -->
+            <form class="form">
+                <!-- FORM ITEM -->
+                <div class="form-item split medium">
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                        <label for="diaries-filter-category">Filter By</label>
+                        <select id="diaries-filter-category" name="diaries_filter_category">
+                            <option
+                                    value="all_diaries"
+                                    {% if request.GET.diaries_filter_category == "all_diaries" %}
+                                        selected
+                                    {% endif %}
+                            >All Diaries</option>
+                            <option
+                                    value="my_diaries"
+                                    {% if request.GET.diaries_filter_category == "my_diaries" %}
+                                        selected
+                                    {% endif %}
+                            >My Diaries</option>
+                        </select>
+                        <!-- FORM SELECT ICON -->
+                        <svg class="form-select-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+
+                    <!-- BUTTON -->
+                    <button class="button primary">Filter</button>
+                    <!-- /BUTTON -->
+                </div>
+                <!-- /FORM ITEM -->
+            </form>
+            <!-- /FORM -->
+        </div>
+        <!-- /SECTION FILTERS BAR -->
 
         {% for diary in diaries %}
-            {% include "includes/diary-widget.html" with account=user.account diary=diary %}
+        {% include "includes/diary-widget.html" with account=user.account diary=diary %}
         {% endfor %}
     </div>
     <!-- /TABLE WRAP -->
@@ -40,23 +79,23 @@
             <div class="section-pager">
                 <!-- SECTION PAGER ITEM -->
                 {% for page in issues.paginator.page_range %}
-                    {% if page == issues.number %}
-                        <a href="#">
-                            <div class="section-pager-item active">
-                                <!-- SECTION PAGER ITEM TEXT -->
-                                <p class="section-pager-item-text">{{ page }}</p>
-                                <!-- /SECTION PAGER ITEM TEXT -->
-                            </div>
-                        </a>
-                    {% elif page > issues.number|add:'-3' and page < issues.number|add:'3' %}
-                        <a href="?page={{ page }}">
-                            <div class="section-pager-item">
-                                <!-- SECTION PAGER ITEM TEXT -->
-                                <p class="section-pager-item-text">{{ page }}</p>
-                                <!-- /SECTION PAGER ITEM TEXT -->
-                            </div>
-                        </a>
-                    {% endif %}
+                {% if page == issues.number %}
+                <a href="#">
+                    <div class="section-pager-item active">
+                        <!-- SECTION PAGER ITEM TEXT -->
+                        <p class="section-pager-item-text">{{ page }}</p>
+                        <!-- /SECTION PAGER ITEM TEXT -->
+                    </div>
+                </a>
+                {% elif page > issues.number|add:'-3' and page < issues.number|add:'3' %}
+                <a href="?page={{ page }}">
+                    <div class="section-pager-item">
+                        <!-- SECTION PAGER ITEM TEXT -->
+                        <p class="section-pager-item-text">{{ page }}</p>
+                        <!-- /SECTION PAGER ITEM TEXT -->
+                    </div>
+                </a>
+                {% endif %}
                 {% endfor %}
                 <!-- /SECTION PAGER ITEM -->
             </div>
