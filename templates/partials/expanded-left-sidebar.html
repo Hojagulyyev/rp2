@@ -56,7 +56,7 @@
                 <!-- /USER AVATAR BADGE CONTENT -->
 
                 <!-- USER AVATAR BADGE TEXT -->
-                <p class="user-avatar-badge-text">1</p>
+                <p class="user-avatar-badge-text">{{ user.account.level }}</p>
                 <!-- /USER AVATAR BADGE TEXT -->
             </div>
             <!-- /USER AVATAR BADGE -->
@@ -91,17 +91,47 @@
         <!-- MENU ITEM -->
         <li class="menu-item">
             <!-- MENU ITEM LINK -->
-            <a class="menu-item-link" href="{% url 'issues:issues_view' %}">
+            <a class="menu-item-link" href="{% url 'diaries:diaries_view' %}?filter_by=all">
                 <!-- MENU ITEM LINK ICON -->
                 <svg class="menu-item-link-icon icon-newsfeed">
-                    <use xlink:href="#svg-overview"></use>
+                    <use xlink:href="#svg-group"></use>
                 </svg>
                 <!-- /MENU ITEM LINK ICON -->
-                Issues
+                Group
             </a>
             <!-- /MENU ITEM LINK -->
         </li>
         <!-- /MENU ITEM -->
+
+        <!-- MENU ITEM -->
+        <li class="menu-item">
+            <!-- MENU ITEM LINK -->
+            <a class="menu-item-link" href="{% url 'diaries:diaries_view' %}?filter_by=my">
+                <!-- MENU ITEM LINK ICON -->
+                <svg class="menu-item-link-icon icon-newsfeed">
+                    <use xlink:href="#svg-events"></use>
+                </svg>
+                <!-- /MENU ITEM LINK ICON -->
+                Diaries
+            </a>
+            <!-- /MENU ITEM LINK -->
+        </li>
+        <!-- /MENU ITEM -->
+
+<!--        &lt;!&ndash; MENU ITEM &ndash;&gt;-->
+<!--        <li class="menu-item">-->
+<!--            &lt;!&ndash; MENU ITEM LINK &ndash;&gt;-->
+<!--            <a class="menu-item-link" href="{% url 'issues:issues_view' %}">-->
+<!--                &lt;!&ndash; MENU ITEM LINK ICON &ndash;&gt;-->
+<!--                <svg class="menu-item-link-icon icon-newsfeed">-->
+<!--                    <use xlink:href="#svg-overview"></use>-->
+<!--                </svg>-->
+<!--                &lt;!&ndash; /MENU ITEM LINK ICON &ndash;&gt;-->
+<!--                Issues-->
+<!--            </a>-->
+<!--            &lt;!&ndash; /MENU ITEM LINK &ndash;&gt;-->
+<!--        </li>-->
+<!--        &lt;!&ndash; /MENU ITEM &ndash;&gt;-->
 
         <!-- MENU ITEM -->
         <li class="menu-item">

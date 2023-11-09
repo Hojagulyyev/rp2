@@ -13,5 +13,4 @@ def increase_xp_by_diary_commit(
     instance: DiaryCommit,
     **kwargs,
 ):
-    account = Account.objects.get(id=instance.diary.account)
-    account.increase_xp(XP_PER_DAIRY_COMMIT)
+    instance.diary.account.increase_xp(XP_PER_DAIRY_COMMIT)

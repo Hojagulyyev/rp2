@@ -1,0 +1,159 @@
+{% extends "base/main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-grid">
+
+    <div class="account-hub-content">
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <!-- SECTION HEADER INFO -->
+            <div class="section-header-info">
+                <!-- SECTION PRETITLE -->
+                <p class="section-pretitle">Diaries</p>
+                <!-- /SECTION PRETITLE -->
+
+                <!-- SECTION TITLE -->
+                <h2 class="section-title">Diary Detail : {{ diary.created_date|date:"d.m.Y" }}</h2>
+                <!-- /SECTION TITLE -->
+
+            </div>
+            <!-- /SECTION HEADER INFO -->
+        </div>
+        <!-- /SECTION HEADER -->
+    </div>
+
+    <div class="tab-box">
+        <!-- TAB BOX OPTIONS -->
+        <div class="tab-box-options">
+
+            <!-- TAB BOX OPTION -->
+            <div class="tab-box-option">
+                <!-- TAB BOX OPTION TITLE -->
+                <p class="tab-box-option-title">Commits <span class="highlighted">{{ diary.commits.count }}</span>
+                </p>
+                <!-- /TAB BOX OPTION TITLE -->
+            </div>
+            <!-- /TAB BOX OPTION -->
+
+            <!-- TAB BOX OPTION -->
+            <div class="tab-box-option">
+                <!-- TAB BOX OPTION TITLE -->
+                <p class="tab-box-option-title">Comments <span class="highlighted"></span></p>
+                <!-- /TAB BOX OPTION TITLE -->
+            </div>
+            <!-- /TAB BOX OPTION -->
+
+        </div>
+        <!-- /TAB BOX OPTIONS -->
+
+        <!-- TAB BOX ITEMS -->
+        <div class="tab-box-items">
+
+            <!-- TAB BOX ITEM -->
+            <div class="tab-box-item">
+                <!-- POST COMMENT LIST -->
+                <div class="post-comment-list no-border-top">
+
+                    <!-- POST COMMENT FORM -->
+                    <div class="post-comment-form with-title">
+
+                        <!-- POST COMMENT FORM TITLE -->
+                        <p class="post-comment-form-title">Make a Commit</p>
+                        <!-- /POST COMMENT FORM TITLE -->
+
+                        <!-- USER AVATAR -->
+                        {% include "includes/account-avatar-small.html" with account=diary.account %}
+                        <!-- /USER AVATAR -->
+
+                        <!-- FORM -->
+                        <form class="form" action="{% url 'diaries:commit' diary.id %}" method="POST">
+                            {% csrf_token %}
+                            <!-- FORM ROW -->
+                            <div class="form-row">
+                                <!-- FORM ITEM -->
+                                <div class="form-item">
+                                    <!-- FORM INPUT -->
+                                    <div class="form-input small">
+                                        <label for="message">Commit Message</label>
+                                        <input type="text" id="message" name="message">
+                                    </div>
+                                    {% for message in messages %}
+                                        <p class="badge-item-stat-text pt-3 text-center text-danger">{{ message }}</p>
+                                    {% endfor %}
+                                    <!-- /FORM INPUT -->
+                                </div>
+                                <!-- /FORM ITEM -->
+                            </div>
+                            <!-- /FORM ROW -->
+                        </form>
+                        <!-- /FORM -->
+                    </div>
+                    <!-- /POST COMMENT FORM -->
+
+                    <!-- POST COMMENT -->
+                    {% for commit in diary.commits.all|dictsortreversed:"id" %}
+                    <div class="post-comment">
+                        <!-- USER AVATAR -->
+                        {% include "includes/account-avatar-small.html" with account=diary.account %}
+                        <!-- /USER AVATAR -->
+
+                        <!-- POST COMMENT TEXT -->
+                        <p class="post-comment-text user-tag">
+                            <a class="post-comment-text-author" href="#">{{ diary.account.get_full_name }}</a>
+                        </p>
+                        <!-- /POST COMMENT TEXT -->
+
+                        <!-- POST COMMENT TEXT -->
+                        <p class="post-comment-text">{{ commit.message }}</p>
+                        <!-- /POST COMMENT TEXT -->
+
+                        <!-- CONTENT ACTIONS -->
+                        <div class="content-actions">
+                            <!-- CONTENT ACTION -->
+                            <div class="content-action">
+
+                                <!-- META LINE -->
+                                <div class="meta-line">
+                                    <!-- META LINE TIMESTAMP -->
+                                    <p class="meta-line-timestamp">{{ commit.created_datetime|date:"d.m.y H:i" }}</p>
+                                    <!-- /META LINE TIMESTAMP -->
+                                </div>
+                                <!-- /META LINE -->
+
+                                <!-- META LINE --><!-- /META LINE -->
+                                <!-- META LINE --><!-- /META LINE -->
+                                <!-- META LINE --><!-- /META LINE -->
+                                <!-- META LINE --><!-- /META LINE -->
+
+                            </div>
+                            <!-- /CONTENT ACTION -->
+                        </div>
+                        <!-- /CONTENT ACTIONS -->
+                    </div>
+                    {% endfor %}
+                    <!-- /POST COMMENT -->
+
+                </div>
+                <!-- /POST COMMENT LIST -->
+            </div>
+            <!-- /TAB BOX ITEM -->
+
+            <!-- TAB BOX ITEM -->
+            <div class="tab-box-item">
+                <div class="post-comment-list no-border-top">
+                    <div class="post-comment-form with-title">
+
+                        <!-- POST COMMENT FORM TITLE -->
+                        <p class="post-comment-form-title">Coming soon</p>
+                    </div>
+                </div>
+            </div>
+            <!-- /TAB BOX ITEM -->
+
+        </div>
+        <!-- /TAB BOX ITEMS -->
+    </div>
+
+</div>
+{% endblock content %}

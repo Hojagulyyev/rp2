@@ -4,34 +4,78 @@
     <!-- USER AVATAR -->
     <!--  add 'online' class below if user online  -->
     <a class="user-avatar small no-outline" href="#">
-      <!-- USER AVATAR CONTENT -->
-      <div class="user-avatar-content">
-        <!-- HEXAGON -->
-        <div class="hexagon-image-30-32" data-src="{% static 'img/avatar/17.jpg' %}"></div>
-        <!-- /HEXAGON -->
-      </div>
-      <!-- /USER AVATAR CONTENT -->
-      <!-- USER AVATAR PROGRESS --><!-- /USER AVATAR PROGRESS -->
-      <!-- USER AVATAR BADGE --><!-- /USER AVATAR BADGE -->
+        <!-- USER AVATAR CONTENT -->
+        <div class="user-avatar-content">
+            <!-- HEXAGON -->
+            <div class="hexagon-image-30-32" data-src="{% static 'img/avatar/17.jpg' %}"></div>
+            <!-- /HEXAGON -->
+        </div>
+        <!-- /USER AVATAR CONTENT -->
+        <!-- USER AVATAR PROGRESS --><!-- /USER AVATAR PROGRESS -->
+        <!-- USER AVATAR BADGE --><!-- /USER AVATAR BADGE -->
     </a>
     <!-- /USER AVATAR -->
 
     <!-- MENU -->
     <ul class="menu small">
 
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link text-tooltip-tfr" href="{% url 'issues:issues_view' %}" data-title="Issues">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-newsfeed">
-            <use xlink:href="#svg-overview"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
+        <!-- MENU ITEM -->
+        <li class="menu-item">
+            <!-- MENU ITEM LINK -->
+            <a class="menu-item-link text-tooltip-tfr" href="{% url 'diaries:diaries_view' %}?filter_by=all"
+               data-title="Group">
+                <!-- MENU ITEM LINK ICON -->
+                <svg class="menu-item-link-icon icon-newsfeed">
+                    <use xlink:href="#svg-group"></use>
+                </svg>
+                <!-- /MENU ITEM LINK ICON -->
+            </a>
+            <!-- /MENU ITEM LINK -->
+        </li>
+        <!-- /MENU ITEM -->
+
+        <!-- MENU ITEM -->
+        <li class="menu-item">
+            <!-- MENU ITEM LINK -->
+            <a class="menu-item-link text-tooltip-tfr" href="{% url 'diaries:diaries_view' %}?filter_by=my"
+               data-title="Diaries">
+                <!-- MENU ITEM LINK ICON -->
+                <svg class="menu-item-link-icon icon-newsfeed">
+                    <use xlink:href="#svg-events"></use>
+                </svg>
+                <!-- /MENU ITEM LINK ICON -->
+            </a>
+            <!-- /MENU ITEM LINK -->
+        </li>
+        <!-- /MENU ITEM -->
+
+<!--        &lt;!&ndash; MENU ITEM &ndash;&gt;-->
+<!--        <li class="menu-item">-->
+<!--            &lt;!&ndash; MENU ITEM LINK &ndash;&gt;-->
+<!--            <a class="menu-item-link text-tooltip-tfr" href="{% url 'issues:issues_view' %}" data-title="Issues">-->
+<!--                &lt;!&ndash; MENU ITEM LINK ICON &ndash;&gt;-->
+<!--                <svg class="menu-item-link-icon icon-newsfeed">-->
+<!--                    <use xlink:href="#svg-overview"></use>-->
+<!--                </svg>-->
+<!--                &lt;!&ndash; /MENU ITEM LINK ICON &ndash;&gt;-->
+<!--            </a>-->
+<!--            &lt;!&ndash; /MENU ITEM LINK &ndash;&gt;-->
+<!--        </li>-->
+<!--        &lt;!&ndash; /MENU ITEM &ndash;&gt;-->
+
+        <!-- MENU ITEM -->
+        <li class="menu-item">
+            <!-- MENU ITEM LINK -->
+            <a class="menu-item-link text-tooltip-tfr" href="{% url 'authentication:signout' %}" data-title="Logout">
+                <!-- MENU ITEM LINK ICON -->
+                <svg class="menu-item-link-icon icon-newsfeed">
+                    <use xlink:href="#svg-login"></use>
+                </svg>
+                <!-- /MENU ITEM LINK ICON -->
+            </a>
+            <!-- /MENU ITEM LINK -->
+        </li>
+        <!-- /MENU ITEM -->
 
     </ul>
     <!-- /MENU -->

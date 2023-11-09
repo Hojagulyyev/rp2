@@ -1,0 +1,143 @@
+{% extends "base/main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-grid">
+
+    <div class="account-hub-content">
+
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <!-- SECTION HEADER INFO -->
+            <div class="section-header-info">
+                <!-- SECTION PRETITLE -->
+                <p class="section-pretitle">Diaries</p>
+                <!-- /SECTION PRETITLE -->
+
+                <!-- SECTION TITLE -->
+                <h2 class="section-title">Diaries</h2>
+                <!-- /SECTION TITLE -->
+            </div>
+            <!-- /SECTION HEADER INFO -->
+        </div>
+        <!-- /SECTION HEADER -->
+
+        <!-- SECTION FILTERS BAR -->
+        <div class="section-filters-bar v2">
+            <!-- FORM -->
+            <form class="form">
+                <!-- FORM ITEM -->
+                <div class="form-item split medium">
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                        <label for="filter-by">Filter By</label>
+                        <select id="filter-by" name="filter_by">
+                            <option
+                                    value="all"
+                                    {% if request.GET.filter_by == "all" %}
+                                        selected
+                                    {% endif %}
+                            >All Diaries</option>
+                            <option
+                                    value="my"
+                                    {% if request.GET.filter_by == "my" %}
+                                        selected
+                                    {% endif %}
+                            >My Diaries</option>
+                        </select>
+                        <!-- FORM SELECT ICON -->
+                        <svg class="form-select-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+
+                    <!-- BUTTON -->
+                    <button class="button primary">Filter</button>
+                    <!-- /BUTTON -->
+                </div>
+                <!-- /FORM ITEM -->
+            </form>
+            <!-- /FORM -->
+        </div>
+        <!-- /SECTION FILTERS BAR -->
+
+        {% for diary in diaries %}
+        {% include "includes/diary-widget.html" with account=user.account diary=diary %}
+        {% endfor %}
+    </div>
+    <!-- /TABLE WRAP -->
+
+    <!-- SECTION PAGER BAR WRAP -->
+    {% if issues.has_other_pages %}
+    <div class="section-pager-bar-wrap align-right">
+        <!-- SECTION PAGER BAR -->
+        <div class="section-pager-bar" style="min-width: 355px; max-width: 406px">
+
+            <!-- SECTION PAGER -->
+            <div class="section-pager">
+                <!-- SECTION PAGER ITEM -->
+                {% for page in issues.paginator.page_range %}
+                {% if page == issues.number %}
+                <a href="#">
+                    <div class="section-pager-item active">
+                        <!-- SECTION PAGER ITEM TEXT -->
+                        <p class="section-pager-item-text">{{ page }}</p>
+                        <!-- /SECTION PAGER ITEM TEXT -->
+                    </div>
+                </a>
+                {% elif page > issues.number|add:'-3' and page < issues.number|add:'3' %}
+                <a href="?page={{ page }}">
+                    <div class="section-pager-item">
+                        <!-- SECTION PAGER ITEM TEXT -->
+                        <p class="section-pager-item-text">{{ page }}</p>
+                        <!-- /SECTION PAGER ITEM TEXT -->
+                    </div>
+                </a>
+                {% endif %}
+                {% endfor %}
+                <!-- /SECTION PAGER ITEM -->
+            </div>
+            <!-- /SECTION PAGER -->
+
+            <!-- SECTION PAGER CONTROLS -->
+            <div class="section-pager-controls">
+                {% if issues.has_previous %}
+                <!-- SLIDER CONTROL -->
+                <a href="?page=1">
+                    <div class="slider-control left">
+                        <!-- SLIDER CONTROL ICON -->
+                        <svg class="slider-control-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /SLIDER CONTROL ICON -->
+                    </div>
+                </a>
+                <!-- /SLIDER CONTROL -->
+                {% endif %}
+
+                {% if issues.has_next %}
+                <!-- SLIDER CONTROL -->
+                <a href="?page={{ issues.paginator.num_pages }}">
+                    <div class="slider-control right">
+                        <!-- SLIDER CONTROL ICON -->
+                        <svg class="slider-control-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /SLIDER CONTROL ICON -->
+                    </div>
+                </a>
+                <!-- /SLIDER CONTROL -->
+                {% endif %}
+
+            </div>
+            <!-- /SECTION PAGER CONTROLS -->
+        </div>
+        <!-- /SECTION PAGER BAR -->
+    </div>
+    {% endif %}
+    <!-- /SECTION PAGER BAR WRAP -->
+
+</div>
+{% endblock content %}
