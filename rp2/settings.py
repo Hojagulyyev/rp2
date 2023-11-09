@@ -131,6 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 
+LOGIN_URL = f"/authentication/authentication-view/"
 
 # Pagination
 
