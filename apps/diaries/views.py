@@ -8,7 +8,30 @@ from .models import Diary
 
 @login_required
 def diaries(request):
-    pass
+
+    # ===== DTO
+
+    page = request.GET.get("page", 1)
+
+    # ===== PROCESS
+
+    account = request.user.account
+    diary_queryset = (
+        Diary.objects
+        .filter(
+            account=account,
+        )
+        .order_by("-created_date")
+    )
+    paginated_diary_queryset = paginate(diary_queryset, page)
+
+    # ===== CONTEXT
+
+    context = {
+        "diaries": paginated_diary_queryset,
+    }
+
+    return render(request, "diaries/diaries.html", context)
 
 
 @login_required

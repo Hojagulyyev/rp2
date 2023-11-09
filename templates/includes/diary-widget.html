@@ -1,0 +1,170 @@
+{% load static %}
+
+<!-- WIDGET BOX -->
+<div class="widget-box no-padding mt-2">
+    <!-- WIDGET BOX SETTINGS -->
+    <div class="widget-box-settings">
+        <!-- POST SETTINGS WRAP -->
+        <div class="post-settings-wrap">
+            <!-- POST SETTINGS -->
+            <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                <!-- POST SETTINGS ICON -->
+                <svg class="post-settings-icon icon-more-dots">
+                    <use xlink:href="#svg-more-dots"></use>
+                </svg>
+                <!-- /POST SETTINGS ICON -->
+            </div>
+            <!-- /POST SETTINGS -->
+
+            <!-- SIMPLE DROPDOWN -->
+            <div class="simple-dropdown widget-box-post-settings-dropdown">
+                <!-- SIMPLE DROPDOWN LINK -->
+                <a href="{% url 'diaries:detail_view' diary.id %}">
+                    <p class="simple-dropdown-link">Detail Page</p>
+                </a>
+                <!-- /SIMPLE DROPDOWN LINK -->
+            </div>
+            <!-- /SIMPLE DROPDOWN -->
+        </div>
+        <!-- /POST SETTINGS WRAP -->
+    </div>
+    <!-- /WIDGET BOX SETTINGS -->
+
+    <!-- WIDGET BOX STATUS -->
+    <div class="widget-box-status">
+        <!-- WIDGET BOX STATUS CONTENT -->
+        <div class="widget-box-status-content">
+            <!-- USER STATUS -->
+            <div class="user-status">
+                <!-- USER STATUS AVATAR -->
+                <a class="user-status-avatar" href="#">
+                    <!-- USER AVATAR -->
+                    {% include "includes/account-avatar-small.html" with account=account %}
+                </a>
+                <!-- /USER STATUS AVATAR -->
+
+                <!-- USER STATUS TITLE -->
+                <div class="user-status-title medium">
+                    <a href="{% url 'diaries:detail_view' diary.id %}">
+                        {{ account.get_full_name }} - Diary: {{ diary.created_date }}
+                    </a>
+                </div>
+                <!-- /USER STATUS TITLE -->
+
+                <!-- USER STATUS TEXT -->
+                <p class="user-status-text small">42 XP earned on this diary</p>
+                <!-- /USER STATUS TEXT -->
+            </div>
+            <!-- /USER STATUS -->
+
+            <!-- QUOTE BOX -->
+            {% if diary.commits.last %}
+            <blockquote class="quote-box">
+                <!-- QUOTE BOX ICON -->
+                <svg class="quote-box-icon icon-quote">
+                    <use xlink:href="#svg-quote"></use>
+                </svg>
+                <!-- /QUOTE BOX ICON -->
+
+                <!-- QUOTE BOX TEXT -->
+                <p class="quote-box-text">{{ diary.commits.last.message }}</p>
+                <!-- /QUOTE BOX TEXT -->
+            </blockquote>
+            {% endif %}
+            <!-- /QUOTE BOX -->
+
+            <!-- CONTENT ACTIONS -->
+            <div class="content-actions">
+                <!-- CONTENT ACTION -->
+                <div class="content-action">
+
+                    <!-- META LINE -->
+                    <div class="meta-line">
+                        <!-- RATING LIST -->
+                        <div class="rating-list">
+
+                            <!-- RATING -->
+                            <div class="rating dark filled">
+                                <!-- RATING ICON -->
+                                <svg class="rating-icon icon-star">
+                                    <use xlink:href="#svg-star"></use>
+                                </svg>
+                                <!-- /RATING ICON -->
+                            </div>
+                            <!-- /RATING -->
+
+                            <!-- RATING -->
+                            <div class="rating dark filled">
+                                <!-- RATING ICON -->
+                                <svg class="rating-icon icon-star">
+                                    <use xlink:href="#svg-star"></use>
+                                </svg>
+                                <!-- /RATING ICON -->
+                            </div>
+                            <!-- /RATING -->
+
+                            <!-- RATING -->
+                            <div class="rating dark filled">
+                                <!-- RATING ICON -->
+                                <svg class="rating-icon icon-star">
+                                    <use xlink:href="#svg-star"></use>
+                                </svg>
+                                <!-- /RATING ICON -->
+                            </div>
+                            <!-- /RATING -->
+
+                            <!-- RATING -->
+                            <div class="rating dark filled">
+                                <!-- RATING ICON -->
+                                <svg class="rating-icon icon-star">
+                                    <use xlink:href="#svg-star"></use>
+                                </svg>
+                                <!-- /RATING ICON -->
+                            </div>
+                            <!-- /RATING -->
+
+                            <!-- RATING -->
+                            <div class="rating dark filled">
+                                <!-- RATING ICON -->
+                                <svg class="rating-icon icon-star">
+                                    <use xlink:href="#svg-star"></use>
+                                </svg>
+                                <!-- /RATING ICON -->
+                            </div>
+                            <!-- /RATING -->
+                        </div>
+                        <!-- /RATING LIST -->
+                    </div>
+                    <!-- /META LINE -->
+                </div>
+                <!-- /CONTENT ACTION -->
+
+                <!-- CONTENT ACTION -->
+                <div class="content-action">
+                    <!-- META LINE -->
+                    <div class="meta-line">
+                        <!-- META LINE LINK -->
+                        <p class="meta-line-link">{{ diary.commits.count }} Commits</p>
+                        <!-- /META LINE LINK -->
+                    </div>
+                    <!-- /META LINE -->
+
+                    <!-- META LINE -->
+                    <div class="meta-line">
+                        <!-- META LINE TEXT -->
+                        <p class="meta-line-text">0 Comments</p>
+                        <!-- /META LINE TEXT -->
+                    </div>
+                    <!-- /META LINE -->
+                </div>
+                <!-- /CONTENT ACTION -->
+            </div>
+            <!-- /CONTENT ACTIONS -->
+        </div>
+        <!-- /WIDGET BOX STATUS CONTENT -->
+    </div>
+    <!-- /WIDGET BOX STATUS -->
+
+    <!-- POST OPTIONS --><!-- /POST OPTIONS -->
+</div>
+<!-- /WIDGET BOX -->
