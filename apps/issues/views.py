@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from rp2.pagination import paginate
@@ -5,6 +6,7 @@ from rp2.pagination import paginate
 from ..issues.models import Issue
 
 
+@login_required
 def issues(request):
 
     # ===== DTO
@@ -34,6 +36,7 @@ def issues(request):
     return render(request, "issues/issues.html", context)
 
 
+@login_required
 def create(request):
     return render(request, "issues/create.html")
 
