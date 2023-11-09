@@ -39,6 +39,7 @@ INSTALLED_PROJECT_APPS = [
     "apps.accounts",
     "apps.issues",
     "apps.clans",
+    "apps.diaries",
 ]
 INSTALLED_APPS = INSTALLED_DJANGO_APPS + INSTALLED_THIRD_PARTY_APPS + INSTALLED_PROJECT_APPS
 
@@ -130,9 +131,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 
+# Authentication
+
+LOGIN_URL = f"/authentication/authentication-view/"
 
 # Pagination
 
 DEFAULT_PAGINATION_PAGE = 1
 DEFAULT_PAGINATION_PAGE_SIZE = 25
 MAX_PAGE_SIZE = 75
+
+# Celery settings
+
+CELERY_BROKER_URL = "redis://localhost:6379/5"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/5"
