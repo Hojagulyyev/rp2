@@ -15,7 +15,14 @@
                 <!-- /SECTION PRETITLE -->
 
                 <!-- SECTION TITLE -->
-                <h2 class="section-title">{{ user.account.clan }} : Newsfeed</h2>
+                <h2 class="section-title">
+                    {% if user.account.clan %}
+                        {{ user.account.clan }}
+                    {% else %}
+                        No Clan
+                    {% endif %}
+                    : Newsfeed
+                </h2>
                 <!-- /SECTION TITLE -->
             </div>
             <!-- /SECTION HEADER INFO -->

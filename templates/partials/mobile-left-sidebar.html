@@ -88,7 +88,7 @@
     <ul class="menu">
 
         <!-- MENU ITEM -->
-        <li class="menu-item">
+        <li class="menu-item {% if request.resolver_match.url_name == 'newsfeed_view' %} active {% endif %}">
             <!-- MENU ITEM LINK -->
             <a class="menu-item-link" href="{% url 'diaries:newsfeed_view' %}">
                 <!-- MENU ITEM LINK ICON -->
@@ -103,7 +103,7 @@
         <!-- /MENU ITEM -->
 
         <!-- MENU ITEM -->
-        <li class="menu-item">
+        <li class="menu-item {% if request.resolver_match.url_name == 'diaries_view' %} active {% endif %}">
             <!-- MENU ITEM LINK -->
             <a class="menu-item-link" href="{% url 'diaries:diaries_view' %}">
                 <!-- MENU ITEM LINK ICON -->
