@@ -11,7 +11,8 @@ def issues(request):
 
     # ===== DTO
 
-    page = request.GET.get("page", 1)
+    page = request.GET.get("page", None)
+    page_size = request.GET.get("page_size", None)
     title = request.GET.get("title", "")
 
     # ===== PROCESS
@@ -25,7 +26,7 @@ def issues(request):
         )
         .order_by("-id")
     )
-    paginated_issue_queryset = paginate(issue_queryset, page)
+    paginated_issue_queryset = paginate(issue_queryset, page, page_size)
 
     # ===== CONTEXT
 

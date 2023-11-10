@@ -39,14 +39,14 @@
                 <!-- USER STATUS AVATAR -->
                 <a class="user-status-avatar" href="#">
                     <!-- USER AVATAR -->
-                    {% include "includes/account-avatar-small.html" with account=account %}
+                    {% include "includes/account-avatar-small.html" with account=diary.account %}
                 </a>
                 <!-- /USER STATUS AVATAR -->
 
                 <!-- USER STATUS TITLE -->
                 <div class="user-status-title medium">
                     <a href="{% url 'diaries:detail_view' diary.id %}">
-                        {{ account.get_full_name }} - Diary: {{ diary.created_date }}
+                        {{ diary.account.get_full_name }} - Diary: {{ diary.created_date }}
                     </a>
                 </div>
                 <!-- /USER STATUS TITLE -->

@@ -11,6 +11,7 @@ app_name = "diaries"
 
 urlpatterns = [
     path("diaries-view/", views.diaries, name="diaries_view"),
+    path("newsfeed-view/", views.newsfeed, name="newsfeed_view"),
     path("<int:id>/detail-view/", views.detail, name="detail_view")
 ]
 
