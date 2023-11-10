@@ -13,12 +13,12 @@ Template from [Vikinger](https://themeforest.net/item/vikinger-social-community-
 
 ![RP2 Dashboard - Modern Vikinger UI for managing your project](https://img.themesinfo.com/i/2/1645/template-wordpress-vikinger-buddypress-social-community-pqqwe-o.jpg)
 
-## Installation
+## Installation [examples on Linux@Ubuntu]
 
 Note:
 The `dev` branch is the development version of RP2 and it may be unstable. To use the latest stable version, download it from the [Releases](https://github.com/Hojagulyyev/rp2/releases/) page or switch to a release tag.
 
-### by virtualenv
+### Terminal 1
 The fastest way to develop with RP2 is by using python [virtualenv](https://pypi.org/project/virtualenv/) library
 
 install virtualenv if it's not installed
@@ -27,7 +27,7 @@ install virtualenv if it's not installed
 
 and run the following commands:
 
-`git clone https://github.com/Hojagulyyev/rp2.git`
+`git clone -b main https://github.com/Hojagulyyev/rp2.git`
 
 `cd rp2`
 
@@ -43,9 +43,36 @@ and run the following commands:
 
 `python manage.py runserver`
 
+### Terminal 2
+
+Just installing Celery, however, isn’t enough. 
+If you attempt to run the task queue, you’ll notice that Celery first 
+seems to start up fine but then displays an error message that 
+indicates that Celery can’t find a message broker.
+
+`sudo apt install redis`
+
+Open another terminal or linux service in server
+and run celery workers
+
+`celery -A rp2 worker --loglevel=info`
+
+### Terminal 3
+
+Open another terminal or linux service. 
+You should change permission access mode (chmod) of these files
+
+`chmod -R 777 celerybeat-schedule venv`
+
+and run celery beat
+
+`celery -A rp2 beat`
+
+You’ve successfully arranged the puzzle pieces necessary to run the project.
 
 ## Contributing
 
+Use the `dev` branch to contributing.
 We love your contributions and do our best to provide you with mentorship and support.
 
 ## License
