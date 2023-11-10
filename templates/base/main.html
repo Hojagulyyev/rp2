@@ -2,54 +2,54 @@
 {% load static %}
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- bootstrap 4.3.1 -->
-  <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
-  <!-- styles -->
-  <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
-  <!-- simplebar styles -->
-  <link rel="stylesheet" href="{% static 'css/vendor/simplebar.css' %}">
-  <!-- tiny-slider styles -->
-  <link rel="stylesheet" href="{% static 'css/vendor/tiny-slider.css' %}">
-  <!-- favicon -->
-  <link rel="icon" href="{% static 'img/favicon.ico' %}">
-  <title>RP2 | Overview</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap 4.3.1 -->
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+    <!-- styles -->
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <!-- simplebar styles -->
+    <link rel="stylesheet" href="{% static 'css/vendor/simplebar.css' %}">
+    <!-- tiny-slider styles -->
+    <link rel="stylesheet" href="{% static 'css/vendor/tiny-slider.css' %}">
+    <!-- favicon -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <title>RP2 | Overview</title>
 </head>
 <body>
 
-  <!-- PAGE LOADER -->
-  {% include "partials/page-loader.html" %}
-  <!-- /PAGE LOADER -->
+<!-- PAGE LOADER -->
+{% include "partials/page-loader.html" %}
+<!-- /PAGE LOADER -->
 
-  <!-- NAVIGATION WIDGET -->
-  {% include "partials/shrunk-left-sidebar.html" %}
-  <!-- /NAVIGATION WIDGET -->
+<!-- NAVIGATION WIDGET -->
+{% include "partials/shrunk-left-sidebar.html" %}
+<!-- /NAVIGATION WIDGET -->
 
-  <!-- NAVIGATION WIDGET -->
-  {% include "partials/expanded-left-sidebar.html" %}
-  <!-- /NAVIGATION WIDGET -->
+<!-- NAVIGATION WIDGET -->
+{% include "partials/expanded-left-sidebar.html" %}
+<!-- /NAVIGATION WIDGET -->
 
-  <!-- NAVIGATION WIDGET -->
-  {% include "partials/mobile-left-sidebar.html" %}
-  <!-- /NAVIGATION WIDGET -->
+<!-- NAVIGATION WIDGET -->
+{% include "partials/mobile-left-sidebar.html" %}
+<!-- /NAVIGATION WIDGET -->
 
-  <!-- CHAT WIDGET -->
-  {% include "partials/right-sidebar.html" %}
-  <!-- /CHAT WIDGET -->
+<!-- CHAT WIDGET -->
+{% include "partials/right-sidebar.html" %}
+<!-- /CHAT WIDGET -->
 
-  <!-- CHAT WIDGET -->
-  {% include "partials/right-chat-widget-message.html" %}
-  <!-- /CHAT WIDGET -->
+<!-- CHAT WIDGET -->
+{% include "partials/right-chat-widget-message.html" %}
+<!-- /CHAT WIDGET -->
 
-  <!-- HEADER -->
-  {% include "partials/header.html" %}
-  <!-- /HEADER -->
+<!-- HEADER -->
+{% include "partials/header.html" %}
+<!-- /HEADER -->
 
-  <!-- CONTENT GRID -->
-  {% block content %}
-  {% endblock content %}
-  <!-- /CONTENT GRID -->
+<!-- CONTENT GRID -->
+{% block content %}
+{% endblock content %}
+<!-- /CONTENT GRID -->
 
 <!-- app -->
 <script src="{% static 'js/utils/app.js' %}"></script>
@@ -81,5 +81,33 @@
 <script src="{% static 'js/form/form.utils.js' %}"></script>
 <!-- SVG icons -->
 <script src="{% static 'js/utils/svg-loader.js' %}"></script>
+
+<!-- onMounted Lifecycle Hook -->
+<script>
+window.onload = function () {
+  {% block onMounted %}
+  {% endblock onMounted %}
+  calculateLoggedAccountXPForNextLevel()
+}
+
+function calculateLoggedAccountXPForNextLevel() {
+  app.plugins.createProgressBar({
+    container: '#logged-user-level',
+    height: 4,
+    gradient: {
+      colors: ['#40d04f', '#d9ff65']
+    },
+    scale: {
+      start: 0,
+      end: {{ user.account.get_required_xp_for_next_level }},
+      stop: {{ user.account.xp }}
+    },
+    linkText: true,
+    linkUnits: 'xp',
+    invertedProgress: true
+  });
+}
+</script>
+
 </body>
 </html>

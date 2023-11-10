@@ -26,7 +26,7 @@ class Account(models.Model):
         self.xp += xp_amount
         required_xp_for_next_level = self.get_required_xp_for_next_level()
 
-        if self.xp > required_xp_for_next_level:
+        if self.xp >= required_xp_for_next_level:
             self.level += 1
             self.xp = required_xp_for_next_level - self.xp
 

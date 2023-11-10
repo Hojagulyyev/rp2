@@ -138,22 +138,22 @@ app.plugins.createHexagon({
   lineColor: '#1d2333'
 });
 
-app.plugins.createHexagon({
-  container: '.hexagon-progress-40-44',
-  width: 40,
-  height: 44,
-  lineWidth: 3,
-  roundedCorners: true,
-  roundedCornerRadius: 1,
-  gradient: {
-    colors: ['#d9ff65', '#40d04f']
-  },
-  scale: {
-    start: 0,
-    end: 1,
-    stop: .8
-  }
-});
+//app.plugins.createHexagon({
+//  container: '.hexagon-progress-40-44',
+//  width: 40,
+//  height: 44,
+//  lineWidth: 3,
+//  roundedCorners: true,
+//  roundedCornerRadius: 1,
+//  gradient: {
+//    colors: ['#d9ff65', '#40d04f']
+//  },
+//  scale: {
+//    start: 0,
+//    end: 1,
+//    stop: .8
+//  }
+//});
 
 app.plugins.createHexagon({
   container: '.hexagon-border-40-44',

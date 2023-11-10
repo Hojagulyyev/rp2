@@ -46,7 +46,7 @@
                 <!-- USER STATUS TITLE -->
                 <div class="user-status-title medium">
                     <a href="{% url 'diaries:detail_view' diary.id %}">
-                        {{ diary.account.get_full_name }} - Diary: {{ diary.created_date }}
+                        {{ diary.account.get_full_name }} - Diary: {{ diary.created_date|date:"d.m.Y" }}
                     </a>
                 </div>
                 <!-- /USER STATUS TITLE -->
