@@ -31,6 +31,10 @@
 
         {% for diary in diaries %}
             {% include "includes/diary-widget.html" with diary=diary %}
+        {% empty %}
+            <h3 class="text-center">
+                <i>Every day the server will create new diaries.</i>
+            </h3>
         {% endfor %}
     </div>
     <!-- /TABLE WRAP -->
