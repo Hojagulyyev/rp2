@@ -75,8 +75,10 @@
                                 <div class="form-item">
                                     <!-- FORM INPUT -->
                                     <div class="form-input small">
-                                        <label for="message">Commit Message</label>
-                                        <input type="text" id="message" name="message">
+                                        <label for="message">
+                                            {% if not request.GET.message %} Commit Message {% endif %}
+                                        </label>
+                                        <input type="text" id="message" name="message" value="{{ request.GET.message }}">
                                     </div>
                                     {% for message in messages %}
                                         <p class="badge-item-stat-text pt-3 text-center text-danger">{{ message }}</p>

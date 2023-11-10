@@ -93,7 +93,7 @@
                     <!-- META LINE -->
                     <div class="meta-line">
                         <!-- META LINE LINK -->
-                        <p class="meta-line-link">{{ diary.commits.count }} Commits</p>
+                        <a href="{% url 'diaries:detail_view' diary.id %}" class="meta-line-link">{{ diary.commits.count }} Commits</a>
                         <!-- /META LINE LINK -->
                     </div>
                     <!-- /META LINE -->
