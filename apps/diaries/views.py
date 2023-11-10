@@ -13,11 +13,13 @@ def newsfeed(request):
 
     page = request.GET.get("page", None)
     page_size = request.GET.get("page_size", None)
+    account = request.user.account
 
     # ===== PROCESS
 
     diary_queryset = (
         Diary.objects
+        .filter(account__clan=account.clan)
         .order_by("-created_date")
     )
     paginated_diary_queryset = paginate(diary_queryset, page, page_size)
@@ -28,7 +30,7 @@ def newsfeed(request):
         "diaries": paginated_diary_queryset,
     }
 
-    return render(request, "diaries/diaries.html", context)
+    return render(request, "diaries/newsfeed.html", context)
 
 
 @login_required
