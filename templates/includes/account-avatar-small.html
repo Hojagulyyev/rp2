@@ -5,17 +5,24 @@
     <!-- USER AVATAR CONTENT -->
     <div class="user-avatar-content">
         <!-- HEXAGON -->
-        <div class="hexagon-image-30-32" data-src="{% static 'img/avatar/17.jpg' %}"></div>
+        <div class="hexagon-image-30-32"
+             {% if account == user.account %}
+                data-src="{% static 'img/avatar/17.jpg' %}"
+             {% else %}
+                data-src="{% static 'img/avatar/08.jpg' %}"
+             {% endif %}
+        >
+        </div>
         <!-- /HEXAGON -->
     </div>
     <!-- /USER AVATAR CONTENT -->
 
     <!-- USER AVATAR PROGRESS -->
-    <!--                    <div class="user-avatar-progress">-->
-    <!--                      &lt;!&ndash; HEXAGON &ndash;&gt;-->
-    <!--                      <div class="hexagon-progress-40-44"></div>-->
-    <!--                      &lt;!&ndash; /HEXAGON &ndash;&gt;-->
-    <!--                    </div>-->
+    <div class="user-avatar-progress">
+      <!-- HEXAGON -->
+      <div class="hexagon-progress-40-44"></div>
+      <!-- /HEXAGON -->
+    </div>
     <!-- /USER AVATAR PROGRESS -->
 
     <!-- USER AVATAR PROGRESS BORDER -->

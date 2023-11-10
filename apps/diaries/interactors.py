@@ -26,6 +26,12 @@ def commit(request, diary_id: int):
             f"?message={message}"
         )
 
+    if diary.account != request.user.account:
+        messages.error(request, f"others' diaries are readonly")
+        return redirect(
+            f"{reverse('diaries:detail_view', kwargs={'id': diary.id})}"
+        )
+
     # ===== PROCESS
 
     diary_commit = DiaryCommit()

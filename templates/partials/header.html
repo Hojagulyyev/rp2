@@ -63,7 +63,7 @@
           <!-- MENU MAIN ITEM -->
           <li class="menu-main-item">
             <!-- MENU MAIN ITEM LINK -->
-            <a class="menu-main-item-link" href="#">Home</a>
+            <a class="menu-main-item-link" href="{% url 'diaries:newsfeed_view' %}">Newsfeed</a>
             <!-- /MENU MAIN ITEM LINK -->
           </li>
           <!-- /MENU MAIN ITEM -->
@@ -92,7 +92,21 @@
 
     <!-- HEADER ACTIONS -->
     <div class="header-actions">
-      <!-- PROGRESS STAT --><!-- /PROGRESS STAT -->
+      <!-- PROGRESS STAT -->
+      <div class="progress-stat">
+        <!-- BAR PROGRESS WRAP -->
+        <div class="bar-progress-wrap">
+          <!-- BAR PROGRESS INFO -->
+          <p class="bar-progress-info">Next: <span class="bar-progress-text"></span></p>
+          <!-- /BAR PROGRESS INFO -->
+        </div>
+        <!-- /BAR PROGRESS WRAP -->
+
+        <!-- PROGRESS STAT BAR -->
+        <div id="logged-user-level" class="progress-stat-bar"></div>
+        <!-- /PROGRESS STAT BAR -->
+      </div>
+      <!-- /PROGRESS STAT -->
     </div>
     <!-- /HEADER ACTIONS -->
 

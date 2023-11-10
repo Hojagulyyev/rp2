@@ -39,20 +39,20 @@
                 <!-- USER STATUS AVATAR -->
                 <a class="user-status-avatar" href="#">
                     <!-- USER AVATAR -->
-                    {% include "includes/account-avatar-small.html" with account=account %}
+                    {% include "includes/account-avatar-small.html" with account=diary.account %}
                 </a>
                 <!-- /USER STATUS AVATAR -->
 
                 <!-- USER STATUS TITLE -->
                 <div class="user-status-title medium">
                     <a href="{% url 'diaries:detail_view' diary.id %}">
-                        {{ account.get_full_name }} - Diary: {{ diary.created_date }}
+                        {{ diary.account.get_full_name }} - Diary: {{ diary.created_date|date:"d.m.Y" }}
                     </a>
                 </div>
                 <!-- /USER STATUS TITLE -->
 
                 <!-- USER STATUS TEXT -->
-                <p class="user-status-text small">42 XP earned on this diary</p>
+                <p class="user-status-text small">{{ diary.get_earned_xp }} XP earned on this diary</p>
                 <!-- /USER STATUS TEXT -->
             </div>
             <!-- /USER STATUS -->
@@ -93,7 +93,7 @@
                     <!-- META LINE -->
                     <div class="meta-line">
                         <!-- META LINE LINK -->
-                        <p class="meta-line-link">{{ diary.commits.count }} Commits</p>
+                        <a href="{% url 'diaries:detail_view' diary.id %}" class="meta-line-link">{{ diary.commits.count }} Commits</a>
                         <!-- /META LINE LINK -->
                     </div>
                     <!-- /META LINE -->

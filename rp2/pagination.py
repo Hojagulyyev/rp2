@@ -21,7 +21,7 @@ def paginate(
     if page_size is None:
         page_size = DEFAULT_PAGINATION_PAGE_SIZE
 
-    if page_size > MAX_PAGE_SIZE:
+    if int(page_size) > MAX_PAGE_SIZE:
         page_size = MAX_PAGE_SIZE
 
     paginator = Paginator(object_list, page_size)

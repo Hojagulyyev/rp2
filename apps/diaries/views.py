@@ -7,15 +7,43 @@ from .models import Diary
 
 
 @login_required
+def newsfeed(request):
+
+    # ===== DTO
+
+    page = request.GET.get("page", None)
+    page_size = request.GET.get("page_size", None)
+    account = request.user.account
+
+    # ===== PROCESS
+
+    diary_queryset = (
+        Diary.objects
+        .filter(account__clan=account.clan)
+        .order_by("-created_date")
+    )
+    paginated_diary_queryset = paginate(diary_queryset, page, page_size)
+
+    # ===== CONTEXT
+
+    context = {
+        "diaries": paginated_diary_queryset,
+    }
+
+    return render(request, "diaries/newsfeed.html", context)
+
+
+@login_required
 def diaries(request):
 
     # ===== DTO
 
-    page = request.GET.get("page", 1)
+    page = request.GET.get("page", None)
+    page_size = request.GET.get("page_size", None)
+    account = request.user.account
 
     # ===== PROCESS
 
-    account = request.user.account
     diary_queryset = (
         Diary.objects
         .filter(
@@ -23,7 +51,7 @@ def diaries(request):
         )
         .order_by("-created_date")
     )
-    paginated_diary_queryset = paginate(diary_queryset, page)
+    paginated_diary_queryset = paginate(diary_queryset, page, page_size)
 
     # ===== CONTEXT
 

@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
+from rp2.business_logic import XP_PER_DAIRY_COMMIT
+
 from apps.accounts.models import Account
 
 
@@ -14,6 +16,13 @@ class Diary(models.Model):
 
     def __str__(self):
         return f"{self.account} - {self.created_date}"
+
+    def get_earned_xp(self):
+        earned_xp_from_commits = self.commits.count() * XP_PER_DAIRY_COMMIT
+        earned_xp_summary = [
+            earned_xp_from_commits,
+        ]
+        return sum(earned_xp_summary)
 
 
 class DiaryCommit(models.Model):

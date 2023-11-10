@@ -248,73 +248,7 @@
     <!-- /TABLE WRAP -->
 
     <!-- SECTION PAGER BAR WRAP -->
-    {% if issues.has_other_pages %}
-    <div class="section-pager-bar-wrap align-right">
-        <!-- SECTION PAGER BAR -->
-        <div class="section-pager-bar" style="min-width: 355px; max-width: 406px">
-
-            <!-- SECTION PAGER -->
-            <div class="section-pager">
-                <!-- SECTION PAGER ITEM -->
-                {% for page in issues.paginator.page_range %}
-                    {% if page == issues.number %}
-                        <a href="#">
-                            <div class="section-pager-item active">
-                                <!-- SECTION PAGER ITEM TEXT -->
-                                <p class="section-pager-item-text">{{ page }}</p>
-                                <!-- /SECTION PAGER ITEM TEXT -->
-                            </div>
-                        </a>
-                    {% elif page > issues.number|add:'-3' and page < issues.number|add:'3' %}
-                        <a href="?page={{ page }}">
-                            <div class="section-pager-item">
-                                <!-- SECTION PAGER ITEM TEXT -->
-                                <p class="section-pager-item-text">{{ page }}</p>
-                                <!-- /SECTION PAGER ITEM TEXT -->
-                            </div>
-                        </a>
-                    {% endif %}
-                {% endfor %}
-                <!-- /SECTION PAGER ITEM -->
-            </div>
-            <!-- /SECTION PAGER -->
-
-            <!-- SECTION PAGER CONTROLS -->
-            <div class="section-pager-controls">
-                {% if issues.has_previous %}
-                <!-- SLIDER CONTROL -->
-                <a href="?page=1">
-                    <div class="slider-control left">
-                        <!-- SLIDER CONTROL ICON -->
-                        <svg class="slider-control-icon icon-small-arrow">
-                            <use xlink:href="#svg-small-arrow"></use>
-                        </svg>
-                        <!-- /SLIDER CONTROL ICON -->
-                    </div>
-                </a>
-                <!-- /SLIDER CONTROL -->
-                {% endif %}
-
-                {% if issues.has_next %}
-                <!-- SLIDER CONTROL -->
-                <a href="?page={{ issues.paginator.num_pages }}">
-                    <div class="slider-control right">
-                        <!-- SLIDER CONTROL ICON -->
-                        <svg class="slider-control-icon icon-small-arrow">
-                            <use xlink:href="#svg-small-arrow"></use>
-                        </svg>
-                        <!-- /SLIDER CONTROL ICON -->
-                    </div>
-                </a>
-                <!-- /SLIDER CONTROL -->
-                {% endif %}
-
-            </div>
-            <!-- /SECTION PAGER CONTROLS -->
-        </div>
-        <!-- /SECTION PAGER BAR -->
-    </div>
-    {% endif %}
+    {% include "includes/pager-bar.html" with objects=issues %}
     <!-- /SECTION PAGER BAR WRAP -->
 
 </div>

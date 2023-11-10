@@ -18,12 +18,11 @@
 
     <!-- MENU -->
     <ul class="menu small">
-
         <!-- MENU ITEM -->
-        <li class="menu-item">
+        <li class="menu-item {% if request.resolver_match.url_name == 'newsfeed_view' %} active {% endif %}">
             <!-- MENU ITEM LINK -->
-            <a class="menu-item-link text-tooltip-tfr" href="{% url 'diaries:diaries_view' %}?filter_by=all"
-               data-title="Group">
+            <a class="menu-item-link text-tooltip-tfr" href="{% url 'diaries:newsfeed_view' %}"
+               data-title="Newsfeed">
                 <!-- MENU ITEM LINK ICON -->
                 <svg class="menu-item-link-icon icon-newsfeed">
                     <use xlink:href="#svg-group"></use>
@@ -35,10 +34,10 @@
         <!-- /MENU ITEM -->
 
         <!-- MENU ITEM -->
-        <li class="menu-item">
+        <li class="menu-item {% if request.resolver_match.url_name == 'diaries_view' %} active {% endif %}">
             <!-- MENU ITEM LINK -->
-            <a class="menu-item-link text-tooltip-tfr" href="{% url 'diaries:diaries_view' %}?filter_by=my"
-               data-title="Diaries">
+            <a class="menu-item-link text-tooltip-tfr" href="{% url 'diaries:diaries_view' %}"
+               data-title="My Diaries">
                 <!-- MENU ITEM LINK ICON -->
                 <svg class="menu-item-link-icon icon-newsfeed">
                     <use xlink:href="#svg-events"></use>
@@ -50,7 +49,7 @@
         <!-- /MENU ITEM -->
 
 <!--        &lt;!&ndash; MENU ITEM &ndash;&gt;-->
-<!--        <li class="menu-item">-->
+<!--        <li class="menu-item {% if request.resolver_match.url_name == 'issues_view' %} active {% endif %}">-->
 <!--            &lt;!&ndash; MENU ITEM LINK &ndash;&gt;-->
 <!--            <a class="menu-item-link text-tooltip-tfr" href="{% url 'issues:issues_view' %}" data-title="Issues">-->
 <!--                &lt;!&ndash; MENU ITEM LINK ICON &ndash;&gt;-->

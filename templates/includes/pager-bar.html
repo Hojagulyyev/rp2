@@ -1,0 +1,67 @@
+{% if objects.has_other_pages %}
+<div class="section-pager-bar-wrap align-right">
+    <!-- SECTION PAGER BAR -->
+    <div class="section-pager-bar" style="min-width: 355px; max-width: 406px">
+
+        <!-- SECTION PAGER -->
+        <div class="section-pager">
+            <!-- SECTION PAGER ITEM -->
+            {% for page in objects.paginator.page_range %}
+                {% if page == objects.number %}
+                <a href="#">
+                    <div class="section-pager-item active">
+                        <!-- SECTION PAGER ITEM TEXT -->
+                        <p class="section-pager-item-text">{{ page }}</p>
+                        <!-- /SECTION PAGER ITEM TEXT -->
+                    </div>
+                </a>
+                {% elif page > objects.number|add:'-3' and page < objects.number|add:'3' %}
+                <a href="?page={{ page }}&page_size={{ request.GET.page_size }}">
+                    <div class="section-pager-item">
+                        <!-- SECTION PAGER ITEM TEXT -->
+                        <p class="section-pager-item-text">{{ page }}</p>
+                        <!-- /SECTION PAGER ITEM TEXT -->
+                    </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+            <!-- /SECTION PAGER ITEM -->
+        </div>
+        <!-- /SECTION PAGER -->
+
+        <!-- SECTION PAGER CONTROLS -->
+        <div class="section-pager-controls">
+            {% if objects.has_previous %}
+            <!-- SLIDER CONTROL -->
+            <a href="?page=1&page_size={{ request.GET.page_size }}">
+                <div class="slider-control left">
+                    <!-- SLIDER CONTROL ICON -->
+                    <svg class="slider-control-icon icon-small-arrow">
+                        <use xlink:href="#svg-small-arrow"></use>
+                    </svg>
+                    <!-- /SLIDER CONTROL ICON -->
+                </div>
+            </a>
+            <!-- /SLIDER CONTROL -->
+            {% endif %}
+
+            {% if objects.has_next %}
+            <!-- SLIDER CONTROL -->
+            <a href="?page={{ objects.paginator.num_pages }}&page_size={{ request.GET.page_size }}">
+                <div class="slider-control right">
+                    <!-- SLIDER CONTROL ICON -->
+                    <svg class="slider-control-icon icon-small-arrow">
+                        <use xlink:href="#svg-small-arrow"></use>
+                    </svg>
+                    <!-- /SLIDER CONTROL ICON -->
+                </div>
+            </a>
+            <!-- /SLIDER CONTROL -->
+            {% endif %}
+
+        </div>
+        <!-- /SECTION PAGER CONTROLS -->
+    </div>
+    <!-- /SECTION PAGER BAR -->
+</div>
+{% endif %}

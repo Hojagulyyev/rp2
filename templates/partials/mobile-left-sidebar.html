@@ -55,7 +55,7 @@
                     <!-- /USER AVATAR BADGE CONTENT -->
 
                     <!-- USER AVATAR BADGE TEXT -->
-                    <p class="user-avatar-badge-text">1</p>
+                    <p class="user-avatar-badge-text">{{ user.account.level }}</p>
                     <!-- /USER AVATAR BADGE TEXT -->
                 </div>
                 <!-- /USER AVATAR BADGE -->
@@ -88,30 +88,30 @@
     <ul class="menu">
 
         <!-- MENU ITEM -->
-        <li class="menu-item">
+        <li class="menu-item {% if request.resolver_match.url_name == 'newsfeed_view' %} active {% endif %}">
             <!-- MENU ITEM LINK -->
-            <a class="menu-item-link" href="{% url 'diaries:diaries_view' %}?filter_by=all">
+            <a class="menu-item-link" href="{% url 'diaries:newsfeed_view' %}">
                 <!-- MENU ITEM LINK ICON -->
                 <svg class="menu-item-link-icon icon-newsfeed">
                     <use xlink:href="#svg-group"></use>
                 </svg>
                 <!-- /MENU ITEM LINK ICON -->
-                Group
+                Newsfeed
             </a>
             <!-- /MENU ITEM LINK -->
         </li>
         <!-- /MENU ITEM -->
 
         <!-- MENU ITEM -->
-        <li class="menu-item">
+        <li class="menu-item {% if request.resolver_match.url_name == 'diaries_view' %} active {% endif %}">
             <!-- MENU ITEM LINK -->
-            <a class="menu-item-link" href="{% url 'diaries:diaries_view' %}?filter_by=my">
+            <a class="menu-item-link" href="{% url 'diaries:diaries_view' %}">
                 <!-- MENU ITEM LINK ICON -->
                 <svg class="menu-item-link-icon icon-newsfeed">
                     <use xlink:href="#svg-events"></use>
                 </svg>
                 <!-- /MENU ITEM LINK ICON -->
-                Diaries
+                My Diaries
             </a>
             <!-- /MENU ITEM LINK -->
         </li>
