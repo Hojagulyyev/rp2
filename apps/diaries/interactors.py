@@ -10,7 +10,7 @@ from .signals import diary_commit_created
 
 
 @login_required
-def commit(request, diary_id: int):
+def create_commit(request, diary_id: int):
 
     # ===== DTO
 
