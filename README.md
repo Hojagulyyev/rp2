@@ -78,8 +78,9 @@ You’ve successfully arranged the puzzle pieces necessary to run the project.
 
 ## Contributing
 
-Use the `dev` branch to contributing.
 We love your contributions and do our best to provide you with mentorship and support.
+
+Get more details in our [Contributing Guide](https://github.com/Hojagulyyev/rp2/blob/dev/CONTRIBUTING.md).
 
 ## License
 
