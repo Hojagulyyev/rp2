@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from rp2.business_logic import ADDITIONAL_GROWING_XP_PER_LEVEL
+
 from apps.clans.models import Clan
 
 
@@ -22,10 +23,11 @@ class Account(models.Model):
     def get_required_xp_for_next_level(self):
         return self.level * ADDITIONAL_GROWING_XP_PER_LEVEL
 
-    def increase_xp(self, xp_amount):
+    def increase_xp(self, xp_amount: int, xp_from: str):
         self.xp += xp_amount
         required_xp_for_next_level = self.get_required_xp_for_next_level()
 
+        # upgrade level if xp filled
         if self.xp >= required_xp_for_next_level:
             self.level += 1
             self.xp = required_xp_for_next_level - self.xp

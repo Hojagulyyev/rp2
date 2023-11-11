@@ -19,17 +19,17 @@ def create_commit(request, diary_id: int):
 
     # ===== VALIDATION
 
+    if diary.account != request.user.account:
+        messages.error(request, f"others' diaries are readonly")
+        return redirect(
+            f"{reverse('diaries:detail_view', kwargs={'id': diary.id})}"
+        )
+
     if len(message) < COMMIT_MIN_LENGTH:
         messages.error(request, f"message length is less than {COMMIT_MIN_LENGTH} character")
         return redirect(
             f"{reverse('diaries:detail_view', kwargs={'id': diary.id})}"
             f"?message={message}"
-        )
-
-    if diary.account != request.user.account:
-        messages.error(request, f"others' diaries are readonly")
-        return redirect(
-            f"{reverse('diaries:detail_view', kwargs={'id': diary.id})}"
         )
 
     # ===== PROCESS

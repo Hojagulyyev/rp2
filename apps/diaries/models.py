@@ -18,11 +18,10 @@ class Diary(models.Model):
         return f"{self.account} - {self.created_date}"
 
     def get_earned_xp(self):
-        earned_xp_from_commits = self.commits.count() * XP_PER_DAIRY_COMMIT
-        earned_xp_summary = [
-            earned_xp_from_commits,
-        ]
-        return sum(earned_xp_summary)
+        print("Hello")
+        xp_amount_list = self.xps.values_list("amount", flat=True)
+        print(xp_amount_list)
+        return sum(xp_amount_list)
 
 
 class DiaryCommit(models.Model):
