@@ -33,6 +33,6 @@ class Account(models.Model):
         # upgrade level if xp filled
         if self.xp >= required_xp_for_next_level:
             self.level += 1
-            self.xp = required_xp_for_next_level - self.xp
+            self.xp -= required_xp_for_next_level
 
         self.save()
