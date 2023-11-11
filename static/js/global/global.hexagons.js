@@ -49,21 +49,21 @@ app.plugins.createHexagon({
   lineColor: '#1d2333'
 });
 
-app.plugins.createHexagon({
-  container: '.hexagon-progress-100-110',
-  width: 100,
-  height: 110,
-  lineWidth: 6,
-  roundedCorners: true,
-  gradient: {
-    colors: ['#d9ff65', '#40d04f']
-  },
-  scale: {
-    start: 0,
-    end: 1,
-    stop: .8
-  }
-});
+//app.plugins.createHexagon({
+//  container: '.hexagon-progress-100-110',
+//  width: 100,
+//  height: 110,
+//  lineWidth: 6,
+//  roundedCorners: true,
+//  gradient: {
+//    colors: ['#d9ff65', '#40d04f']
+//  },
+//  scale: {
+//    start: 0,
+//    end: 1,
+//    stop: .8
+//  }
+//});
 
 app.plugins.createHexagon({
   container: '.hexagon-border-100-110',

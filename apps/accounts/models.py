@@ -20,6 +20,9 @@ class Account(models.Model):
     def get_full_name(self):
         return f"{self.user.first_name} {self.user.last_name}"
 
+    def get_xp_in_percentage(self):
+        return float(self.xp / self.get_required_xp_for_next_level())
+
     def get_required_xp_for_next_level(self):
         return self.level * ADDITIONAL_GROWING_XP_PER_LEVEL
 

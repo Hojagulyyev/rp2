@@ -2,18 +2,7 @@
 
 <nav id="navigation-widget-small" class="navigation-widget navigation-widget-desktop closed sidebar left delayed">
     <!-- USER AVATAR -->
-    <!--  add 'online' class below if user online  -->
-    <a class="user-avatar small no-outline" href="#">
-        <!-- USER AVATAR CONTENT -->
-        <div class="user-avatar-content">
-            <!-- HEXAGON -->
-            <div class="hexagon-image-30-32" data-src="{% static 'img/avatar/17.jpg' %}"></div>
-            <!-- /HEXAGON -->
-        </div>
-        <!-- /USER AVATAR CONTENT -->
-        <!-- USER AVATAR PROGRESS --><!-- /USER AVATAR PROGRESS -->
-        <!-- USER AVATAR BADGE --><!-- /USER AVATAR BADGE -->
-    </a>
+    {% include "includes/account-avatar-small.html" with account=user.account %}
     <!-- /USER AVATAR -->
 
     <!-- MENU -->

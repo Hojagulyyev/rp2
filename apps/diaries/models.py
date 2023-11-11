@@ -18,9 +18,7 @@ class Diary(models.Model):
         return f"{self.account} - {self.created_date}"
 
     def get_earned_xp(self):
-        print("Hello")
         xp_amount_list = self.xps.values_list("amount", flat=True)
-        print(xp_amount_list)
         return sum(xp_amount_list)
 
 

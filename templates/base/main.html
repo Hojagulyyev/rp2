@@ -85,27 +85,63 @@
 <!-- onMounted Lifecycle Hook -->
 <script>
 window.onload = function () {
-  {% block onMounted %}
-  {% endblock onMounted %}
-  calculateLoggedAccountXPForNextLevel()
+    {% block onMounted %}
+    {% endblock onMounted %}
+    calculateLoggedAccountXPForNextLevel();
+    calculateLoggedAccountXPInHexagonProgress();
 }
 
 function calculateLoggedAccountXPForNextLevel() {
-  app.plugins.createProgressBar({
-    container: '#logged-user-level',
-    height: 4,
-    gradient: {
-      colors: ['#40d04f', '#d9ff65']
-    },
-    scale: {
-      start: 0,
-      end: {{ user.account.get_required_xp_for_next_level }},
-      stop: {{ user.account.xp }}
-    },
-    linkText: true,
-    linkUnits: 'xp',
-    invertedProgress: true
-  });
+    app.plugins.createProgressBar({
+        container: '#logged-user-level',
+        height: 4,
+        gradient: {
+            colors: ['#40d04f', '#d9ff65']
+        },
+        scale: {
+            start: 0,
+            end: {{ user.account.get_required_xp_for_next_level }},
+            stop: {{ user.account.xp }}
+        },
+        linkText: true,
+        linkUnits: 'xp',
+        invertedProgress: true
+    });
+}
+
+function calculateLoggedAccountXPInHexagonProgress() {
+    app.plugins.createHexagon({
+        container: '.logged-account-hexagon-progress-40-44',
+        width: 40,
+        height: 44,
+        lineWidth: 3,
+        roundedCorners: true,
+        roundedCornerRadius: 1,
+        gradient: {
+            colors: ['#d9ff65', '#40d04f']
+        },
+        scale: {
+            start: 0,
+            end: 1,
+            stop: {{ user.account.get_xp_in_percentage }}
+        }
+    });
+
+    app.plugins.createHexagon({
+        container: '.logged-account-hexagon-progress-100-110',
+        width: 100,
+        height: 110,
+        lineWidth: 6,
+        roundedCorners: true,
+        gradient: {
+            colors: ['#d9ff65', '#40d04f']
+        },
+        scale: {
+            start: 0,
+            end: 1,
+            stop: {{ user.account.get_xp_in_percentage }}
+        }
+    });
 }
 </script>
 

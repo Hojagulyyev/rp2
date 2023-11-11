@@ -1,15 +1,16 @@
 {% load static %}
 
 <!-- USER AVATAR -->
+<!--  add 'online' class below if user online  -->
 <div class="user-avatar small no-outline">
     <!-- USER AVATAR CONTENT -->
     <div class="user-avatar-content">
         <!-- HEXAGON -->
         <div class="hexagon-image-30-32"
              {% if account == user.account %}
-                data-src="{% static 'img/avatar/17.jpg' %}"
+             data-src="{% static 'img/avatar/17.jpg' %}"
              {% else %}
-                data-src="{% static 'img/avatar/08.jpg' %}"
+             data-src="{% static 'img/avatar/08.jpg' %}"
              {% endif %}
         >
         </div>
@@ -19,9 +20,12 @@
 
     <!-- USER AVATAR PROGRESS -->
     <div class="user-avatar-progress">
-      <!-- HEXAGON -->
-      <div class="hexagon-progress-40-44"></div>
-      <!-- /HEXAGON -->
+        <!-- HEXAGON -->
+        <div class="hexagon-progress-40-44
+        {% if account == user.account %}
+        logged-account-hexagon-progress-40-44
+        {% endif %}"></div>
+        <!-- /HEXAGON -->
     </div>
     <!-- /USER AVATAR PROGRESS -->
 
