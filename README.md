@@ -1,3 +1,9 @@
+## Live App Demo: [RP2 Single-Core Processor Server](http://216.250.8.62:2024/diaries/newsfeed-view/)
+
+```
+🚀 Give a Star ⭐️ & Fork to this project ... Happy coding! 🤩`
+```
+
 ## Table of Contents
 
 - [What makes RP2 special?](#what-makes-rp2-special)
