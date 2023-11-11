@@ -122,8 +122,8 @@ function calculateLoggedAccountXPInHexagonProgress() {
         },
         scale: {
             start: 0,
-            end: 1,
-            stop: {{ user.account.get_xp_in_percentage }}
+            end: {{ user.account.get_required_xp_for_next_level }},
+            stop: {{ user.account.xp }}
         }
     });
 
@@ -138,8 +138,8 @@ function calculateLoggedAccountXPInHexagonProgress() {
         },
         scale: {
             start: 0,
-            end: 1,
-            stop: {{ user.account.get_xp_in_percentage }}
+            end: {{ user.account.get_required_xp_for_next_level }},
+            stop: {{ user.account.xp }}
         }
     });
 }
