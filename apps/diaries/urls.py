@@ -18,6 +18,6 @@ urlpatterns = [
 # Interactors
 
 urlpatterns += [
-    path('<int:diary_id>/commit/', interactors.commit, name="commit"),
+    path('<int:diary_id>/commit/', interactors.create_commit, name="commit"),
     # path('<int:id>/update/', interactors.update, name="update"),
 ]
