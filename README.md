@@ -87,3 +87,5 @@ Get more details in our [Contributing Guide](https://github.com/Hojagulyyev/rp2/
 Disclaimer: Everything you see here is open and free to use as long as you comply with the [license](https://github.com/Hojagulyyev/rp2/blob/main/LICENSE). There are no hidden charges. We promise to do our best to fix bugs and improve the code.
 
 #### Crafted with ❤️ by [Contributors](https://github.com/Hojagulyyev/rp2/graphs/contributors)
+
+RP2 © 2023, Ovezdurdy Hojagulyyev - Released under the MIT License.
