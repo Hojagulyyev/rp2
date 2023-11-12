@@ -1,4 +1,5 @@
 {% load static %}
+{% load level_design %}
 
 <!-- USER AVATAR -->
 <!--  add 'online' class below if user online  -->
@@ -24,6 +25,8 @@
         <div class="hexagon-progress-40-44
         {% if account == user.account %}
         logged-account-hexagon-progress-40-44
+        {% else %}
+        account-color-index-{{account.level|get_color_index_by_level}}-hexagon-progress-40-44
         {% endif %}"></div>
         <!-- /HEXAGON -->
     </div>
