@@ -8,7 +8,7 @@ from apps.accounts.models import Account
 
 class Diary(models.Model):
 
-    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="diaries")
     created_date = models.DateField(default=timezone.now)
 
     class Meta:

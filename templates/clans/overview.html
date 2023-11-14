@@ -1,5 +1,7 @@
 {% extends "base/main.html" %}
 {% load static %}
+{% load humanize %}
+{% load level_design %}
 
 {% block content %}
 <div class="content-grid">
@@ -46,7 +48,7 @@
                 <!-- /BAR PROGRESS INFO -->
 
                 <!-- PROGRESS STAT INFO -->
-                <p class="progress-stat-info">14340 total exp points received</p>
+                <p class="progress-stat-info">{{ user.account.get_xp_total|intcomma }} total exp points received</p>
                 <!-- /PROGRESS STAT INFO -->
             </div>
             <!-- /BAR PROGRESS WRAP -->
@@ -105,14 +107,6 @@
                     <!-- TABLE HEADER COLUMN -->
                     <div class="table-header-column centered padded">
                         <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">Level</p>
-                        <!-- /TABLE HEADER TITLE -->
-                    </div>
-                    <!-- /TABLE HEADER COLUMN -->
-
-                    <!-- TABLE HEADER COLUMN -->
-                    <div class="table-header-column centered padded">
-                        <!-- TABLE HEADER TITLE -->
                         <p class="table-header-title">XP</p>
                         <!-- /TABLE HEADER TITLE -->
                     </div>
@@ -121,7 +115,7 @@
                     <!-- TABLE HEADER COLUMN -->
                     <div class="table-header-column padded-left">
                         <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">XP Percentage</p>
+                        <p class="table-header-title">Commit Percentage</p>
                         <!-- /TABLE HEADER TITLE -->
                     </div>
                     <!-- /TABLE HEADER COLUMN -->
@@ -170,7 +164,7 @@
                         <!-- TABLE COLUMN -->
                         <div class="table-column centered padded">
                             <!-- TABLE TITLE -->
-                            <p class="table-title">200</p>
+                            <p class="table-title">{{ account.diaries_count }}</p>
                             <!-- /TABLE TITLE -->
                         </div>
                         <!-- /TABLE COLUMN -->
@@ -178,7 +172,7 @@
                         <!-- TABLE COLUMN -->
                         <div class="table-column centered padded">
                             <!-- TABLE TITLE -->
-                            <p class="table-title">34</p>
+                            <p class="table-title">{{ account.diary_commits_count }}</p>
                             <!-- /TABLE TITLE -->
                         </div>
                         <!-- /TABLE COLUMN -->
@@ -186,15 +180,7 @@
                         <!-- TABLE COLUMN -->
                         <div class="table-column centered padded">
                             <!-- TABLE TITLE -->
-                            <p class="table-title">340000000</p>
-                            <!-- /TABLE TITLE -->
-                        </div>
-                        <!-- /TABLE COLUMN -->
-
-                        <!-- TABLE COLUMN -->
-                        <div class="table-column centered padded">
-                            <!-- TABLE TITLE -->
-                            <p class="table-title">22</p>
+                            <p class="table-title">{{ account.get_xp_total|intcomma }}</p>
                             <!-- /TABLE TITLE -->
                         </div>
                         <!-- /TABLE COLUMN -->
@@ -206,7 +192,7 @@
                                 <!-- PROGRESS STAT -->
                                 <div class="progress-stat">
                                     <!-- PROGRESS STAT BAR -->
-                                    <div id="post-engagement-5" class="progress-stat-bar"></div>
+                                    <div id="account-{{ account.id }}-commits-percentage-progress" class="progress-stat-bar"></div>
                                     <!-- /PROGRESS STAT BAR -->
 
                                     <!-- BAR PROGRESS WRAP -->
@@ -237,3 +223,45 @@
 
 </div>
 {% endblock content %}
+
+{% block onMounted %}
+
+app.plugins.createProgressBar({
+    container: '#exp-to-next-level',
+    height: 6,
+    gradient: {
+        colors: [
+            "{{ user.account.level|get_level_color_by_level:0 }}",
+            "{{ user.account.level|get_level_color_by_level:1 }}"
+        ]
+    },
+    scale: {
+        start: 0,
+        end: {{ user.account.get_required_xp_for_next_level }},
+        stop: {{ user.account.xp }}
+    },
+    linkText: true,
+    linkUnits: 'exp',
+    invertedProgress: false,
+    animateOnScroll: true
+});
+
+{% for account in accounts %}
+app.plugins.createProgressBar({
+    container: '#account-{{ account.id }}-commits-percentage-progress',
+    height: 4,
+    gradient: {
+        colors: ['#40d04f', '#d9ff65']
+    },
+    scale: {
+        start: 0,
+        end: 100,
+        stop: {% widthratio account.diary_commits_count diary_commits_count 100 %}
+    },
+    linkText: true,
+    linkUnits: '%',
+    animateOnScroll: true
+});
+{% endfor %}
+
+{% endblock onMounted %}

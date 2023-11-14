@@ -20,6 +20,10 @@ class Account(models.Model):
     def get_full_name(self):
         return f"{self.user.first_name} {self.user.last_name}"
 
+    def get_xp_total(self):
+        xps = [level * 50 for level in range(1, self.level)]
+        return sum(xps) + self.xp
+
     def get_xp_in_percentage(self):
         return float(self.xp / self.get_required_xp_for_next_level())
 

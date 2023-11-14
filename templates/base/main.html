@@ -109,7 +109,8 @@ function showLoggedAccountXPProgressBarForNextLevel() {
         },
         linkText: true,
         linkUnits: 'xp',
-        invertedProgress: true
+        invertedProgress: true,
+        animateOnScroll: true
     });
 }
 
@@ -131,7 +132,7 @@ function showLoggedAccountXPHexagonProgressInAvatarBorder() {
             start: 0,
             end: {{ user.account.get_required_xp_for_next_level }},
             stop: {{ user.account.xp }}
-        }
+        },
     });
 
     app.plugins.createHexagon({

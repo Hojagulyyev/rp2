@@ -106,22 +106,22 @@ app.plugins.createProgressBar({
   lineColor: '#293249'
 });
 
-app.plugins.createProgressBar({
-  container: '#exp-to-next-level',
-  height: 6,
-  gradient: {
-    colors: ['#40d04f', '#d9ff65']
-  },
-  scale: {
-    start: 0,
-    end: 200,
-    stop: 162
-  },
-  linkText: true,
-  linkUnits: 'exp',
-  invertedProgress: true,
-  animateOnScroll: true
-});
+//app.plugins.createProgressBar({
+//  container: '#exp-to-next-level',
+//  height: 6,
+//  gradient: {
+//    colors: ['#40d04f', '#d9ff65']
+//  },
+//  scale: {
+//    start: 0,
+//    end: 200,
+//    stop: 90
+//  },
+//  linkText: true,
+//  linkUnits: 'exp',
+//  invertedProgress: true,
+//  animateOnScroll: true
+//});
 
 /*----------------
     BADGE ITEM
@@ -1506,21 +1506,21 @@ app.plugins.createProgressBar({
   lineColor: '#293249'
 });
 
-app.plugins.createProgressBar({
-  container: '#post-engagement-5',
-  height: 4,
-  gradient: {
-    colors: ['#40d04f', '#d9ff65']
-  },
-  scale: {
-    start: 0,
-    end: 100,
-    stop: 21
-  },
-  linkText: true,
-  linkUnits: '%',
-  animateOnScroll: true
-});
+//app.plugins.createProgressBar({
+//  container: '#post-engagement-5',
+//  height: 4,
+//  gradient: {
+//    colors: ['#40d04f', '#d9ff65']
+//  },
+//  scale: {
+//    start: 0,
+//    end: 100,
+//    stop: 21
+//  },
+//  linkText: true,
+//  linkUnits: '%',
+//  animateOnScroll: true
+//});
 
 /*-----------------
     TOP COUNTRY
