@@ -65,7 +65,7 @@ def signin(request):
         )
 
     login(request, user)
-    return redirect('diaries:newsfeed_view')
+    return redirect('clans:overview')
 
 
 @login_required

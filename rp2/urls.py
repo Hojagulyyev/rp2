@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 
 
 def default_view(request):
-    return redirect("diaries:newsfeed_view")
+    return redirect("clans:overview")
 
 
 urlpatterns = [
