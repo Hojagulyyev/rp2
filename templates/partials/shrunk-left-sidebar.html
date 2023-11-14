@@ -7,6 +7,22 @@
 
     <!-- MENU -->
     <ul class="menu small">
+
+        <!-- MENU ITEM -->
+        <li class="menu-item {% if request.resolver_match.url_name == 'overview' %} active {% endif %}">
+            <!-- MENU ITEM LINK -->
+            <a class="menu-item-link text-tooltip-tfr" href="{% url 'clans:overview' %}"
+               data-title="Overview">
+                <!-- MENU ITEM LINK ICON -->
+                <svg class="menu-item-link-icon icon-newsfeed">
+                    <use xlink:href="#svg-overview"></use>
+                </svg>
+                <!-- /MENU ITEM LINK ICON -->
+            </a>
+            <!-- /MENU ITEM LINK -->
+        </li>
+        <!-- /MENU ITEM -->
+
         <!-- MENU ITEM -->
         <li class="menu-item {% if request.resolver_match.url_name == 'newsfeed_view' %} active {% endif %}">
             <!-- MENU ITEM LINK -->

@@ -10,6 +10,7 @@ app_name = "clans"
 # Views
 
 urlpatterns = [
+    path("overview/", views.overview, name="overview"),
 ]
 
 # Interactors
