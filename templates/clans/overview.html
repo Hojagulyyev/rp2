@@ -48,7 +48,7 @@
                 <!-- /BAR PROGRESS INFO -->
 
                 <!-- PROGRESS STAT INFO -->
-                <p class="progress-stat-info">{{ user.account.get_xp_total|intcomma }} total exp points received</p>
+                <p class="progress-stat-info">{{ user.account.get_xp_total|intcomma }} total xp points received</p>
                 <!-- /PROGRESS STAT INFO -->
             </div>
             <!-- /BAR PROGRESS WRAP -->
@@ -91,14 +91,6 @@
                     <!-- TABLE HEADER COLUMN -->
                     <div class="table-header-column centered padded">
                         <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">Diaries</p>
-                        <!-- /TABLE HEADER TITLE -->
-                    </div>
-                    <!-- /TABLE HEADER COLUMN -->
-
-                    <!-- TABLE HEADER COLUMN -->
-                    <div class="table-header-column centered padded">
-                        <!-- TABLE HEADER TITLE -->
                         <p class="table-header-title">Commits</p>
                         <!-- /TABLE HEADER TITLE -->
                     </div>
@@ -107,7 +99,15 @@
                     <!-- TABLE HEADER COLUMN -->
                     <div class="table-header-column centered padded">
                         <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">XP</p>
+                        <p class="table-header-title">Total XP</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Diaries</p>
                         <!-- /TABLE HEADER TITLE -->
                     </div>
                     <!-- /TABLE HEADER COLUMN -->
@@ -146,7 +146,7 @@
                                 <!-- /USER STATUS TITLE -->
 
                                 <!-- USER STATUS TEXT -->
-                                <p class="user-status-text small">{{ account.get_full_name }}</p>
+                                <p class="user-status-text small">{{ account.xp }} XP</p>
                                 <!-- /USER STATUS TEXT -->
                             </div>
                             <!-- /USER STATUS -->
@@ -164,14 +164,6 @@
                         <!-- TABLE COLUMN -->
                         <div class="table-column centered padded">
                             <!-- TABLE TITLE -->
-                            <p class="table-title">{{ account.diaries_count }}</p>
-                            <!-- /TABLE TITLE -->
-                        </div>
-                        <!-- /TABLE COLUMN -->
-
-                        <!-- TABLE COLUMN -->
-                        <div class="table-column centered padded">
-                            <!-- TABLE TITLE -->
                             <p class="table-title">{{ account.diary_commits_count }}</p>
                             <!-- /TABLE TITLE -->
                         </div>
@@ -181,6 +173,14 @@
                         <div class="table-column centered padded">
                             <!-- TABLE TITLE -->
                             <p class="table-title">{{ account.get_xp_total|intcomma }}</p>
+                            <!-- /TABLE TITLE -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TITLE -->
+                            <p class="table-title">{{ account.diaries_count }}</p>
                             <!-- /TABLE TITLE -->
                         </div>
                         <!-- /TABLE COLUMN -->
@@ -241,8 +241,8 @@ app.plugins.createProgressBar({
         stop: {{ user.account.xp }}
     },
     linkText: true,
-    linkUnits: 'exp',
-    invertedProgress: false,
+    linkUnits: 'xp',
+    invertedProgress: true,
     animateOnScroll: true
 });
 
