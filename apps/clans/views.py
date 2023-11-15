@@ -32,7 +32,7 @@ def overview(request):
             diaries_count=Count("diaries", distinct=True),
             diary_commits_count=Count("diaries__commits", distinct=True),
         )
-        .order_by("-level")
+        .order_by("-diary_commits_count")
     )
     paginated_account_queryset = paginate(account_queryset, page, page_size)
 
