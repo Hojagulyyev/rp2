@@ -68,7 +68,17 @@
             </p>
             <!-- /NAVIGATION WIDGET INFO TITLE -->
 
-            <!-- NAVIGATION WIDGET INFO TEXT --><!-- /NAVIGATION WIDGET INFO TEXT -->
+            <!-- NAVIGATION WIDGET INFO TEXT -->
+            <p class="navigation-widget-info-text">
+                <a href="#">
+                    {% if user.account.clan %}
+                    {{ user.account.clan }}
+                    {% else %}
+                    No Clan
+                    {% endif %}
+                </a>
+            </p>
+            <!-- /NAVIGATION WIDGET INFO TEXT -->
         </div>
         <!-- /NAVIGATION WIDGET INFO -->
 
@@ -86,6 +96,21 @@
 
     <!-- MENU -->
     <ul class="menu">
+
+        <!-- MENU ITEM -->
+        <li class="menu-item {% if request.resolver_match.url_name == 'overview' %} active {% endif %}">
+            <!-- MENU ITEM LINK -->
+            <a class="menu-item-link" href="{% url 'clans:overview' %}">
+                <!-- MENU ITEM LINK ICON -->
+                <svg class="menu-item-link-icon icon-newsfeed">
+                    <use xlink:href="#svg-overview"></use>
+                </svg>
+                <!-- /MENU ITEM LINK ICON -->
+                Overview
+            </a>
+            <!-- /MENU ITEM LINK -->
+        </li>
+        <!-- /MENU ITEM -->
 
         <!-- MENU ITEM -->
         <li class="menu-item {% if request.resolver_match.url_name == 'newsfeed_view' %} active {% endif %}">
