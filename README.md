@@ -1,3 +1,12 @@
+## Rysgally Project 2
+
+[![](https://img.shields.io/github/issues/Hojagulyyev/rp2.svg)](https://github.com/Hojagulyyev/rp2/issues)
+[![](https://img.shields.io/github/contributors/Hojagulyyev/rp2.svg)](https://github.com/Hojagulyyev/rp2/graphs/contributors)
+[![](https://img.shields.io/github/issues-closed/Hojagulyyev/rp2.svg)](https://github.com/Hojagulyyev/rp2/issues?q=is%3Aissue+is%3Aclosed)
+[![](https://img.shields.io/github/issues-pr/Hojagulyyev/rp2.svg)](https://github.com/Hojagulyyev/rp2/pulls)
+[![](https://img.shields.io/github/issues-pr-closed/Hojagulyyev/rp2.svg)](https://github.com/Hojagulyyev/rp2/pulls?q=is%3Apr+is%3Aclosed)
+[![](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 ## Live App Demo: [RP2 Single-Core Processor Server](http://216.250.8.62:2024/diaries/newsfeed-view/)
 
 ```
