@@ -8,7 +8,7 @@ register = template.Library()
 
 LEVEL_COLOR_DESIGN = {
     1: ("#9b5c33", "#ae6f46"),
-    2: ("#a3814e", "#a3814e"),
+    2: ("#3d5646", "#3d5646"),
     3: ("#d99f23", "#fedd68"),
     4: ("#67b888", "#93d6ae"),
     5: ("#5a401e", "#607e28"),
