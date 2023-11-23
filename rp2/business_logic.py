@@ -8,3 +8,7 @@ ADDITIONAL_XP_FOR_STAR_FILLING = 28
 
 # ===== RULES
 COMMIT_MIN_LENGTH = 10
+BANNED_WORDS_IN_MORE_DETAILED_MESSAGE = [
+    "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
+    "+0500", "Nov", "Dec", "Jan", "Feb", "Mar",
+]
