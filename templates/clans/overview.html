@@ -255,7 +255,10 @@ app.plugins.createProgressBar({
     container: '#account-{{ account.id }}-commits-percentage-progress',
     height: 4,
     gradient: {
-        colors: ['#40d04f', '#d9ff65']
+        colors: [
+            "{{ account.level|get_level_color_by_level:0 }}",
+            "{{ account.level|get_level_color_by_level:1 }}"
+        ]
     },
     scale: {
         start: 0,
