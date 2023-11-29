@@ -4,228 +4,230 @@
 {% load level_design %}
 
 {% block content %}
-<div class="content-grid">
 
-    <div class="account-hub-content">
-        <!-- SECTION HEADER -->
-        <div class="section-header">
-            <!-- SECTION HEADER INFO -->
-            <div class="section-header-info">
-                <!-- SECTION PRETITLE -->
-                <p class="section-pretitle">Clans</p>
-                <!-- /SECTION PRETITLE -->
+    <div class="content-grid">
 
-                <!-- SECTION TITLE -->
-                <h2 class="section-title">Overview</h2>
-                <!-- /SECTION TITLE -->
-            </div>
-            <!-- /SECTION HEADER INFO -->
-        </div>
-        <!-- /SECTION HEADER -->
-    </div>
+        <div class="account-hub-content">
+            <!-- SECTION HEADER -->
+            <div class="section-header">
+                <!-- SECTION HEADER INFO -->
+                <div class="section-header-info">
+                    <!-- SECTION PRETITLE -->
+                    <p class="section-pretitle">Clans</p>
+                    <!-- /SECTION PRETITLE -->
 
-    <!-- LEVEL PROGRESS BOX -->
-    <div class="level-progress-box mb-3">
-        <!-- LEVEL PROGRESS BADGE -->
-        <div class="level-progress-badge">
-            <!-- LEVEL PROGRESS BADGE TITLE -->
-            <p class="level-progress-badge-title">Level</p>
-            <!-- /LEVEL PROGRESS BADGE TITLE -->
-
-            <!-- LEVEL PROGRESS BADGE TEXT -->
-            <p class="level-progress-badge-text">{{ user.account.level }}</p>
-            <!-- /LEVEL PROGRESS BADGE TEXT -->
-        </div>
-        <!-- /LEVEL PROGRESS BADGE -->
-
-        <!-- PROGRESS STAT -->
-        <div class="progress-stat">
-            <!-- BAR PROGRESS WRAP -->
-            <div class="bar-progress-wrap big">
-                <!-- BAR PROGRESS INFO -->
-                <p class="bar-progress-info start negative progress-with-text">+<span
-                        class="bar-progress-text"></span><span class="light">to reach the next level</span></p>
-                <!-- /BAR PROGRESS INFO -->
-
-                <!-- PROGRESS STAT INFO -->
-                <p class="progress-stat-info">{{ user.account.get_xp_total|intcomma }} total xp points received</p>
-                <!-- /PROGRESS STAT INFO -->
-            </div>
-            <!-- /BAR PROGRESS WRAP -->
-
-            <!-- PROGRESS STAT BAR -->
-            <div id="exp-to-next-level" class="progress-stat-bar"></div>
-            <!-- /PROGRESS STAT BAR -->
-        </div>
-        <!-- /PROGRESS STAT -->
-    </div>
-    <!-- /LEVEL PROGRESS BOX -->
-
-    <div class="widget-box">
-        <!-- WIDGET BOX TITLE -->
-        <p class="widget-box-title">{{ user.account.clan }} Clan : Accounts</p>
-        <!-- /WIDGET BOX TITLE -->
-
-        <!-- WIDGET BOX CONTENT -->
-        <div class="widget-box-content no-margin-top">
-            <!-- TABLE -->
-            <div class="table table-top-friends join-rows">
-                <!-- TABLE HEADER -->
-                <div class="table-header">
-                    <!-- TABLE HEADER COLUMN -->
-                    <div class="table-header-column">
-                        <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">Account</p>
-                        <!-- /TABLE HEADER TITLE -->
-                    </div>
-                    <!-- /TABLE HEADER COLUMN -->
-
-                    <!-- TABLE HEADER COLUMN -->
-                    <div class="table-header-column centered padded">
-                        <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">Full Name</p>
-                        <!-- /TABLE HEADER TITLE -->
-                    </div>
-                    <!-- /TABLE HEADER COLUMN -->
-
-                    <!-- TABLE HEADER COLUMN -->
-                    <div class="table-header-column centered padded">
-                        <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">Commits</p>
-                        <!-- /TABLE HEADER TITLE -->
-                    </div>
-                    <!-- /TABLE HEADER COLUMN -->
-
-                    <!-- TABLE HEADER COLUMN -->
-                    <div class="table-header-column centered padded">
-                        <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">Total XP</p>
-                        <!-- /TABLE HEADER TITLE -->
-                    </div>
-                    <!-- /TABLE HEADER COLUMN -->
-
-                    <!-- TABLE HEADER COLUMN -->
-                    <div class="table-header-column centered padded">
-                        <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">Diaries</p>
-                        <!-- /TABLE HEADER TITLE -->
-                    </div>
-                    <!-- /TABLE HEADER COLUMN -->
-
-                    <!-- TABLE HEADER COLUMN -->
-                    <div class="table-header-column padded-left">
-                        <!-- TABLE HEADER TITLE -->
-                        <p class="table-header-title">Commit Percentage</p>
-                        <!-- /TABLE HEADER TITLE -->
-                    </div>
-                    <!-- /TABLE HEADER COLUMN -->
+                    <!-- SECTION TITLE -->
+                    <h2 class="section-title">Overview</h2>
+                    <!-- /SECTION TITLE -->
                 </div>
-                <!-- /TABLE HEADER -->
+                <!-- /SECTION HEADER INFO -->
+            </div>
+            <!-- /SECTION HEADER -->
+        </div>
 
-                <!-- TABLE BODY -->
-                <div class="table-body">
-                    {% for account in accounts %}
-                    <!-- TABLE ROW -->
-                    <div class="table-row tiny">
-                        <!-- TABLE COLUMN -->
-                        <div class="table-column">
-                            <!-- USER STATUS -->
-                            <div class="user-status">
-                                <!-- USER STATUS AVATAR -->
-                                <a class="user-status-avatar" href="#">
-                                    <!-- USER AVATAR -->
-                                    {% include "includes/account-avatar-small.html" with account=account %}
-                                    <!-- /USER AVATAR -->
-                                </a>
-                                <!-- /USER STATUS AVATAR -->
+        <!-- LEVEL PROGRESS BOX -->
+        <div class="level-progress-box mb-3">
+            <!-- LEVEL PROGRESS BADGE -->
+            <div class="level-progress-badge">
+                <!-- LEVEL PROGRESS BADGE TITLE -->
+                <p class="level-progress-badge-title">Level</p>
+                <!-- /LEVEL PROGRESS BADGE TITLE -->
 
-                                <!-- USER STATUS TITLE -->
-                                <p class="user-status-title">
-                                    <a class="bold" href="#">{{ account.user }}</a>
-                                </p>
-                                <!-- /USER STATUS TITLE -->
+                <!-- LEVEL PROGRESS BADGE TEXT -->
+                <p class="level-progress-badge-text">{{ user.account.level }}</p>
+                <!-- /LEVEL PROGRESS BADGE TEXT -->
+            </div>
+            <!-- /LEVEL PROGRESS BADGE -->
 
-                                <!-- USER STATUS TEXT -->
-                                <p class="user-status-text small">{{ account.xp }} XP</p>
-                                <!-- /USER STATUS TEXT -->
-                            </div>
-                            <!-- /USER STATUS -->
+            <!-- PROGRESS STAT -->
+            <div class="progress-stat">
+                <!-- BAR PROGRESS WRAP -->
+                <div class="bar-progress-wrap big">
+                    <!-- BAR PROGRESS INFO -->
+                    <p class="bar-progress-info start negative progress-with-text">+<span
+                            class="bar-progress-text"></span><span class="light">to reach the next level</span></p>
+                    <!-- /BAR PROGRESS INFO -->
+
+                    <!-- PROGRESS STAT INFO -->
+                    <p class="progress-stat-info">{{ user.account.get_xp_total|intcomma }} total xp points received</p>
+                    <!-- /PROGRESS STAT INFO -->
+                </div>
+                <!-- /BAR PROGRESS WRAP -->
+
+                <!-- PROGRESS STAT BAR -->
+                <div id="exp-to-next-level" class="progress-stat-bar"></div>
+                <!-- /PROGRESS STAT BAR -->
+            </div>
+            <!-- /PROGRESS STAT -->
+        </div>
+        <!-- /LEVEL PROGRESS BOX -->
+
+        <div class="widget-box">
+            <!-- WIDGET BOX TITLE -->
+            <p class="widget-box-title">{{ user.account.clan }} Clan : Accounts</p>
+            <!-- /WIDGET BOX TITLE -->
+
+            <!-- WIDGET BOX CONTENT -->
+            <div class="widget-box-content no-margin-top">
+                <!-- TABLE -->
+                <div class="table table-top-friends join-rows">
+                    <!-- TABLE HEADER -->
+                    <div class="table-header">
+                        <!-- TABLE HEADER COLUMN -->
+                        <div class="table-header-column">
+                            <!-- TABLE HEADER TITLE -->
+                            <p class="table-header-title">Account</p>
+                            <!-- /TABLE HEADER TITLE -->
                         </div>
-                        <!-- /TABLE COLUMN -->
+                        <!-- /TABLE HEADER COLUMN -->
 
-                        <!-- TABLE COLUMN -->
-                        <div class="table-column centered padded">
-                            <!-- TABLE TITLE -->
-                            <p class="table-title">{{ account.get_full_name }}</p>
-                            <!-- /TABLE TITLE -->
+                        <!-- TABLE HEADER COLUMN -->
+                        <div class="table-header-column centered padded">
+                            <!-- TABLE HEADER TITLE -->
+                            <p class="table-header-title">Full Name</p>
+                            <!-- /TABLE HEADER TITLE -->
                         </div>
-                        <!-- /TABLE COLUMN -->
+                        <!-- /TABLE HEADER COLUMN -->
 
-                        <!-- TABLE COLUMN -->
-                        <div class="table-column centered padded">
-                            <!-- TABLE TITLE -->
-                            <p class="table-title">{{ account.diary_commits_count }}</p>
-                            <!-- /TABLE TITLE -->
+                        <!-- TABLE HEADER COLUMN -->
+                        <div class="table-header-column centered padded">
+                            <!-- TABLE HEADER TITLE -->
+                            <p class="table-header-title">Commits</p>
+                            <!-- /TABLE HEADER TITLE -->
                         </div>
-                        <!-- /TABLE COLUMN -->
+                        <!-- /TABLE HEADER COLUMN -->
 
-                        <!-- TABLE COLUMN -->
-                        <div class="table-column centered padded">
-                            <!-- TABLE TITLE -->
-                            <p class="table-title">{{ account.get_xp_total|intcomma }}</p>
-                            <!-- /TABLE TITLE -->
+                        <!-- TABLE HEADER COLUMN -->
+                        <div class="table-header-column centered padded">
+                            <!-- TABLE HEADER TITLE -->
+                            <p class="table-header-title">Total XP</p>
+                            <!-- /TABLE HEADER TITLE -->
                         </div>
-                        <!-- /TABLE COLUMN -->
+                        <!-- /TABLE HEADER COLUMN -->
 
-                        <!-- TABLE COLUMN -->
-                        <div class="table-column centered padded">
-                            <!-- TABLE TITLE -->
-                            <p class="table-title">{{ account.diaries_count }}</p>
-                            <!-- /TABLE TITLE -->
+                        <!-- TABLE HEADER COLUMN -->
+                        <div class="table-header-column centered padded">
+                            <!-- TABLE HEADER TITLE -->
+                            <p class="table-header-title">Diaries</p>
+                            <!-- /TABLE HEADER TITLE -->
                         </div>
-                        <!-- /TABLE COLUMN -->
+                        <!-- /TABLE HEADER COLUMN -->
 
-                        <!-- TABLE COLUMN -->
-                        <div class="table-column padded-left">
-                            <!-- PROGRESS STAT WRAP -->
-                            <div class="progress-stat-wrap">
-                                <!-- PROGRESS STAT -->
-                                <div class="progress-stat">
-                                    <!-- PROGRESS STAT BAR -->
-                                    <div id="account-{{ account.id }}-commits-percentage-progress" class="progress-stat-bar"></div>
-                                    <!-- /PROGRESS STAT BAR -->
+                        <!-- TABLE HEADER COLUMN -->
+                        <div class="table-header-column padded-left">
+                            <!-- TABLE HEADER TITLE -->
+                            <p class="table-header-title">Commit Percentage</p>
+                            <!-- /TABLE HEADER TITLE -->
+                        </div>
+                        <!-- /TABLE HEADER COLUMN -->
+                    </div>
+                    <!-- /TABLE HEADER -->
 
-                                    <!-- BAR PROGRESS WRAP -->
-                                    <div class="bar-progress-wrap">
-                                        <!-- BAR PROGRESS INFO -->
-                                        <p class="bar-progress-info medium negative"><span
-                                                class="bar-progress-text no-space"></span></p>
-                                        <!-- /BAR PROGRESS INFO -->
-                                    </div>
-                                    <!-- /BAR PROGRESS WRAP -->
+                    <!-- TABLE BODY -->
+                    <div class="table-body">
+                        {% for account in accounts %}
+                        <!-- TABLE ROW -->
+                        <div class="table-row tiny">
+                            <!-- TABLE COLUMN -->
+                            <div class="table-column">
+                                <!-- USER STATUS -->
+                                <div class="user-status">
+                                    <!-- USER STATUS AVATAR -->
+                                    <a class="user-status-avatar" href="#">
+                                        <!-- USER AVATAR -->
+                                        {% include "includes/account-avatar-small.html" with account=account %}
+                                        <!-- /USER AVATAR -->
+                                    </a>
+                                    <!-- /USER STATUS AVATAR -->
+
+                                    <!-- USER STATUS TITLE -->
+                                    <p class="user-status-title">
+                                        <a class="bold" href="#">{{ account.user }}</a>
+                                    </p>
+                                    <!-- /USER STATUS TITLE -->
+
+                                    <!-- USER STATUS TEXT -->
+                                    <p class="user-status-text small">{{ account.xp }} XP</p>
+                                    <!-- /USER STATUS TEXT -->
                                 </div>
-                                <!-- /PROGRESS STAT -->
+                                <!-- /USER STATUS -->
                             </div>
-                            <!-- /PROGRESS STAT WRAP -->
+                            <!-- /TABLE COLUMN -->
+
+                            <!-- TABLE COLUMN -->
+                            <div class="table-column centered padded">
+                                <!-- TABLE TITLE -->
+                                <p class="table-title">{{ account.get_full_name }}</p>
+                                <!-- /TABLE TITLE -->
+                            </div>
+                            <!-- /TABLE COLUMN -->
+
+                            <!-- TABLE COLUMN -->
+                            <div class="table-column centered padded">
+                                <!-- TABLE TITLE -->
+                                <p class="table-title">{{ account.diary_commits_count }}</p>
+                                <!-- /TABLE TITLE -->
+                            </div>
+                            <!-- /TABLE COLUMN -->
+
+                            <!-- TABLE COLUMN -->
+                            <div class="table-column centered padded">
+                                <!-- TABLE TITLE -->
+                                <p class="table-title">{{ account.get_xp_total|intcomma }}</p>
+                                <!-- /TABLE TITLE -->
+                            </div>
+                            <!-- /TABLE COLUMN -->
+
+                            <!-- TABLE COLUMN -->
+                            <div class="table-column centered padded">
+                                <!-- TABLE TITLE -->
+                                <p class="table-title">{{ account.diaries_count }}</p>
+                                <!-- /TABLE TITLE -->
+                            </div>
+                            <!-- /TABLE COLUMN -->
+
+                            <!-- TABLE COLUMN -->
+                            <div class="table-column padded-left">
+                                <!-- PROGRESS STAT WRAP -->
+                                <div class="progress-stat-wrap">
+                                    <!-- PROGRESS STAT -->
+                                    <div class="progress-stat">
+                                        <!-- PROGRESS STAT BAR -->
+                                        <div id="account-{{ account.id }}-commits-percentage-progress" class="progress-stat-bar"></div>
+                                        <!-- /PROGRESS STAT BAR -->
+
+                                        <!-- BAR PROGRESS WRAP -->
+                                        <div class="bar-progress-wrap">
+                                            <!-- BAR PROGRESS INFO -->
+                                            <p class="bar-progress-info medium negative"><span
+                                                    class="bar-progress-text no-space"></span></p>
+                                            <!-- /BAR PROGRESS INFO -->
+                                        </div>
+                                        <!-- /BAR PROGRESS WRAP -->
+                                    </div>
+                                    <!-- /PROGRESS STAT -->
+                                </div>
+                                <!-- /PROGRESS STAT WRAP -->
+                            </div>
+                            <!-- /TABLE COLUMN -->
                         </div>
-                        <!-- /TABLE COLUMN -->
+                        <!-- /TABLE ROW -->
+                        {% endfor %}
                     </div>
-                    <!-- /TABLE ROW -->
-                    {% endfor %}
+                    <!-- /TABLE BODY -->
                 </div>
-                <!-- /TABLE BODY -->
+                <!-- /TABLE -->
             </div>
-            <!-- /TABLE -->
+            <!-- WIDGET BOX CONTENT -->
         </div>
-        <!-- WIDGET BOX CONTENT -->
+        <!-- /WIDGET BOX -->
+
+        <!-- SECTION PAGER BAR WRAP -->
+        {% include "includes/pager-bar.html" with objects=accounts %}
+        <!-- /SECTION PAGER BAR WRAP -->
+
     </div>
-    <!-- /WIDGET BOX -->
 
-    <!-- SECTION PAGER BAR WRAP -->
-    {% include "includes/pager-bar.html" with objects=accounts %}
-    <!-- /SECTION PAGER BAR WRAP -->
-
-</div>
 {% endblock content %}
 
 {% block onMounted %}
