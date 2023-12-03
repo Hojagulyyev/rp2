@@ -15,10 +15,10 @@ def paginate(
     page_size: (int | None) = None,
 ) -> Any:
 
-    if page is None:
+    if not page:
         page = DEFAULT_PAGINATION_PAGE
 
-    if page_size is None:
+    if not page_size:
         page_size = DEFAULT_PAGINATION_PAGE_SIZE
 
     if int(page_size) > MAX_PAGE_SIZE:
