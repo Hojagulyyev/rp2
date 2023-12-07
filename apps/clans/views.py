@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.postgres.aggregates import ArrayAgg
 from django.shortcuts import render
 from django.db.models import Count
 
@@ -41,6 +42,7 @@ def overview(request):
     context = {
         "accounts": paginated_account_queryset,
         "diary_commits_count": diary_commits_count,
+        "top_accounts": account_queryset[:4],
     }
 
     return render(request, "clans/overview.html", context)

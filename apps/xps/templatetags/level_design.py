@@ -19,6 +19,12 @@ LEVEL_COLOR_DESIGN = {
     10: ("#ff0000", "#00aaff"),
 }
 
+STATISTIC_COLOR_DESIGN = {
+    1: "#4ff461",
+    2: "#08b8f1",
+    3: "#7750f8",
+}
+
 
 @register.filter(name="get_color_index_by_level")
 def get_color_index_by_level(level: int):
@@ -43,3 +49,12 @@ def get_level_color_by_level(level, gradient_index=0):
 @register.filter(name='range_list')
 def range_list(number):
     return range(1, number + 1)
+
+
+@register.filter(name="get_statistic_color_by_color_index")
+def get_statistic_color_by_color_index(color_index):
+
+    if color_index > len(STATISTIC_COLOR_DESIGN):
+        color_index = list(STATISTIC_COLOR_DESIGN.keys())[-1]
+
+    return STATISTIC_COLOR_DESIGN[color_index]
