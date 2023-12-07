@@ -360,8 +360,8 @@ app.querySelector('#accounts-10day-report-chart', function (el) {
                 label: "Diary's XP",
                 data: datasetData{{ forloop.counter }},
                 fill: false,
-                lineTension: 0,
-                borderWidth: 4,
+                lineTension: .35,
+                borderWidth: 1.5,
                 borderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
                 borderCapStyle: 'butt',
                 borderDash: [],
@@ -369,13 +369,13 @@ app.querySelector('#accounts-10day-report-chart', function (el) {
                 borderJoinStyle: 'bevel',
                 pointBorderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
                 pointBackgroundColor: "#1d2333",
-                pointBorderWidth: 4,
+                pointBorderWidth: 2,
                 pointHoverRadius: 5,
                 pointHoverBackgroundColor: "#1d2333",
                 pointHoverBorderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
                 pointHoverBorderWidth: 4,
-                pointRadius: 5,
-                pointHitRadius: 10
+                pointRadius: 2,
+                pointHitRadius: 40
             },
             {% endfor %}
         ]
