@@ -361,13 +361,14 @@ app.querySelector('#ve-monthly-report-chart', function (el) {
 app.querySelector('#rc-yearly-report-chart', function (el) {
   const datasetData1 = [119, 142, 110, 122, 163, 139, 143, 110, 141, 121, 139, 190],
         datasetData2 = [98, 65, 132, 78, 112, 82, 100, 80, 100, 58, 48, 139],
+        datasetData3 = [78, 25, 142, 38, 122, 52, 90, 80, 100, 58, 28, 138],
         canvas = el[0],
         ctx = canvas.getContext('2d'),
         chartData = {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
           datasets: [
             {
-              label: 'Reactions',
+              label: 'Commits',
               data: datasetData1,
               fill: false,
               lineTension: 0,
@@ -388,7 +389,7 @@ app.querySelector('#rc-yearly-report-chart', function (el) {
               pointHitRadius: 10
             },
             {
-              label: 'Comments',
+              label: 'Commits',
               data: datasetData2,
               fill: false,
               lineTension: 0,
@@ -404,6 +405,27 @@ app.querySelector('#rc-yearly-report-chart', function (el) {
               pointHoverRadius: 5,
               pointHoverBackgroundColor: "#1d2333",
               pointHoverBorderColor: "#08b8f1",
+              pointHoverBorderWidth: 4,
+              pointRadius: 5,
+              pointHitRadius: 10
+            },
+            {
+              label: 'Commits',
+              data: datasetData3,
+              fill: false,
+              lineTension: 0,
+              borderWidth: 4,
+              borderColor: "#6808f1",
+              borderCapStyle: 'bevel',
+              borderDash: [],
+              borderDashOffset: 0,
+              borderJoinStyle: 'bevel',
+              pointBorderColor: "#6808f1",
+              pointBackgroundColor: "#1d2333",
+              pointBorderWidth: 4,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "#1d2333",
+              pointHoverBorderColor: "#6808f1",
               pointHoverBorderWidth: 4,
               pointRadius: 5,
               pointHitRadius: 10

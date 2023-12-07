@@ -17,6 +17,12 @@ class Account(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_xp_daily_report(self):
+        return [
+            diary.get_earned_xp()
+            for diary in self.diaries.all()[:10]
+        ]
+
     def get_full_name(self):
         return f"{self.user.first_name} {self.user.last_name}"
 

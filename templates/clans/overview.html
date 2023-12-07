@@ -5,228 +5,297 @@
 
 {% block content %}
 
-    <div class="content-grid">
+<div class="content-grid">
 
-        <div class="account-hub-content">
-            <!-- SECTION HEADER -->
-            <div class="section-header">
-                <!-- SECTION HEADER INFO -->
-                <div class="section-header-info">
-                    <!-- SECTION PRETITLE -->
-                    <p class="section-pretitle">Clans</p>
-                    <!-- /SECTION PRETITLE -->
+    <div class="account-hub-content">
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <!-- SECTION HEADER INFO -->
+            <div class="section-header-info">
+                <!-- SECTION PRETITLE -->
+                <p class="section-pretitle">Clans</p>
+                <!-- /SECTION PRETITLE -->
 
-                    <!-- SECTION TITLE -->
-                    <h2 class="section-title">Overview</h2>
-                    <!-- /SECTION TITLE -->
-                </div>
-                <!-- /SECTION HEADER INFO -->
+                <!-- SECTION TITLE -->
+                <h2 class="section-title">Overview</h2>
+                <!-- /SECTION TITLE -->
             </div>
-            <!-- /SECTION HEADER -->
+            <!-- /SECTION HEADER INFO -->
         </div>
-
-        <!-- LEVEL PROGRESS BOX -->
-        <div class="level-progress-box mb-3">
-            <!-- LEVEL PROGRESS BADGE -->
-            <div class="level-progress-badge">
-                <!-- LEVEL PROGRESS BADGE TITLE -->
-                <p class="level-progress-badge-title">Level</p>
-                <!-- /LEVEL PROGRESS BADGE TITLE -->
-
-                <!-- LEVEL PROGRESS BADGE TEXT -->
-                <p class="level-progress-badge-text">{{ user.account.level }}</p>
-                <!-- /LEVEL PROGRESS BADGE TEXT -->
-            </div>
-            <!-- /LEVEL PROGRESS BADGE -->
-
-            <!-- PROGRESS STAT -->
-            <div class="progress-stat">
-                <!-- BAR PROGRESS WRAP -->
-                <div class="bar-progress-wrap big">
-                    <!-- BAR PROGRESS INFO -->
-                    <p class="bar-progress-info start negative progress-with-text">+<span
-                            class="bar-progress-text"></span><span class="light">to reach the next level</span></p>
-                    <!-- /BAR PROGRESS INFO -->
-
-                    <!-- PROGRESS STAT INFO -->
-                    <p class="progress-stat-info">{{ user.account.get_xp_total|intcomma }} total xp points received</p>
-                    <!-- /PROGRESS STAT INFO -->
-                </div>
-                <!-- /BAR PROGRESS WRAP -->
-
-                <!-- PROGRESS STAT BAR -->
-                <div id="exp-to-next-level" class="progress-stat-bar"></div>
-                <!-- /PROGRESS STAT BAR -->
-            </div>
-            <!-- /PROGRESS STAT -->
-        </div>
-        <!-- /LEVEL PROGRESS BOX -->
-
-        <div class="widget-box">
-            <!-- WIDGET BOX TITLE -->
-            <p class="widget-box-title">{{ user.account.clan }} Clan : Accounts</p>
-            <!-- /WIDGET BOX TITLE -->
-
-            <!-- WIDGET BOX CONTENT -->
-            <div class="widget-box-content no-margin-top">
-                <!-- TABLE -->
-                <div class="table table-top-friends join-rows">
-                    <!-- TABLE HEADER -->
-                    <div class="table-header">
-                        <!-- TABLE HEADER COLUMN -->
-                        <div class="table-header-column">
-                            <!-- TABLE HEADER TITLE -->
-                            <p class="table-header-title">Account</p>
-                            <!-- /TABLE HEADER TITLE -->
-                        </div>
-                        <!-- /TABLE HEADER COLUMN -->
-
-                        <!-- TABLE HEADER COLUMN -->
-                        <div class="table-header-column centered padded">
-                            <!-- TABLE HEADER TITLE -->
-                            <p class="table-header-title">Full Name</p>
-                            <!-- /TABLE HEADER TITLE -->
-                        </div>
-                        <!-- /TABLE HEADER COLUMN -->
-
-                        <!-- TABLE HEADER COLUMN -->
-                        <div class="table-header-column centered padded">
-                            <!-- TABLE HEADER TITLE -->
-                            <p class="table-header-title">Commits</p>
-                            <!-- /TABLE HEADER TITLE -->
-                        </div>
-                        <!-- /TABLE HEADER COLUMN -->
-
-                        <!-- TABLE HEADER COLUMN -->
-                        <div class="table-header-column centered padded">
-                            <!-- TABLE HEADER TITLE -->
-                            <p class="table-header-title">Total XP</p>
-                            <!-- /TABLE HEADER TITLE -->
-                        </div>
-                        <!-- /TABLE HEADER COLUMN -->
-
-                        <!-- TABLE HEADER COLUMN -->
-                        <div class="table-header-column centered padded">
-                            <!-- TABLE HEADER TITLE -->
-                            <p class="table-header-title">Diaries</p>
-                            <!-- /TABLE HEADER TITLE -->
-                        </div>
-                        <!-- /TABLE HEADER COLUMN -->
-
-                        <!-- TABLE HEADER COLUMN -->
-                        <div class="table-header-column padded-left">
-                            <!-- TABLE HEADER TITLE -->
-                            <p class="table-header-title">Commit Percentage</p>
-                            <!-- /TABLE HEADER TITLE -->
-                        </div>
-                        <!-- /TABLE HEADER COLUMN -->
-                    </div>
-                    <!-- /TABLE HEADER -->
-
-                    <!-- TABLE BODY -->
-                    <div class="table-body">
-                        {% for account in accounts %}
-                        <!-- TABLE ROW -->
-                        <div class="table-row tiny">
-                            <!-- TABLE COLUMN -->
-                            <div class="table-column">
-                                <!-- USER STATUS -->
-                                <div class="user-status">
-                                    <!-- USER STATUS AVATAR -->
-                                    <a class="user-status-avatar" href="#">
-                                        <!-- USER AVATAR -->
-                                        {% include "includes/account-avatar-small.html" with account=account %}
-                                        <!-- /USER AVATAR -->
-                                    </a>
-                                    <!-- /USER STATUS AVATAR -->
-
-                                    <!-- USER STATUS TITLE -->
-                                    <p class="user-status-title">
-                                        <a class="bold" href="#">{{ account.user }}</a>
-                                    </p>
-                                    <!-- /USER STATUS TITLE -->
-
-                                    <!-- USER STATUS TEXT -->
-                                    <p class="user-status-text small">{{ account.xp }} XP</p>
-                                    <!-- /USER STATUS TEXT -->
-                                </div>
-                                <!-- /USER STATUS -->
-                            </div>
-                            <!-- /TABLE COLUMN -->
-
-                            <!-- TABLE COLUMN -->
-                            <div class="table-column centered padded">
-                                <!-- TABLE TITLE -->
-                                <p class="table-title">{{ account.get_full_name }}</p>
-                                <!-- /TABLE TITLE -->
-                            </div>
-                            <!-- /TABLE COLUMN -->
-
-                            <!-- TABLE COLUMN -->
-                            <div class="table-column centered padded">
-                                <!-- TABLE TITLE -->
-                                <p class="table-title">{{ account.diary_commits_count }}</p>
-                                <!-- /TABLE TITLE -->
-                            </div>
-                            <!-- /TABLE COLUMN -->
-
-                            <!-- TABLE COLUMN -->
-                            <div class="table-column centered padded">
-                                <!-- TABLE TITLE -->
-                                <p class="table-title">{{ account.get_xp_total|intcomma }}</p>
-                                <!-- /TABLE TITLE -->
-                            </div>
-                            <!-- /TABLE COLUMN -->
-
-                            <!-- TABLE COLUMN -->
-                            <div class="table-column centered padded">
-                                <!-- TABLE TITLE -->
-                                <p class="table-title">{{ account.diaries_count }}</p>
-                                <!-- /TABLE TITLE -->
-                            </div>
-                            <!-- /TABLE COLUMN -->
-
-                            <!-- TABLE COLUMN -->
-                            <div class="table-column padded-left">
-                                <!-- PROGRESS STAT WRAP -->
-                                <div class="progress-stat-wrap">
-                                    <!-- PROGRESS STAT -->
-                                    <div class="progress-stat">
-                                        <!-- PROGRESS STAT BAR -->
-                                        <div id="account-{{ account.id }}-commits-percentage-progress" class="progress-stat-bar"></div>
-                                        <!-- /PROGRESS STAT BAR -->
-
-                                        <!-- BAR PROGRESS WRAP -->
-                                        <div class="bar-progress-wrap">
-                                            <!-- BAR PROGRESS INFO -->
-                                            <p class="bar-progress-info medium negative"><span
-                                                    class="bar-progress-text no-space"></span></p>
-                                            <!-- /BAR PROGRESS INFO -->
-                                        </div>
-                                        <!-- /BAR PROGRESS WRAP -->
-                                    </div>
-                                    <!-- /PROGRESS STAT -->
-                                </div>
-                                <!-- /PROGRESS STAT WRAP -->
-                            </div>
-                            <!-- /TABLE COLUMN -->
-                        </div>
-                        <!-- /TABLE ROW -->
-                        {% endfor %}
-                    </div>
-                    <!-- /TABLE BODY -->
-                </div>
-                <!-- /TABLE -->
-            </div>
-            <!-- WIDGET BOX CONTENT -->
-        </div>
-        <!-- /WIDGET BOX -->
-
-        <!-- SECTION PAGER BAR WRAP -->
-        {% include "includes/pager-bar.html" with objects=accounts %}
-        <!-- /SECTION PAGER BAR WRAP -->
-
+        <!-- /SECTION HEADER -->
     </div>
+
+    <!-- LEVEL PROGRESS BOX -->
+    <div class="level-progress-box mb-3">
+        <!-- LEVEL PROGRESS BADGE -->
+        <div class="level-progress-badge">
+            <!-- LEVEL PROGRESS BADGE TITLE -->
+            <p class="level-progress-badge-title">Level</p>
+            <!-- /LEVEL PROGRESS BADGE TITLE -->
+
+            <!-- LEVEL PROGRESS BADGE TEXT -->
+            <p class="level-progress-badge-text">{{ user.account.level }}</p>
+            <!-- /LEVEL PROGRESS BADGE TEXT -->
+        </div>
+        <!-- /LEVEL PROGRESS BADGE -->
+
+        <!-- PROGRESS STAT -->
+        <div class="progress-stat">
+            <!-- BAR PROGRESS WRAP -->
+            <div class="bar-progress-wrap big">
+                <!-- BAR PROGRESS INFO -->
+                <p class="bar-progress-info start negative progress-with-text">+<span
+                        class="bar-progress-text"></span><span class="light">to reach the next level</span></p>
+                <!-- /BAR PROGRESS INFO -->
+
+                <!-- PROGRESS STAT INFO -->
+                <p class="progress-stat-info">{{ user.account.get_xp_total|intcomma }} total xp points received</p>
+                <!-- /PROGRESS STAT INFO -->
+            </div>
+            <!-- /BAR PROGRESS WRAP -->
+
+            <!-- PROGRESS STAT BAR -->
+            <div id="exp-to-next-level" class="progress-stat-bar"></div>
+            <!-- /PROGRESS STAT BAR -->
+        </div>
+        <!-- /PROGRESS STAT -->
+    </div>
+    <!-- /LEVEL PROGRESS BOX -->
+
+    <div class="widget-box mb-3">
+        <!-- WIDGET BOX TITLE -->
+        <p class="widget-box-title">{{ user.account.clan }} Clan : Accounts</p>
+        <!-- /WIDGET BOX TITLE -->
+
+        <!-- WIDGET BOX CONTENT -->
+        <div class="widget-box-content no-margin-top">
+            <!-- TABLE -->
+            <div class="table table-top-friends join-rows">
+                <!-- TABLE HEADER -->
+                <div class="table-header">
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Account</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Full Name</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Commits</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Total XP</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column centered padded">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Diaries</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+
+                    <!-- TABLE HEADER COLUMN -->
+                    <div class="table-header-column padded-left">
+                        <!-- TABLE HEADER TITLE -->
+                        <p class="table-header-title">Commit Percentage</p>
+                        <!-- /TABLE HEADER TITLE -->
+                    </div>
+                    <!-- /TABLE HEADER COLUMN -->
+                </div>
+                <!-- /TABLE HEADER -->
+
+                <!-- TABLE BODY -->
+                <div class="table-body">
+                    {% for account in accounts %}
+                    <!-- TABLE ROW -->
+                    <div class="table-row tiny">
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column">
+                            <!-- USER STATUS -->
+                            <div class="user-status">
+                                <!-- USER STATUS AVATAR -->
+                                <a class="user-status-avatar" href="#">
+                                    <!-- USER AVATAR -->
+                                    {% include "includes/account-avatar-small.html" with account=account %}
+                                    <!-- /USER AVATAR -->
+                                </a>
+                                <!-- /USER STATUS AVATAR -->
+
+                                <!-- USER STATUS TITLE -->
+                                <p class="user-status-title">
+                                    <a class="bold" href="#">{{ account.user }}</a>
+                                </p>
+                                <!-- /USER STATUS TITLE -->
+
+                                <!-- USER STATUS TEXT -->
+                                <p class="user-status-text small">{{ account.xp }} XP</p>
+                                <!-- /USER STATUS TEXT -->
+                            </div>
+                            <!-- /USER STATUS -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TITLE -->
+                            <p class="table-title">{{ account.get_full_name }}</p>
+                            <!-- /TABLE TITLE -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TITLE -->
+                            <p class="table-title">{{ account.diary_commits_count }}</p>
+                            <!-- /TABLE TITLE -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TITLE -->
+                            <p class="table-title">{{ account.get_xp_total|intcomma }}</p>
+                            <!-- /TABLE TITLE -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column centered padded">
+                            <!-- TABLE TITLE -->
+                            <p class="table-title">{{ account.diaries_count }}</p>
+                            <!-- /TABLE TITLE -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+
+                        <!-- TABLE COLUMN -->
+                        <div class="table-column padded-left">
+                            <!-- PROGRESS STAT WRAP -->
+                            <div class="progress-stat-wrap">
+                                <!-- PROGRESS STAT -->
+                                <div class="progress-stat">
+                                    <!-- PROGRESS STAT BAR -->
+                                    <div id="account-{{ account.id }}-commits-percentage-progress"
+                                         class="progress-stat-bar"></div>
+                                    <!-- /PROGRESS STAT BAR -->
+
+                                    <!-- BAR PROGRESS WRAP -->
+                                    <div class="bar-progress-wrap">
+                                        <!-- BAR PROGRESS INFO -->
+                                        <p class="bar-progress-info medium negative"><span
+                                                class="bar-progress-text no-space"></span></p>
+                                        <!-- /BAR PROGRESS INFO -->
+                                    </div>
+                                    <!-- /BAR PROGRESS WRAP -->
+                                </div>
+                                <!-- /PROGRESS STAT -->
+                            </div>
+                            <!-- /PROGRESS STAT WRAP -->
+                        </div>
+                        <!-- /TABLE COLUMN -->
+                    </div>
+                    <!-- /TABLE ROW -->
+                    {% endfor %}
+                </div>
+                <!-- /TABLE BODY -->
+            </div>
+            <!-- /TABLE -->
+        </div>
+        <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /WIDGET BOX -->
+
+    <!-- SECTION PAGER BAR WRAP -->
+    {% include "includes/pager-bar.html" with objects=accounts %}
+    <!-- /SECTION PAGER BAR WRAP -->
+
+    <!-- WIDGET BOX -->
+    <div class="widget-box">
+        <!-- WIDGET BOX ACTIONS -->
+        <div class="widget-box-actions">
+            <!-- WIDGET BOX ACTION -->
+            <div class="widget-box-action">
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">Reports for the last 10 days by Diary's XP</p>
+                <!-- /WIDGET BOX TITLE -->
+            </div>
+            <!-- /WIDGET BOX ACTION -->
+
+            <!-- WIDGET BOX ACTION -->
+            <div class="widget-box-action">
+                <!-- REFERENCE ITEM LIST -->
+                <div class="reference-item-list">
+
+                    {% for account in top_accounts %}
+                    <!-- REFERENCE ITEM -->
+                    <div class="reference-item">
+                        <!-- REFERENCE BULLET -->
+                        <div class="reference-bullet"
+                             style="background-color: {{ forloop.counter|get_statistic_color_by_color_index }}"></div>
+                        <!-- REFERENCE BULLET -->
+
+                        <!-- REFERENCE ITEM TEXT -->
+                        <p class="reference-item-text">{{ account }}</p>
+                        <!-- /REFERENCE ITEM TEXT -->
+                    </div>
+                    <!-- /REFERENCE ITEM -->
+                    {% endfor %}
+
+                </div>
+                <!-- /REFERENCE ITEM LIST -->
+
+<!--                &lt;!&ndash; FORM SELECT &ndash;&gt;-->
+<!--                <div class="form-select v2">-->
+<!--                    <select id="rc-yearly-report-date" name="rc_yearly_report_date">-->
+<!--                        <option value="0">Jan - Dec 2018</option>-->
+<!--                        <option value="1">Jan - Dec 2019</option>-->
+<!--                    </select>-->
+<!--                    &lt;!&ndash; FORM SELECT ICON &ndash;&gt;-->
+<!--                    <svg class="form-select-icon icon-small-arrow">-->
+<!--                        <use xlink:href="#svg-small-arrow"></use>-->
+<!--                    </svg>-->
+<!--                    &lt;!&ndash; /FORM SELECT ICON &ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /FORM SELECT &ndash;&gt;-->
+            </div>
+            <!-- /WIDGET BOX ACTION -->
+        </div>
+        <!-- /WIDGET BOX ACTIONS -->
+
+        <!-- WIDGET BOX CONTENT -->
+        <div class="widget-box-content">
+            <!-- CHART WRAP -->
+            <div class="chart-wrap">
+                <!-- CHART -->
+                <div class="chart">
+                    <canvas id="accounts-10day-report-chart"></canvas>
+                </div>
+                <!-- /CHART -->
+            </div>
+            <!-- /CHART WRAP -->
+        </div>
+        <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /WIDGET BOX -->
+</div>
 
 {% endblock content %}
 
@@ -237,8 +306,8 @@ app.plugins.createProgressBar({
     height: 6,
     gradient: {
         colors: [
-            "{{ user.account.level|get_level_color_by_level:0 }}",
-            "{{ user.account.level|get_level_color_by_level:1 }}"
+            "{{ user.account.level|get_statistic_color_by_color_index }}",
+            "{{ user.account.level|get_statistic_color_by_color_index }}"
         ]
     },
     scale: {
@@ -253,13 +322,14 @@ app.plugins.createProgressBar({
 });
 
 {% for account in accounts %}
+
 app.plugins.createProgressBar({
     container: '#account-{{ account.id }}-commits-percentage-progress',
     height: 4,
     gradient: {
         colors: [
-            "{{ account.level|get_level_color_by_level:0 }}",
-            "{{ account.level|get_level_color_by_level:1 }}"
+            "{{ account.level|get_statistic_color_by_color_index }}",
+            "{{ account.level|get_statistic_color_by_color_index }}"
         ]
     },
     scale: {
@@ -271,6 +341,103 @@ app.plugins.createProgressBar({
     linkUnits: '%',
     animateOnScroll: true
 });
+
 {% endfor %}
+
+app.querySelector('#accounts-10day-report-chart', function (el) {
+    const
+        {% for account in top_accounts %}
+        datasetData{{ forloop.counter }} = {{ account.get_xp_daily_report }},
+        {% endfor %}
+
+    canvas = el[0],
+    ctx = canvas.getContext('2d'),
+    chartData = {
+        labels: ['1', '2', '3', '4', '5', '6', '7', '8', 'yesterday', 'today', 'tomorrow'],
+        datasets: [
+            {% for account in top_accounts %}
+            {
+                label: "Diary's XP",
+                data: datasetData{{ forloop.counter }},
+                fill: false,
+                lineTension: 0,
+                borderWidth: 4,
+                borderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0,
+                borderJoinStyle: 'bevel',
+                pointBorderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
+                pointBackgroundColor: "#1d2333",
+                pointBorderWidth: 4,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "#1d2333",
+                pointHoverBorderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
+                pointHoverBorderWidth: 4,
+                pointRadius: 5,
+                pointHitRadius: 10
+            },
+            {% endfor %}
+        ]
+    },
+    chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            display: false
+        },
+        tooltips: {
+            bodyFontFamily: "'Titillium Web', sans-serif",
+            displayColors: false,
+            callbacks: {
+                title: function() {}
+            }
+        },
+        scales: {
+            xAxes: [
+                {
+                    gridLines: {
+                        color: "rgba(47, 55, 73, 1)",
+                        zeroLineColor: "rgba(47, 55, 73, 1)",
+                        drawBorder: false,
+                        drawTicks: false
+                    },
+                    ticks: {
+                        padding: 14,
+                        fontFamily: "'Rajdhani', sans-serif",
+                        fontColor: '#9aa4bf',
+                        fontSize: 12,
+                        fontStyle: 500
+                    }
+                }
+            ],
+            yAxes: [
+                {
+                    gridLines: {
+                        color: "rgba(47, 55, 73, 1)",
+                        zeroLineColor: "rgba(47, 55, 73, 1)",
+                        drawBorder: false
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontFamily: "'Rajdhani', sans-serif",
+                        fontColor: '#9aa4bf',
+                        fontSize: 12,
+                        fontStyle: 500,
+                        min: 0,
+                        max: 150,
+                        stepSize: 10
+                    }
+                }
+            ]
+        }
+    };
+
+    app.plugins.createChart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: chartOptions
+    });
+});
 
 {% endblock onMounted %}
