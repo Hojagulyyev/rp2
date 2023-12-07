@@ -1,3 +1,5 @@
+import datetime
+
 from django import template
 
 from rp2.business_logic import LEVEL_STEP_THAT_CHANGE_COLOR_DESIGN
@@ -46,11 +48,6 @@ def get_level_color_by_level(level, gradient_index=0):
     return get_level_color_by_color_index(color_index, gradient_index)
 
 
-@register.filter(name='range_list')
-def range_list(number):
-    return range(1, number + 1)
-
-
 @register.filter(name="get_statistic_color_by_color_index")
 def get_statistic_color_by_color_index(color_index):
 
@@ -58,3 +55,14 @@ def get_statistic_color_by_color_index(color_index):
         color_index = list(STATISTIC_COLOR_DESIGN.keys())[-1]
 
     return STATISTIC_COLOR_DESIGN[color_index]
+
+
+@register.filter(name='range_list')
+def range_list(number):
+    return range(1, number + 1)
+
+
+@register.filter()
+def remove_days(days):
+    new_date = datetime.date.today() - datetime.timedelta(days=days)
+    return new_date
