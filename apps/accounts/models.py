@@ -20,8 +20,8 @@ class Account(models.Model):
     def get_xp_daily_report(self):
         return [
             diary.get_earned_xp()
-            for diary in self.diaries.order_by("created_date")[:10]
-        ]
+            for diary in self.diaries.order_by("-created_date")[:10]
+        ][::-1]
 
     def get_full_name(self):
         return f"{self.user.first_name} {self.user.last_name}"
