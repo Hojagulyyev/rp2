@@ -306,8 +306,8 @@ app.plugins.createProgressBar({
     height: 6,
     gradient: {
         colors: [
-            "{{ user.account.level|get_statistic_color_by_color_index }}",
-            "{{ user.account.level|get_statistic_color_by_color_index }}"
+            "{{ user.account.level|get_level_color_by_level }}",
+            "{{ user.account.level|get_level_color_by_level }}"
         ]
     },
     scale: {
@@ -328,8 +328,8 @@ app.plugins.createProgressBar({
     height: 4,
     gradient: {
         colors: [
-            "{{ account.level|get_statistic_color_by_color_index }}",
-            "{{ account.level|get_statistic_color_by_color_index }}"
+            "{{ account.level|get_level_color_by_level }}",
+            "{{ account.level|get_level_color_by_level }}"
         ]
     },
     scale: {
