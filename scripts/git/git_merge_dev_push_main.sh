@@ -22,7 +22,6 @@ fi
 # ===== PROCESS =====
 
 git checkout main
-git pull origin main
 git merge dev
 git push origin main
 git checkout dev
