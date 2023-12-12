@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -29,6 +31,21 @@ def create_commit(request, diary_id: int):
         messages.error(request, f"message length is less than {COMMIT_MIN_LENGTH} character")
         return redirect(
             f"{reverse('diaries:detail_view', kwargs={'id': diary.id})}"
+            f"?message={message}"
+        )
+
+    if (
+        DiaryCommit.objects
+        .filter(
+            diary=diary,
+            message=message,
+            created_datetime__date=datetime.date.today()
+        )
+        .exists()
+    ):
+        messages.error(request, message="this message already exists for today")
+        return redirect(
+            f"{reverse(viewname='diaries:detail_view', kwargs={'id': diary.id})}"
             f"?message={message}"
         )
 
