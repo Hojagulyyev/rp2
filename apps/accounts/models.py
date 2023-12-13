@@ -17,10 +17,16 @@ class Account(models.Model):
     def __str__(self):
         return self.user.username
 
-    def get_xp_daily_report(self):
+    def get_xp_10daily_report(self):
         return [
             diary.get_earned_xp()
-            for diary in self.diaries.order_by("-created_date")[:30]
+            for diary in self.diaries.order_by("-created_date")[:10]
+        ][::-1]
+
+    def get_xp_31daily_report(self):
+        return [
+            diary.get_earned_xp()
+            for diary in self.diaries.order_by("-created_date")[:31]
         ][::-1]
 
     def get_full_name(self):
