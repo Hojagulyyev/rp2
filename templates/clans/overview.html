@@ -234,7 +234,7 @@
             <!-- WIDGET BOX ACTION -->
             <div class="widget-box-action">
                 <!-- WIDGET BOX TITLE -->
-                <p class="widget-box-title">Reports for the last 10 days by Diary's XP</p>
+                <p class="widget-box-title">Reports for the last 30 days by Diary's XP</p>
                 <!-- /WIDGET BOX TITLE -->
             </div>
             <!-- /WIDGET BOX ACTION -->
@@ -286,7 +286,7 @@
             <div class="chart-wrap">
                 <!-- CHART -->
                 <div class="chart">
-                    <canvas id="accounts-10day-report-chart"></canvas>
+                    <canvas id="accounts-day-report-chart"></canvas>
                 </div>
                 <!-- /CHART -->
             </div>
@@ -344,7 +344,7 @@ app.plugins.createProgressBar({
 
 {% endfor %}
 
-app.querySelector('#accounts-10day-report-chart', function (el) {
+app.querySelector('#accounts-day-report-chart', function (el) {
     const
         {% for account in top_accounts %}
         datasetData{{ forloop.counter }} = {{ account.get_xp_daily_report }},
@@ -353,7 +353,40 @@ app.querySelector('#accounts-10day-report-chart', function (el) {
     canvas = el[0],
     ctx = canvas.getContext('2d'),
     chartData = {
-        labels: ['{{ 9|remove_days }}', '{{ 8|remove_days }}', '{{ 7|remove_days }}', '{{ 6|remove_days }}', '{{ 5|remove_days }}', '{{ 4|remove_days }}', '{{ 3|remove_days }}', '{{ 2|remove_days }}', 'yesterday', 'today', 'tomorrow'],
+        labels: [
+            '{{ 30|remove_days }}',
+            '{{ 29|remove_days }}',
+            '{{ 28|remove_days }}',
+            '{{ 27|remove_days }}',
+            '{{ 26|remove_days }}',
+            '{{ 25|remove_days }}',
+            '{{ 24|remove_days }}',
+            '{{ 23|remove_days }}',
+            '{{ 22|remove_days }}',
+            '{{ 21|remove_days }}',
+            '{{ 20|remove_days }}',
+            '{{ 19|remove_days }}',
+            '{{ 18|remove_days }}',
+            '{{ 17|remove_days }}',
+            '{{ 16|remove_days }}',
+            '{{ 15|remove_days }}',
+            '{{ 14|remove_days }}',
+            '{{ 13|remove_days }}',
+            '{{ 12|remove_days }}',
+            '{{ 11|remove_days }}',
+            '{{ 10|remove_days }}',
+            '{{ 9|remove_days }}',
+            '{{ 8|remove_days }}',
+            '{{ 7|remove_days }}',
+            '{{ 6|remove_days }}',
+            '{{ 5|remove_days }}',
+            '{{ 4|remove_days }}',
+            '{{ 3|remove_days }}',
+            '{{ 2|remove_days }}',
+            'yesterday',
+            'today',
+            'tomorrow'
+        ],
         datasets: [
             {% for account in top_accounts %}
             {
