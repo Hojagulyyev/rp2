@@ -228,6 +228,61 @@
     <!-- /SECTION PAGER BAR WRAP -->
 
     <!-- WIDGET BOX -->
+    <div class="widget-box mb-3">
+        <!-- WIDGET BOX ACTIONS -->
+        <div class="widget-box-actions">
+            <!-- WIDGET BOX ACTION -->
+            <div class="widget-box-action">
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">Reports for the last 10 days by Diary's XP</p>
+                <!-- /WIDGET BOX TITLE -->
+            </div>
+            <!-- /WIDGET BOX ACTION -->
+
+            <!-- WIDGET BOX ACTION -->
+            <div class="widget-box-action">
+                <!-- REFERENCE ITEM LIST -->
+                <div class="reference-item-list">
+
+                    {% for account in top_accounts %}
+                    <!-- REFERENCE ITEM -->
+                    <div class="reference-item">
+                        <!-- REFERENCE BULLET -->
+                        <div class="reference-bullet"
+                             style="background-color: {{ forloop.counter|get_statistic_color_by_color_index }}"></div>
+                        <!-- REFERENCE BULLET -->
+
+                        <!-- REFERENCE ITEM TEXT -->
+                        <p class="reference-item-text">{{ account }}</p>
+                        <!-- /REFERENCE ITEM TEXT -->
+                    </div>
+                    <!-- /REFERENCE ITEM -->
+                    {% endfor %}
+
+                </div>
+                <!-- /REFERENCE ITEM LIST -->
+            </div>
+            <!-- /WIDGET BOX ACTION -->
+        </div>
+        <!-- /WIDGET BOX ACTIONS -->
+
+        <!-- WIDGET BOX CONTENT -->
+        <div class="widget-box-content">
+            <!-- CHART WRAP -->
+            <div class="chart-wrap">
+                <!-- CHART -->
+                <div class="chart">
+                    <canvas id="accounts-10day-report-chart"></canvas>
+                </div>
+                <!-- /CHART -->
+            </div>
+            <!-- /CHART WRAP -->
+        </div>
+        <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /WIDGET BOX -->
+
+    <!-- WIDGET BOX -->
     <div class="widget-box">
         <!-- WIDGET BOX ACTIONS -->
         <div class="widget-box-actions">
@@ -261,20 +316,6 @@
 
                 </div>
                 <!-- /REFERENCE ITEM LIST -->
-
-<!--                &lt;!&ndash; FORM SELECT &ndash;&gt;-->
-<!--                <div class="form-select v2">-->
-<!--                    <select id="rc-yearly-report-date" name="rc_yearly_report_date">-->
-<!--                        <option value="0">Jan - Dec 2018</option>-->
-<!--                        <option value="1">Jan - Dec 2019</option>-->
-<!--                    </select>-->
-<!--                    &lt;!&ndash; FORM SELECT ICON &ndash;&gt;-->
-<!--                    <svg class="form-select-icon icon-small-arrow">-->
-<!--                        <use xlink:href="#svg-small-arrow"></use>-->
-<!--                    </svg>-->
-<!--                    &lt;!&ndash; /FORM SELECT ICON &ndash;&gt;-->
-<!--                </div>-->
-<!--                &lt;!&ndash; /FORM SELECT &ndash;&gt;-->
             </div>
             <!-- /WIDGET BOX ACTION -->
         </div>
@@ -286,7 +327,7 @@
             <div class="chart-wrap">
                 <!-- CHART -->
                 <div class="chart">
-                    <canvas id="accounts-day-report-chart"></canvas>
+                    <canvas id="accounts-30day-report-chart"></canvas>
                 </div>
                 <!-- /CHART -->
             </div>
@@ -344,7 +385,116 @@ app.plugins.createProgressBar({
 
 {% endfor %}
 
-app.querySelector('#accounts-day-report-chart', function (el) {
+app.querySelector('#accounts-10day-report-chart', function (el) {
+    const
+        {% for account in top_accounts %}
+        datasetData{{ forloop.counter }} = {{ account.get_xp_daily_report }},
+        {% endfor %}
+
+    canvas = el[0],
+    ctx = canvas.getContext('2d'),
+    chartData = {
+        labels: [
+            '{{ 9|remove_days }}',
+            '{{ 8|remove_days }}',
+            '{{ 7|remove_days }}',
+            '{{ 6|remove_days }}',
+            '{{ 5|remove_days }}',
+            '{{ 4|remove_days }}',
+            '{{ 3|remove_days }}',
+            '{{ 2|remove_days }}',
+            'yesterday',
+            'today',
+            'tomorrow'
+        ],
+        datasets: [
+            {% for account in top_accounts %}
+            {
+                label: "Diary's XP",
+                data: datasetData{{ forloop.counter }},
+                fill: false,
+                lineTension: .35,
+                borderWidth: 1.5,
+                borderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0,
+                borderJoinStyle: 'bevel',
+                pointBorderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
+                pointBackgroundColor: "#1d2333",
+                pointBorderWidth: 2,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "#1d2333",
+                pointHoverBorderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
+                pointHoverBorderWidth: 4,
+                pointRadius: 2,
+                pointHitRadius: 40
+            },
+            {% endfor %}
+        ]
+    },
+    chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            display: false
+        },
+        tooltips: {
+            bodyFontFamily: "'Titillium Web', sans-serif",
+            displayColors: false,
+            callbacks: {
+                title: function() {}
+            }
+        },
+        scales: {
+            xAxes: [
+                {
+                    gridLines: {
+                        color: "rgba(47, 55, 73, 1)",
+                        zeroLineColor: "rgba(47, 55, 73, 1)",
+                        drawBorder: false,
+                        drawTicks: false
+                    },
+                    ticks: {
+                        padding: 14,
+                        fontFamily: "'Rajdhani', sans-serif",
+                        fontColor: '#9aa4bf',
+                        fontSize: 12,
+                        fontStyle: 500
+                    }
+                }
+            ],
+            yAxes: [
+                {
+                    gridLines: {
+                        color: "rgba(47, 55, 73, 1)",
+                        zeroLineColor: "rgba(47, 55, 73, 1)",
+                        drawBorder: false
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontFamily: "'Rajdhani', sans-serif",
+                        fontColor: '#9aa4bf',
+                        fontSize: 12,
+                        fontStyle: 500,
+                        min: 0,
+                        max: 100,
+                        stepSize: 10
+                    }
+                }
+            ]
+        }
+    };
+
+    app.plugins.createChart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: chartOptions
+    });
+});
+
+
+app.querySelector('#accounts-30day-report-chart', function (el) {
     const
         {% for account in top_accounts %}
         datasetData{{ forloop.counter }} = {{ account.get_xp_daily_report }},
