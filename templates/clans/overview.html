@@ -289,7 +289,7 @@
             <!-- WIDGET BOX ACTION -->
             <div class="widget-box-action">
                 <!-- WIDGET BOX TITLE -->
-                <p class="widget-box-title">Reports for the last 30 days by Diary's XP</p>
+                <p class="widget-box-title">Reports for the last 31 days by Diary's XP</p>
                 <!-- /WIDGET BOX TITLE -->
             </div>
             <!-- /WIDGET BOX ACTION -->
@@ -327,7 +327,7 @@
             <div class="chart-wrap">
                 <!-- CHART -->
                 <div class="chart">
-                    <canvas id="accounts-30day-report-chart"></canvas>
+                    <canvas id="accounts-31day-report-chart"></canvas>
                 </div>
                 <!-- /CHART -->
             </div>
@@ -388,7 +388,7 @@ app.plugins.createProgressBar({
 app.querySelector('#accounts-10day-report-chart', function (el) {
     const
         {% for account in top_accounts %}
-        datasetData{{ forloop.counter }} = {{ account.get_xp_daily_report }},
+        datasetData{{ forloop.counter }} = {{ account.get_xp_10daily_report }},
         {% endfor %}
 
     canvas = el[0],
@@ -494,10 +494,10 @@ app.querySelector('#accounts-10day-report-chart', function (el) {
 });
 
 
-app.querySelector('#accounts-30day-report-chart', function (el) {
+app.querySelector('#accounts-31day-report-chart', function (el) {
     const
         {% for account in top_accounts %}
-        datasetData{{ forloop.counter }} = {{ account.get_xp_daily_report }},
+        datasetData{{ forloop.counter }} = {{ account.get_xp_31daily_report }},
         {% endfor %}
 
     canvas = el[0],
