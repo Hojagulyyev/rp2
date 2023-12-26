@@ -4,7 +4,7 @@
 <!-- USER AVATAR -->
 <!--  add 'online' class below if user online  -->
 <div class="user-avatar small no-outline
-    {% if account == user.account and diary.comments_last_read_by and user.account != diary.comments_last_read_by  %}
+    {% if diary.comments_last_read_by and user.account != diary.comments_last_read_by  %}
         offline
     {% endif %}
 ">
