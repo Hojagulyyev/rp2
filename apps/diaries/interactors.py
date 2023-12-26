@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from rp2.business_logic import COMMIT_MIN_LENGTH
 
-from .models import Diary, DiaryCommit
+from .models import Diary, DiaryCommit, DiaryComment
 from .signals import diary_commit_created
 
 
@@ -57,5 +57,44 @@ def create_commit(request, diary_id: int):
     diary_commit.save()
 
     diary_commit_created.send(sender=DiaryCommit, instance=diary_commit)
+
+    return redirect("diaries:detail_view", diary.id)
+
+
+@login_required
+def create_comment(request, diary_id: int):
+
+    # ===== DTO
+
+    body = request.POST.get("body", "").strip()
+    diary = Diary.objects.get(id=diary_id)
+
+    # ===== VALIDATION
+
+    if (
+        DiaryComment.objects
+        .filter(
+            diary=diary,
+            body=body,
+            created_datetime__date=datetime.date.today()
+        )
+        .exists()
+    ):
+        messages.error(request, message="this message already exists for today")
+        return redirect(
+            f"{reverse(viewname='diaries:detail_view', kwargs={'id': diary.id})}"
+            f"?body={body}"
+        )
+
+    # ===== PROCESS
+
+    diary_comment = DiaryComment()
+    diary_comment.diary = diary
+    diary_comment.author = request.user.account
+    diary_comment.body = body
+    diary_comment.save()
+
+    diary.comments_last_read_by = request.user.account
+    diary.save(update_fields=["comments_last_read_by"])
 
     return redirect("diaries:detail_view", diary.id)

@@ -9,6 +9,7 @@ from apps.accounts.models import Account
 class Diary(models.Model):
 
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="diaries")
+    comments_last_read_by = models.ForeignKey(Account, on_delete=models.CASCADE, blank=True, null=True)
     created_date = models.DateField(default=timezone.now)
 
     class Meta:
@@ -37,7 +38,7 @@ class DiaryCommit(models.Model):
 
 class DiaryComment(models.Model):
 
-    diary = models.ForeignKey(Diary, on_delete=models.CASCADE)
+    diary = models.ForeignKey(Diary, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(Account, on_delete=models.CASCADE)
     body = models.TextField()
     created_datetime = models.DateTimeField(default=timezone.now)
