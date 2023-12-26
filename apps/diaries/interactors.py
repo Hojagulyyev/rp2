@@ -80,7 +80,7 @@ def create_comment(request, diary_id: int):
         )
         .exists()
     ):
-        messages.error(request, message="this message already exists for today")
+        messages.error(request, message="this comment already exists for today")
         return redirect(
             f"{reverse(viewname='diaries:detail_view', kwargs={'id': diary.id})}"
             f"?body={body}"
@@ -97,4 +97,7 @@ def create_comment(request, diary_id: int):
     diary.comments_last_read_by = request.user.account
     diary.save(update_fields=["comments_last_read_by"])
 
-    return redirect("diaries:detail_view", diary.id)
+    return redirect(
+        f"{reverse(viewname='diaries:detail_view', kwargs={'id': diary.id})}"
+        f"?on_comments_tab=1"
+    )
