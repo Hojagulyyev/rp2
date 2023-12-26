@@ -23,7 +23,7 @@
         <!-- /SECTION HEADER -->
 
         {% for diary in diaries %}
-            {% include "includes/diary-widget.html" with diary=diary %}
+            {% include "includes/diary-widget.html" with diary=diary is_notified=True %}
         {% empty %}
             <h3 class="text-center">
                 <i>Every day the server will create new diaries.</i>

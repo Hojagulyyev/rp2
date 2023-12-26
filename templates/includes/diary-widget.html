@@ -40,7 +40,7 @@
                 <!-- USER STATUS AVATAR -->
                 <a class="user-status-avatar" href="#">
                     <!-- USER AVATAR -->
-                    {% include "includes/account-avatar-small.html" with account=diary.account %}
+                    {% include "includes/account-avatar-small.html" with account=diary.account diary=diary %}
                 </a>
                 <!-- /USER STATUS AVATAR -->
 
@@ -102,7 +102,7 @@
                     <!-- META LINE -->
                     <div class="meta-line">
                         <!-- META LINE TEXT -->
-                        <p class="meta-line-text">0 Comments</p>
+                        <p class="meta-line-text">{{ diary.comments.count }} Comments</p>
                         <!-- /META LINE TEXT -->
                     </div>
                     <!-- /META LINE -->
