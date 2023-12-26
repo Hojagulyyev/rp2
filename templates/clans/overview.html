@@ -544,7 +544,7 @@ app.querySelector('#accounts-31day-report-chart', function (el) {
                 data: datasetData{{ forloop.counter }},
                 fill: false,
                 lineTension: .35,
-                borderWidth: 1.5,
+                borderWidth: 1,
                 borderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
                 borderCapStyle: 'butt',
                 borderDash: [],
@@ -552,13 +552,13 @@ app.querySelector('#accounts-31day-report-chart', function (el) {
                 borderJoinStyle: 'bevel',
                 pointBorderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
                 pointBackgroundColor: "#1d2333",
-                pointBorderWidth: 2,
-                pointHoverRadius: 5,
+                pointBorderWidth: 1,
+                pointHoverRadius: 1,
                 pointHoverBackgroundColor: "#1d2333",
                 pointHoverBorderColor: "{{ forloop.counter|get_statistic_color_by_color_index }}",
-                pointHoverBorderWidth: 4,
-                pointRadius: 2,
-                pointHitRadius: 40
+                pointHoverBorderWidth: 1,
+                pointRadius: 1,
+                pointHitRadius: 1
             },
             {% endfor %}
         ]

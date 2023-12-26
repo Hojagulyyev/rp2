@@ -31,7 +31,8 @@
     <!-- /WIDGET BOX SETTINGS -->
 
     <!-- WIDGET BOX STATUS -->
-    <div class="widget-box-status">
+    <div class="widget-box-status" style="
+    {% if not diary.commits.count %}background-color: #ff000030; border-radius: 10px{% endif %}">
         <!-- WIDGET BOX STATUS CONTENT -->
         <div class="widget-box-status-content">
             <!-- USER STATUS -->
