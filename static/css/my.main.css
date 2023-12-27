@@ -59,3 +59,36 @@ body {
  .confetti--animation-fast {
 	 animation: confetti-fast 1.25s linear 1 forwards;
 }
+
+
+.rainbow-animation:before, .rainbow-animation:after {
+	content: '';
+	position: absolute;
+	left: -2px;
+	top: -2px;
+	background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094,
+		#0000ff, #00ff00,#ffff00, #ff0000);
+	background-size: 400%;
+	width: calc(100% + 0px);
+	height: calc(100% + 0px);
+	z-index: 1;
+	opacity: 0.02;
+	border-radius: 11px;
+	animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 400% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+.rainbow-animation:after {
+	filter: blur(50px);
+}

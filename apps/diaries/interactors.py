@@ -71,6 +71,13 @@ def create_comment(request, diary_id: int):
 
     # ===== VALIDATION
 
+    if not body:
+        messages.error(request, message="comment body is required")
+        return redirect(
+            f"{reverse(viewname='diaries:detail_view', kwargs={'id': diary.id})}"
+            f"?body={body}&on_comments_tab=1"
+        )
+
     if (
         DiaryComment.objects
         .filter(
@@ -83,7 +90,7 @@ def create_comment(request, diary_id: int):
         messages.error(request, message="this comment already exists for today")
         return redirect(
             f"{reverse(viewname='diaries:detail_view', kwargs={'id': diary.id})}"
-            f"?body={body}"
+            f"?body={body}&on_comments_tab=1"
         )
 
     # ===== PROCESS

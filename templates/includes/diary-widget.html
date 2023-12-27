@@ -60,17 +60,41 @@
 
             <!-- QUOTE BOX -->
             {% if diary.commits.last %}
-            <blockquote class="quote-box">
-                <!-- QUOTE BOX ICON -->
-                <svg class="quote-box-icon icon-quote">
-                    <use xlink:href="#svg-quote"></use>
-                </svg>
-                <!-- /QUOTE BOX ICON -->
+            <a href="{% url 'diaries:detail_view' diary.id %}">
+                <blockquote class="quote-box">
+                    <!-- QUOTE BOX ICON -->
+                    <svg class="quote-box-icon icon-quote">
+                        <use xlink:href="#svg-quote"></use>
+                    </svg>
+                    <!-- /QUOTE BOX ICON -->
 
-                <!-- QUOTE BOX TEXT -->
-                <p class="quote-box-text">{{ diary.commits.last.message }}</p>
-                <!-- /QUOTE BOX TEXT -->
-            </blockquote>
+                    <!-- QUOTE BOX TEXT -->
+                    <p class="quote-box-text">{{ diary.commits.last.message }}</p>
+                    <!-- /QUOTE BOX TEXT -->
+                </blockquote>
+            </a>
+            {% endif %}
+            <!-- /QUOTE BOX -->
+
+            <!-- QUOTE BOX -->
+            {% if diary.comments.last %}
+            <a href="{% url 'diaries:detail_view' diary.id %}?on_comments_tab=1">
+                <blockquote class="quote-box
+                {% if diary.comments_last_read_by and user.account != diary.comments_last_read_by  %}
+                    rainbow-animation
+                {% endif %}
+                " style="background-color: #00e04308;">
+                    <!-- QUOTE BOX ICON -->
+                    <svg class="quote-box-icon icon-quote">
+                        <use xlink:href="#svg-quote"></use>
+                    </svg>
+                    <!-- /QUOTE BOX ICON -->
+
+                    <!-- QUOTE BOX TEXT -->
+                    <p class="quote-box-text">{{ diary.comments.last.author }} : : {{ diary.comments.last.body }}</p>
+                    <!-- /QUOTE BOX TEXT -->
+                </blockquote>
+            </a>
             {% endif %}
             <!-- /QUOTE BOX -->
 
@@ -94,7 +118,8 @@
                     <!-- META LINE -->
                     <div class="meta-line">
                         <!-- META LINE LINK -->
-                        <a href="{% url 'diaries:detail_view' diary.id %}" class="meta-line-link">{{ diary.commits.count }} Commits</a>
+                        <a href="{% url 'diaries:detail_view' diary.id %}" class="meta-line-link">
+                            {{ diary.commits.count }} Commits</a>
                         <!-- /META LINE LINK -->
                     </div>
                     <!-- /META LINE -->
@@ -102,7 +127,8 @@
                     <!-- META LINE -->
                     <div class="meta-line">
                         <!-- META LINE TEXT -->
-                        <p class="meta-line-text">{{ diary.comments.count }} Comments</p>
+                        <a href="{% url 'diaries:detail_view' diary.id %}?on_comments_tab=1" class="meta-line-text">
+                            {{ diary.comments.count }} Comments</a>
                         <!-- /META LINE TEXT -->
                     </div>
                     <!-- /META LINE -->
