@@ -74,6 +74,26 @@
             {% endif %}
             <!-- /QUOTE BOX -->
 
+            <!-- QUOTE BOX -->
+            {% if diary.comments.last %}
+            <blockquote class="quote-box
+            {% if diary.comments_last_read_by and user.account != diary.comments_last_read_by  %}
+                rainbow-animation
+            {% endif %}
+            " style="background-color: #00e04308;">
+                <!-- QUOTE BOX ICON -->
+                <svg class="quote-box-icon icon-quote">
+                    <use xlink:href="#svg-quote"></use>
+                </svg>
+                <!-- /QUOTE BOX ICON -->
+
+                <!-- QUOTE BOX TEXT -->
+                <p class="quote-box-text">{{ diary.comments.last.body }}</p>
+                <!-- /QUOTE BOX TEXT -->
+            </blockquote>
+            {% endif %}
+            <!-- /QUOTE BOX -->
+
             <!-- CONTENT ACTIONS -->
             <div class="content-actions">
                 <!-- CONTENT ACTION -->
